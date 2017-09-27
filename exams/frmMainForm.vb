@@ -6,6 +6,7 @@ Imports DevExpress.XtraSplashScreen
 Imports System.Threading
 Imports System.IO
 Imports MySql.Data.MySqlClient
+Imports System.Data.SqlClient
 
 Partial Public Class frmMainForm
     Inherits DevExpress.XtraBars.Ribbon.RibbonForm
@@ -314,8 +315,8 @@ Partial Public Class frmMainForm
         Dim filePath As String = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "app_databases") + "\\" + DateTime.Now.ToString("dd-MM-yyyy hh-mm-ss") + ".sql"
         Using New DevExpress.Utils.WaitDialogForm("Backing Up Database")
             Try
-                Dim conn As MySqlConnection = New MySqlConnection(conString)
-                Dim cmd As MySqlCommand = New MySqlCommand()
+                Dim conn As SqlConnection = New SqlConnection(conString)
+                Dim cmd As SqlCommand = New SqlCommand()
                 Dim mb As MySqlBackup = New MySqlBackup(cmd)
 
                 cmd.Connection = conn
@@ -398,4 +399,17 @@ Partial Public Class frmMainForm
     Private Sub licenseNB_LinkClicked(sender As Object, e As NavBarLinkEventArgs) Handles licenseNB.LinkClicked
         frmLicense.ShowDialog()
     End Sub
+
+    Private Class MySqlBackup
+        Friend ExportInfo As Object
+        Private cmd As SqlCommand
+
+        Public Sub New(cmd As SqlCommand)
+            Me.cmd = cmd
+        End Sub
+
+        Friend Sub ExportToFile(filePath As String)
+            Throw New NotImplementedException()
+        End Sub
+    End Class
 End Class
