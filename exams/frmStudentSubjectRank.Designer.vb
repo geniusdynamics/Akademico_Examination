@@ -50,7 +50,7 @@ Partial Class frmStudentSubjectRank
         Me.dgvSubjects.Location = New System.Drawing.Point(3, 17)
         Me.dgvSubjects.Name = "dgvSubjects"
         Me.dgvSubjects.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvSubjects.Size = New System.Drawing.Size(725, 515)
+        Me.dgvSubjects.Size = New System.Drawing.Size(725, 612)
         Me.dgvSubjects.TabIndex = 0
         '
         'ADMNo
@@ -101,7 +101,7 @@ Partial Class frmStudentSubjectRank
         Me.GroupBox1.Controls.Add(Me.dgvSubjects)
         Me.GroupBox1.Location = New System.Drawing.Point(9, 39)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(731, 535)
+        Me.GroupBox1.Size = New System.Drawing.Size(731, 632)
         Me.GroupBox1.TabIndex = 16
         Me.GroupBox1.TabStop = False
         '
@@ -111,7 +111,7 @@ Partial Class frmStudentSubjectRank
         Me.lblTitle.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblTitle.Location = New System.Drawing.Point(30, 9)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(684, 27)
+        Me.lblTitle.Size = New System.Drawing.Size(481, 27)
         Me.lblTitle.TabIndex = 15
         Me.lblTitle.Text = "STUDENT SUBJECT RANKING ANALYSIS"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -119,7 +119,7 @@ Partial Class frmStudentSubjectRank
         'btnPrint
         '
         Me.btnPrint.Image = CType(resources.GetObject("btnPrint.Image"), System.Drawing.Image)
-        Me.btnPrint.Location = New System.Drawing.Point(673, 580)
+        Me.btnPrint.Location = New System.Drawing.Point(682, 9)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(64, 36)
         Me.btnPrint.TabIndex = 17
@@ -130,7 +130,7 @@ Partial Class frmStudentSubjectRank
         'btnCancel
         '
         Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.Location = New System.Drawing.Point(582, 580)
+        Me.btnCancel.Location = New System.Drawing.Point(588, 9)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(73, 36)
         Me.btnCancel.TabIndex = 18
@@ -152,7 +152,7 @@ Partial Class frmStudentSubjectRank
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(752, 622)
+        Me.ClientSize = New System.Drawing.Size(752, 683)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.btnPrint)

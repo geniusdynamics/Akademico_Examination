@@ -260,3 +260,5 @@ C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Debug\ja\
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Debug\ru\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.exe
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.pdb
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.vbprojResolveAssemblyReference.cache
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.vbproj.CoreCompileInputs.cache

@@ -871,7 +871,7 @@ Public Class frmSubjectPerformanceSpecific
         Dim print_document As System.Drawing.Printing.PrintDocument = prepare_class_list3()
         printpreview.Document = print_document
         printpreview.ShowDialog()
-        'print_document.Print()
+        print_document.Print()
     End Sub
     Private Function prepare_class_list3()
         Dim print_document As New PrintDocument

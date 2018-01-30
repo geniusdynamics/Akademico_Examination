@@ -155,7 +155,8 @@ Partial Public Class frmMainForm
 
         Dim details As String = VerifyL.getSchoolDetails()
         If Not String.IsNullOrEmpty(details) Then
-            Me.Text += Convert.ToString(" Is Licensed To ") & details
+            Me.Text += Convert.ToString(" Is Licensed to ") & details
+
         End If
 
 

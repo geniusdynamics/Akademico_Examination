@@ -85,4 +85,8 @@
             End If
         End If
     End Sub
+
+    Private Sub radActivate_CheckedChanged(sender As Object, e As EventArgs) Handles radActivate.CheckedChanged
+
+    End Sub
 End Class

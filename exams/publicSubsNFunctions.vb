@@ -804,7 +804,7 @@
         Try
             Return "+254" & no.Substring(1)
         Catch ex As Exception
-            Return "+254726503228"
+            Return "+254733911638"
         End Try
     End Function
 

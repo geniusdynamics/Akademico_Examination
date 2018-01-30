@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing.Printing
 Imports System.IO
+Imports System.Threading
 Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Threading.Tasks
 
@@ -481,6 +482,8 @@ Public Class frmResults
     End Sub
     Private Sub frmResults_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+
+
         If Not connect() Or Not dbNewOpen() Then
             Me.Close()
         Else
@@ -498,9 +501,9 @@ Public Class frmResults
                 ' Me.Close()
             Else
                 Using (New DevExpress.Utils.WaitDialogForm("Processing Results, Please Wait .....", "Computing Results"))
-                    get_merit_list_configuration()
-                    loadReportFormDefaults()
                     create_dataform()
+                    loadReportFormDefaults()
+                    get_merit_list_configuration()
                     If mode Then
                         load_multi()
                     Else
@@ -5757,7 +5760,7 @@ Public Class frmResults
     End Sub
 
     Private Sub save_examination()
-        Dim inc As Integer = dgvEnterMarks.Rows.Count - 4 / 100
+        Dim inc As Integer = dgvEnterMarks.Rows.Count - 8 / 100
         'qwrite("CREATE TABLE `examination_performance` (" &
         '        "`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ," &
         '        "`ADMNo` BIGINT( 255 ) NOT NULL," &
