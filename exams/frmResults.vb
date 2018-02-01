@@ -482,8 +482,6 @@ Public Class frmResults
     End Sub
     Private Sub frmResults_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
-
         If Not connect() Or Not dbNewOpen() Then
             Me.Close()
         Else

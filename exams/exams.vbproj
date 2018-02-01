@@ -153,10 +153,22 @@
     <Compile Include="frmClassSubjects.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmComputeResults.Designer.vb">
+      <DependentUpon>frmComputeResults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmComputeResults.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmConfigureModem.Designer.vb">
       <DependentUpon>frmConfigureModem.vb</DependentUpon>
     </Compile>
     <Compile Include="frmConfigureModem.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContribution.Designer.vb">
+      <DependentUpon>frmContribution.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmContribution.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmCreateExam.Designer.vb">
@@ -273,6 +285,12 @@
     <Compile Include="frmMeanAnalysis.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMeanResults.Designer.vb">
+      <DependentUpon>frmMeanResults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeanResults.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMeritListConfig.Designer.vb">
       <DependentUpon>frmMeritListConfig.vb</DependentUpon>
     </Compile>
@@ -355,6 +373,12 @@
       <DependentUpon>frmResultAnalysis.vb</DependentUpon>
     </Compile>
     <Compile Include="frmResultAnalysis.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultMeanAnalysis.Designer.vb">
+      <DependentUpon>frmResultMeanAnalysis.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmResultMeanAnalysis.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmResults.Designer.vb">
@@ -487,8 +511,14 @@
     <EmbeddedResource Include="frmClassSubjects.resx">
       <DependentUpon>frmClassSubjects.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmComputeResults.resx">
+      <DependentUpon>frmComputeResults.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmConfigureModem.resx">
       <DependentUpon>frmConfigureModem.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContribution.resx">
+      <DependentUpon>frmContribution.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCreateExam.resx">
       <DependentUpon>frmCreateExam.vb</DependentUpon>
@@ -547,6 +577,9 @@
     <EmbeddedResource Include="frmMeanAnalysis.resx">
       <DependentUpon>frmMeanAnalysis.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMeanResults.resx">
+      <DependentUpon>frmMeanResults.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMeritListConfig.resx">
       <DependentUpon>frmMeritListConfig.vb</DependentUpon>
     </EmbeddedResource>
@@ -588,6 +621,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmResultAnalysis.resx">
       <DependentUpon>frmResultAnalysis.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultMeanAnalysis.resx">
+      <DependentUpon>frmResultMeanAnalysis.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmResults.resx">
       <DependentUpon>frmResults.vb</DependentUpon>

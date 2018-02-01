@@ -22,6 +22,7 @@
     ''' the contents of this method with the code editor.
     ''' </summary>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMainForm))
         Me.mainRibbon = New DevExpress.XtraBars.Ribbon.RibbonControl()
         Me.performanceCommentsBI = New DevExpress.XtraBars.BarButtonItem()
@@ -98,7 +99,7 @@
         Me.rpgDefault = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.aboutRP = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.aboutRPG = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.myXtraTabbedMdiManager = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager()
+        Me.myXtraTabbedMdiManager = New DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(Me.components)
         Me.mainNavBar = New DevExpress.XtraNavBar.NavBarControl()
         Me.NavBarGroup1 = New DevExpress.XtraNavBar.NavBarGroup()
         Me.dbConnection = New DevExpress.XtraNavBar.NavBarItem()
@@ -106,9 +107,11 @@
         Me.localExamNB = New DevExpress.XtraNavBar.NavBarItem()
         Me.generalPerformanceNB = New DevExpress.XtraNavBar.NavBarItem()
         Me.subjectPerformanceNB = New DevExpress.XtraNavBar.NavBarItem()
-        Me.myDefaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel()
-        Me.SplashScreenManager2 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.exams.WaitForm1), True, True, True)
         Me.licenseNB = New DevExpress.XtraNavBar.NavBarItem()
+        Me.myDefaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
+        Me.SplashScreenManager2 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.exams.WaitForm1), True, True, True)
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.performance = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.mainRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.myXtraTabbedMdiManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mainNavBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -117,9 +120,9 @@
         'mainRibbon
         '
         Me.mainRibbon.ExpandCollapseItem.Id = 0
-        Me.mainRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainRibbon.ExpandCollapseItem, Me.performanceCommentsBI, Me.principalCommentBI, Me.classBasedBI, Me.subjectBasedBI, Me.createExamBI, Me.editExamBI, Me.localExaminationBI, Me.studentProfileBI, Me.performanceIndexBI, Me.subjectPerformanceIndexBI, Me.generalPerformanceBI, Me.studentPerformanceBI, Me.subjectPerformanceBI, Me.reportFormConfigurationFormBI, Me.meritListConfigBI, Me.splitSubjectBI, Me.editSplitBI, Me.subjectTakenBI, Me.assignIndexNoBI, Me.createNationalExamBI, Me.editNationalExamBI, Me.enterNationExams, Me.SkinRibbonGalleryBarItem1, Me.applicationFontBI, Me.defaultBI, Me.systemUsersBI, Me.rightsBI, Me.classSubjectBI, Me.showSubjectsBI, Me.markSheetBI, Me.addSubjectsBI, Me.editSubjectBI, Me.deleteSubjectBI, Me.aboutBI})
+        Me.mainRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainRibbon.ExpandCollapseItem, Me.performanceCommentsBI, Me.principalCommentBI, Me.classBasedBI, Me.subjectBasedBI, Me.createExamBI, Me.editExamBI, Me.localExaminationBI, Me.studentProfileBI, Me.performanceIndexBI, Me.subjectPerformanceIndexBI, Me.generalPerformanceBI, Me.studentPerformanceBI, Me.subjectPerformanceBI, Me.reportFormConfigurationFormBI, Me.meritListConfigBI, Me.splitSubjectBI, Me.editSplitBI, Me.subjectTakenBI, Me.assignIndexNoBI, Me.createNationalExamBI, Me.editNationalExamBI, Me.enterNationExams, Me.SkinRibbonGalleryBarItem1, Me.applicationFontBI, Me.defaultBI, Me.systemUsersBI, Me.rightsBI, Me.classSubjectBI, Me.showSubjectsBI, Me.markSheetBI, Me.addSubjectsBI, Me.editSubjectBI, Me.deleteSubjectBI, Me.aboutBI, Me.performance})
         Me.mainRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.mainRibbon.MaxItemId = 35
+        Me.mainRibbon.MaxItemId = 36
         Me.mainRibbon.Name = "mainRibbon"
         Me.mainRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.configurationsMenu, Me.subjectsMenu, Me.gradingMenu, Me.examinationsMenu, Me.performanceEntryMenu, Me.resultAnalysisMenu, Me.rpgUsers, Me.rpgChangeLook, Me.aboutRP})
         Me.mainRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
@@ -128,176 +131,176 @@
         'performanceCommentsBI
         '
         Me.performanceCommentsBI.Caption = "Performance Comments"
-        Me.performanceCommentsBI.Glyph = CType(resources.GetObject("performanceCommentsBI.Glyph"), System.Drawing.Image)
         Me.performanceCommentsBI.Id = 1
-        Me.performanceCommentsBI.LargeGlyph = CType(resources.GetObject("performanceCommentsBI.LargeGlyph"), System.Drawing.Image)
+        Me.performanceCommentsBI.ImageOptions.Image = CType(resources.GetObject("performanceCommentsBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.performanceCommentsBI.ImageOptions.LargeImage = CType(resources.GetObject("performanceCommentsBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.performanceCommentsBI.Name = "performanceCommentsBI"
         '
         'principalCommentBI
         '
         Me.principalCommentBI.Caption = "Prinicipal Comments"
-        Me.principalCommentBI.Glyph = CType(resources.GetObject("principalCommentBI.Glyph"), System.Drawing.Image)
         Me.principalCommentBI.Id = 2
-        Me.principalCommentBI.LargeGlyph = CType(resources.GetObject("principalCommentBI.LargeGlyph"), System.Drawing.Image)
+        Me.principalCommentBI.ImageOptions.Image = CType(resources.GetObject("principalCommentBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.principalCommentBI.ImageOptions.LargeImage = CType(resources.GetObject("principalCommentBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.principalCommentBI.Name = "principalCommentBI"
         '
         'classBasedBI
         '
         Me.classBasedBI.Caption = "Class Based Grading Scheme"
-        Me.classBasedBI.Glyph = CType(resources.GetObject("classBasedBI.Glyph"), System.Drawing.Image)
         Me.classBasedBI.Id = 3
-        Me.classBasedBI.LargeGlyph = CType(resources.GetObject("classBasedBI.LargeGlyph"), System.Drawing.Image)
+        Me.classBasedBI.ImageOptions.Image = CType(resources.GetObject("classBasedBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.classBasedBI.ImageOptions.LargeImage = CType(resources.GetObject("classBasedBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.classBasedBI.Name = "classBasedBI"
         '
         'subjectBasedBI
         '
         Me.subjectBasedBI.Caption = "Subject Based Grading"
-        Me.subjectBasedBI.Glyph = CType(resources.GetObject("subjectBasedBI.Glyph"), System.Drawing.Image)
         Me.subjectBasedBI.Id = 4
-        Me.subjectBasedBI.LargeGlyph = CType(resources.GetObject("subjectBasedBI.LargeGlyph"), System.Drawing.Image)
+        Me.subjectBasedBI.ImageOptions.Image = CType(resources.GetObject("subjectBasedBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.subjectBasedBI.ImageOptions.LargeImage = CType(resources.GetObject("subjectBasedBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.subjectBasedBI.Name = "subjectBasedBI"
         '
         'createExamBI
         '
         Me.createExamBI.Caption = "Create Exam"
         Me.createExamBI.Id = 5
-        Me.createExamBI.LargeGlyph = CType(resources.GetObject("createExamBI.LargeGlyph"), System.Drawing.Image)
+        Me.createExamBI.ImageOptions.LargeImage = CType(resources.GetObject("createExamBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.createExamBI.Name = "createExamBI"
         '
         'editExamBI
         '
         Me.editExamBI.Caption = "Edit Exam"
-        Me.editExamBI.Glyph = CType(resources.GetObject("editExamBI.Glyph"), System.Drawing.Image)
         Me.editExamBI.Id = 6
-        Me.editExamBI.LargeGlyph = CType(resources.GetObject("editExamBI.LargeGlyph"), System.Drawing.Image)
+        Me.editExamBI.ImageOptions.Image = CType(resources.GetObject("editExamBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.editExamBI.ImageOptions.LargeImage = CType(resources.GetObject("editExamBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.editExamBI.Name = "editExamBI"
         '
         'localExaminationBI
         '
         Me.localExaminationBI.Caption = "Local Examination"
-        Me.localExaminationBI.Glyph = CType(resources.GetObject("localExaminationBI.Glyph"), System.Drawing.Image)
         Me.localExaminationBI.Id = 7
-        Me.localExaminationBI.LargeGlyph = CType(resources.GetObject("localExaminationBI.LargeGlyph"), System.Drawing.Image)
+        Me.localExaminationBI.ImageOptions.Image = CType(resources.GetObject("localExaminationBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.localExaminationBI.ImageOptions.LargeImage = CType(resources.GetObject("localExaminationBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.localExaminationBI.Name = "localExaminationBI"
         '
         'studentProfileBI
         '
         Me.studentProfileBI.Caption = "Student Performance Profile"
-        Me.studentProfileBI.Glyph = CType(resources.GetObject("studentProfileBI.Glyph"), System.Drawing.Image)
         Me.studentProfileBI.Id = 8
-        Me.studentProfileBI.LargeGlyph = CType(resources.GetObject("studentProfileBI.LargeGlyph"), System.Drawing.Image)
+        Me.studentProfileBI.ImageOptions.Image = CType(resources.GetObject("studentProfileBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.studentProfileBI.ImageOptions.LargeImage = CType(resources.GetObject("studentProfileBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.studentProfileBI.Name = "studentProfileBI"
         '
         'performanceIndexBI
         '
         Me.performanceIndexBI.Caption = "Student Performance Index"
-        Me.performanceIndexBI.Glyph = CType(resources.GetObject("performanceIndexBI.Glyph"), System.Drawing.Image)
         Me.performanceIndexBI.Id = 9
-        Me.performanceIndexBI.LargeGlyph = CType(resources.GetObject("performanceIndexBI.LargeGlyph"), System.Drawing.Image)
+        Me.performanceIndexBI.ImageOptions.Image = CType(resources.GetObject("performanceIndexBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.performanceIndexBI.ImageOptions.LargeImage = CType(resources.GetObject("performanceIndexBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.performanceIndexBI.Name = "performanceIndexBI"
         '
         'subjectPerformanceIndexBI
         '
         Me.subjectPerformanceIndexBI.Caption = "Subject Performance Index"
-        Me.subjectPerformanceIndexBI.Glyph = CType(resources.GetObject("subjectPerformanceIndexBI.Glyph"), System.Drawing.Image)
         Me.subjectPerformanceIndexBI.Id = 10
-        Me.subjectPerformanceIndexBI.LargeGlyph = CType(resources.GetObject("subjectPerformanceIndexBI.LargeGlyph"), System.Drawing.Image)
+        Me.subjectPerformanceIndexBI.ImageOptions.Image = CType(resources.GetObject("subjectPerformanceIndexBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.subjectPerformanceIndexBI.ImageOptions.LargeImage = CType(resources.GetObject("subjectPerformanceIndexBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.subjectPerformanceIndexBI.Name = "subjectPerformanceIndexBI"
         '
         'generalPerformanceBI
         '
         Me.generalPerformanceBI.Caption = "General Performance"
-        Me.generalPerformanceBI.Glyph = CType(resources.GetObject("generalPerformanceBI.Glyph"), System.Drawing.Image)
         Me.generalPerformanceBI.Id = 11
-        Me.generalPerformanceBI.LargeGlyph = CType(resources.GetObject("generalPerformanceBI.LargeGlyph"), System.Drawing.Image)
+        Me.generalPerformanceBI.ImageOptions.Image = CType(resources.GetObject("generalPerformanceBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.generalPerformanceBI.ImageOptions.LargeImage = CType(resources.GetObject("generalPerformanceBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.generalPerformanceBI.Name = "generalPerformanceBI"
         '
         'studentPerformanceBI
         '
         Me.studentPerformanceBI.Caption = "Student Performance"
-        Me.studentPerformanceBI.Glyph = CType(resources.GetObject("studentPerformanceBI.Glyph"), System.Drawing.Image)
         Me.studentPerformanceBI.Id = 12
-        Me.studentPerformanceBI.LargeGlyph = CType(resources.GetObject("studentPerformanceBI.LargeGlyph"), System.Drawing.Image)
+        Me.studentPerformanceBI.ImageOptions.Image = CType(resources.GetObject("studentPerformanceBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.studentPerformanceBI.ImageOptions.LargeImage = CType(resources.GetObject("studentPerformanceBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.studentPerformanceBI.Name = "studentPerformanceBI"
         '
         'subjectPerformanceBI
         '
         Me.subjectPerformanceBI.Caption = "Subject Performance"
-        Me.subjectPerformanceBI.Glyph = CType(resources.GetObject("subjectPerformanceBI.Glyph"), System.Drawing.Image)
         Me.subjectPerformanceBI.Id = 13
-        Me.subjectPerformanceBI.LargeGlyph = CType(resources.GetObject("subjectPerformanceBI.LargeGlyph"), System.Drawing.Image)
+        Me.subjectPerformanceBI.ImageOptions.Image = CType(resources.GetObject("subjectPerformanceBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.subjectPerformanceBI.ImageOptions.LargeImage = CType(resources.GetObject("subjectPerformanceBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.subjectPerformanceBI.Name = "subjectPerformanceBI"
         '
         'reportFormConfigurationFormBI
         '
         Me.reportFormConfigurationFormBI.Caption = "Report Form Configurations"
-        Me.reportFormConfigurationFormBI.Glyph = CType(resources.GetObject("reportFormConfigurationFormBI.Glyph"), System.Drawing.Image)
         Me.reportFormConfigurationFormBI.Id = 14
-        Me.reportFormConfigurationFormBI.LargeGlyph = CType(resources.GetObject("reportFormConfigurationFormBI.LargeGlyph"), System.Drawing.Image)
+        Me.reportFormConfigurationFormBI.ImageOptions.Image = CType(resources.GetObject("reportFormConfigurationFormBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.reportFormConfigurationFormBI.ImageOptions.LargeImage = CType(resources.GetObject("reportFormConfigurationFormBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.reportFormConfigurationFormBI.Name = "reportFormConfigurationFormBI"
         '
         'meritListConfigBI
         '
         Me.meritListConfigBI.Caption = "Merit List Configurations"
-        Me.meritListConfigBI.Glyph = CType(resources.GetObject("meritListConfigBI.Glyph"), System.Drawing.Image)
         Me.meritListConfigBI.Id = 15
-        Me.meritListConfigBI.LargeGlyph = CType(resources.GetObject("meritListConfigBI.LargeGlyph"), System.Drawing.Image)
+        Me.meritListConfigBI.ImageOptions.Image = CType(resources.GetObject("meritListConfigBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.meritListConfigBI.ImageOptions.LargeImage = CType(resources.GetObject("meritListConfigBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.meritListConfigBI.Name = "meritListConfigBI"
         '
         'splitSubjectBI
         '
         Me.splitSubjectBI.Caption = "Add Split Subject"
-        Me.splitSubjectBI.Glyph = CType(resources.GetObject("splitSubjectBI.Glyph"), System.Drawing.Image)
         Me.splitSubjectBI.Id = 16
-        Me.splitSubjectBI.LargeGlyph = CType(resources.GetObject("splitSubjectBI.LargeGlyph"), System.Drawing.Image)
+        Me.splitSubjectBI.ImageOptions.Image = CType(resources.GetObject("splitSubjectBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.splitSubjectBI.ImageOptions.LargeImage = CType(resources.GetObject("splitSubjectBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.splitSubjectBI.Name = "splitSubjectBI"
         '
         'editSplitBI
         '
         Me.editSplitBI.Caption = "Edit Split Subject"
-        Me.editSplitBI.Glyph = CType(resources.GetObject("editSplitBI.Glyph"), System.Drawing.Image)
         Me.editSplitBI.Id = 17
-        Me.editSplitBI.LargeGlyph = CType(resources.GetObject("editSplitBI.LargeGlyph"), System.Drawing.Image)
+        Me.editSplitBI.ImageOptions.Image = CType(resources.GetObject("editSplitBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.editSplitBI.ImageOptions.LargeImage = CType(resources.GetObject("editSplitBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.editSplitBI.Name = "editSplitBI"
         '
         'subjectTakenBI
         '
         Me.subjectTakenBI.Caption = "Assign Subject Taken"
-        Me.subjectTakenBI.Glyph = CType(resources.GetObject("subjectTakenBI.Glyph"), System.Drawing.Image)
         Me.subjectTakenBI.Id = 18
-        Me.subjectTakenBI.LargeGlyph = CType(resources.GetObject("subjectTakenBI.LargeGlyph"), System.Drawing.Image)
+        Me.subjectTakenBI.ImageOptions.Image = CType(resources.GetObject("subjectTakenBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.subjectTakenBI.ImageOptions.LargeImage = CType(resources.GetObject("subjectTakenBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.subjectTakenBI.Name = "subjectTakenBI"
         '
         'assignIndexNoBI
         '
         Me.assignIndexNoBI.Caption = "Assign Index Number"
-        Me.assignIndexNoBI.Glyph = CType(resources.GetObject("assignIndexNoBI.Glyph"), System.Drawing.Image)
         Me.assignIndexNoBI.Id = 19
-        Me.assignIndexNoBI.LargeGlyph = CType(resources.GetObject("assignIndexNoBI.LargeGlyph"), System.Drawing.Image)
+        Me.assignIndexNoBI.ImageOptions.Image = CType(resources.GetObject("assignIndexNoBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.assignIndexNoBI.ImageOptions.LargeImage = CType(resources.GetObject("assignIndexNoBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.assignIndexNoBI.Name = "assignIndexNoBI"
         '
         'createNationalExamBI
         '
         Me.createNationalExamBI.Caption = "Create National Exam"
-        Me.createNationalExamBI.Glyph = CType(resources.GetObject("createNationalExamBI.Glyph"), System.Drawing.Image)
         Me.createNationalExamBI.Id = 20
-        Me.createNationalExamBI.LargeGlyph = CType(resources.GetObject("createNationalExamBI.LargeGlyph"), System.Drawing.Image)
+        Me.createNationalExamBI.ImageOptions.Image = CType(resources.GetObject("createNationalExamBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.createNationalExamBI.ImageOptions.LargeImage = CType(resources.GetObject("createNationalExamBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.createNationalExamBI.Name = "createNationalExamBI"
         '
         'editNationalExamBI
         '
         Me.editNationalExamBI.Caption = "Edit National Exam"
-        Me.editNationalExamBI.Glyph = CType(resources.GetObject("editNationalExamBI.Glyph"), System.Drawing.Image)
         Me.editNationalExamBI.Id = 21
-        Me.editNationalExamBI.LargeGlyph = CType(resources.GetObject("editNationalExamBI.LargeGlyph"), System.Drawing.Image)
+        Me.editNationalExamBI.ImageOptions.Image = CType(resources.GetObject("editNationalExamBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.editNationalExamBI.ImageOptions.LargeImage = CType(resources.GetObject("editNationalExamBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.editNationalExamBI.Name = "editNationalExamBI"
         '
         'enterNationExams
         '
         Me.enterNationExams.Caption = "National Examination"
-        Me.enterNationExams.Glyph = CType(resources.GetObject("enterNationExams.Glyph"), System.Drawing.Image)
         Me.enterNationExams.Id = 22
-        Me.enterNationExams.LargeGlyph = CType(resources.GetObject("enterNationExams.LargeGlyph"), System.Drawing.Image)
+        Me.enterNationExams.ImageOptions.Image = CType(resources.GetObject("enterNationExams.ImageOptions.Image"), System.Drawing.Image)
+        Me.enterNationExams.ImageOptions.LargeImage = CType(resources.GetObject("enterNationExams.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.enterNationExams.Name = "enterNationExams"
         '
         'SkinRibbonGalleryBarItem1
@@ -309,89 +312,89 @@
         'applicationFontBI
         '
         Me.applicationFontBI.Caption = "Application Font"
-        Me.applicationFontBI.Glyph = CType(resources.GetObject("applicationFontBI.Glyph"), System.Drawing.Image)
         Me.applicationFontBI.Id = 24
-        Me.applicationFontBI.LargeGlyph = CType(resources.GetObject("applicationFontBI.LargeGlyph"), System.Drawing.Image)
+        Me.applicationFontBI.ImageOptions.Image = CType(resources.GetObject("applicationFontBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.applicationFontBI.ImageOptions.LargeImage = CType(resources.GetObject("applicationFontBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.applicationFontBI.Name = "applicationFontBI"
         '
         'defaultBI
         '
         Me.defaultBI.Caption = "Restore Default Look And Feel"
-        Me.defaultBI.Glyph = CType(resources.GetObject("defaultBI.Glyph"), System.Drawing.Image)
         Me.defaultBI.Id = 25
-        Me.defaultBI.LargeGlyph = CType(resources.GetObject("defaultBI.LargeGlyph"), System.Drawing.Image)
+        Me.defaultBI.ImageOptions.Image = CType(resources.GetObject("defaultBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.defaultBI.ImageOptions.LargeImage = CType(resources.GetObject("defaultBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.defaultBI.Name = "defaultBI"
         '
         'systemUsersBI
         '
         Me.systemUsersBI.Caption = "System Users"
-        Me.systemUsersBI.Glyph = CType(resources.GetObject("systemUsersBI.Glyph"), System.Drawing.Image)
         Me.systemUsersBI.Id = 26
-        Me.systemUsersBI.LargeGlyph = CType(resources.GetObject("systemUsersBI.LargeGlyph"), System.Drawing.Image)
+        Me.systemUsersBI.ImageOptions.Image = CType(resources.GetObject("systemUsersBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.systemUsersBI.ImageOptions.LargeImage = CType(resources.GetObject("systemUsersBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.systemUsersBI.Name = "systemUsersBI"
         '
         'rightsBI
         '
         Me.rightsBI.Caption = "User Rights And Priviledges"
-        Me.rightsBI.Glyph = CType(resources.GetObject("rightsBI.Glyph"), System.Drawing.Image)
         Me.rightsBI.Id = 27
-        Me.rightsBI.LargeGlyph = CType(resources.GetObject("rightsBI.LargeGlyph"), System.Drawing.Image)
+        Me.rightsBI.ImageOptions.Image = CType(resources.GetObject("rightsBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.rightsBI.ImageOptions.LargeImage = CType(resources.GetObject("rightsBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.rightsBI.Name = "rightsBI"
         '
         'classSubjectBI
         '
         Me.classSubjectBI.Caption = "Assign Class Subject"
-        Me.classSubjectBI.Glyph = CType(resources.GetObject("classSubjectBI.Glyph"), System.Drawing.Image)
         Me.classSubjectBI.Id = 28
-        Me.classSubjectBI.LargeGlyph = CType(resources.GetObject("classSubjectBI.LargeGlyph"), System.Drawing.Image)
+        Me.classSubjectBI.ImageOptions.Image = CType(resources.GetObject("classSubjectBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.classSubjectBI.ImageOptions.LargeImage = CType(resources.GetObject("classSubjectBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.classSubjectBI.Name = "classSubjectBI"
         '
         'showSubjectsBI
         '
         Me.showSubjectsBI.Caption = "Student Subjects Taken"
-        Me.showSubjectsBI.Glyph = CType(resources.GetObject("showSubjectsBI.Glyph"), System.Drawing.Image)
         Me.showSubjectsBI.Id = 29
-        Me.showSubjectsBI.LargeGlyph = CType(resources.GetObject("showSubjectsBI.LargeGlyph"), System.Drawing.Image)
+        Me.showSubjectsBI.ImageOptions.Image = CType(resources.GetObject("showSubjectsBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.showSubjectsBI.ImageOptions.LargeImage = CType(resources.GetObject("showSubjectsBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.showSubjectsBI.Name = "showSubjectsBI"
         '
         'markSheetBI
         '
         Me.markSheetBI.Caption = "Mark Sheet"
-        Me.markSheetBI.Glyph = CType(resources.GetObject("markSheetBI.Glyph"), System.Drawing.Image)
         Me.markSheetBI.Id = 30
-        Me.markSheetBI.LargeGlyph = CType(resources.GetObject("markSheetBI.LargeGlyph"), System.Drawing.Image)
+        Me.markSheetBI.ImageOptions.Image = CType(resources.GetObject("markSheetBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.markSheetBI.ImageOptions.LargeImage = CType(resources.GetObject("markSheetBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.markSheetBI.Name = "markSheetBI"
         '
         'addSubjectsBI
         '
         Me.addSubjectsBI.Caption = "Add Subjects"
-        Me.addSubjectsBI.Glyph = CType(resources.GetObject("addSubjectsBI.Glyph"), System.Drawing.Image)
         Me.addSubjectsBI.Id = 31
-        Me.addSubjectsBI.LargeGlyph = CType(resources.GetObject("addSubjectsBI.LargeGlyph"), System.Drawing.Image)
+        Me.addSubjectsBI.ImageOptions.Image = CType(resources.GetObject("addSubjectsBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.addSubjectsBI.ImageOptions.LargeImage = CType(resources.GetObject("addSubjectsBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.addSubjectsBI.Name = "addSubjectsBI"
         '
         'editSubjectBI
         '
         Me.editSubjectBI.Caption = "Edit Subject"
-        Me.editSubjectBI.Glyph = CType(resources.GetObject("editSubjectBI.Glyph"), System.Drawing.Image)
         Me.editSubjectBI.Id = 32
-        Me.editSubjectBI.LargeGlyph = CType(resources.GetObject("editSubjectBI.LargeGlyph"), System.Drawing.Image)
+        Me.editSubjectBI.ImageOptions.Image = CType(resources.GetObject("editSubjectBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.editSubjectBI.ImageOptions.LargeImage = CType(resources.GetObject("editSubjectBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.editSubjectBI.Name = "editSubjectBI"
         '
         'deleteSubjectBI
         '
         Me.deleteSubjectBI.Caption = "Delete Subject"
-        Me.deleteSubjectBI.Glyph = CType(resources.GetObject("deleteSubjectBI.Glyph"), System.Drawing.Image)
         Me.deleteSubjectBI.Id = 33
-        Me.deleteSubjectBI.LargeGlyph = CType(resources.GetObject("deleteSubjectBI.LargeGlyph"), System.Drawing.Image)
+        Me.deleteSubjectBI.ImageOptions.Image = CType(resources.GetObject("deleteSubjectBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.deleteSubjectBI.ImageOptions.LargeImage = CType(resources.GetObject("deleteSubjectBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.deleteSubjectBI.Name = "deleteSubjectBI"
         '
         'aboutBI
         '
         Me.aboutBI.Caption = "About Us"
-        Me.aboutBI.Glyph = CType(resources.GetObject("aboutBI.Glyph"), System.Drawing.Image)
         Me.aboutBI.Id = 34
-        Me.aboutBI.LargeGlyph = CType(resources.GetObject("aboutBI.LargeGlyph"), System.Drawing.Image)
+        Me.aboutBI.ImageOptions.Image = CType(resources.GetObject("aboutBI.ImageOptions.Image"), System.Drawing.Image)
+        Me.aboutBI.ImageOptions.LargeImage = CType(resources.GetObject("aboutBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.aboutBI.Name = "aboutBI"
         '
         'configurationsMenu
@@ -543,7 +546,7 @@
         '
         'resultAnalysisMenu
         '
-        Me.resultAnalysisMenu.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpgStudentProfile, Me.rpgPerformanceIndex, Me.rpgGeneralPerformance, Me.rpgStudentPerformance, Me.rpgSubjectPerformance, Me.rpgSubjectPerformanceIndex})
+        Me.resultAnalysisMenu.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpgStudentProfile, Me.rpgPerformanceIndex, Me.rpgGeneralPerformance, Me.rpgStudentPerformance, Me.rpgSubjectPerformance, Me.rpgSubjectPerformanceIndex, Me.RibbonPageGroup1})
         Me.resultAnalysisMenu.Name = "resultAnalysisMenu"
         Me.resultAnalysisMenu.Text = "Result Analysis"
         '
@@ -692,15 +695,28 @@
         Me.subjectPerformanceNB.Name = "subjectPerformanceNB"
         Me.subjectPerformanceNB.SmallImage = CType(resources.GetObject("subjectPerformanceNB.SmallImage"), System.Drawing.Image)
         '
-        'SplashScreenManager2
-        '
-        Me.SplashScreenManager2.ClosingDelay = 500
-        '
         'licenseNB
         '
         Me.licenseNB.Caption = "License"
         Me.licenseNB.Name = "licenseNB"
         Me.licenseNB.SmallImage = CType(resources.GetObject("licenseNB.SmallImage"), System.Drawing.Image)
+        '
+        'SplashScreenManager2
+        '
+        Me.SplashScreenManager2.ClosingDelay = 500
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.ItemLinks.Add(Me.performance)
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
+        '
+        'performance
+        '
+        Me.performance.Caption = "Performance"
+        Me.performance.Id = 35
+        Me.performance.ImageOptions.Image = CType(resources.GetObject("BarButtonItem1.ImageOptions.Image"), System.Drawing.Image)
+        Me.performance.Name = "performance"
         '
         'frmMainForm
         '
@@ -812,4 +828,6 @@
     Friend WithEvents aboutRP As DevExpress.XtraBars.Ribbon.RibbonPage
     Friend WithEvents aboutRPG As DevExpress.XtraBars.Ribbon.RibbonPageGroup
     Friend WithEvents licenseNB As DevExpress.XtraNavBar.NavBarItem
+    Friend WithEvents performance As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
 End Class

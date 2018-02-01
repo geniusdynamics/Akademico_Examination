@@ -55,6 +55,15 @@
     Public myFormVariable As Boolean = False
 
 
+    Public subjectColumns As List(Of String)
+    Public examList As List(Of Tuple(Of String, String, String))
+    Public examListMain As List(Of Tuple(Of String, String, String, String, String))
+    Public selectedClass As String = String.Empty
+    Public selectedYear As String = String.Empty
+    Public gradingType As String = String.Empty
+    Public selectedTerm As String = String.Empty
+    Public sortGradesBy As String = String.Empty
+
 
 
     Public Structure ReportForm
@@ -526,6 +535,41 @@
         End While
     End Sub
 
+    Public Function parseQuery(ByVal queryString As String) As String
+        Dim newString As String = String.Empty
+        newString = queryString.Trim
+        If newString.EndsWith(",") Then
+            newString = newString.Remove(newString.Length - 1, 1)
+            newString += ";"
+        End If
+
+        Return newString
+    End Function
+
+    Public Sub resetSchoolName()
+        Dim details As String = VerifyL.getSchoolDetails()
+        If Not String.IsNullOrEmpty(details) Then
+            Dim schoolName As String = VerifyL.getStringRecord("select school_name from school_details limit 1;")
+
+            If String.IsNullOrEmpty(schoolName) Then
+                If qwrite("insert into school_details (`school_name`, `telephone`, `postal_address`, `town`) values ('" + escape_string(details) + "', 'SAMPLE', 'SAMPLE', 'SAMPLE');") Then
+
+                End If
+            Else
+                If schoolName <> details Then
+                    If qwrite("update school_details set school_name = '" + escape_string(details) + "';") Then
+
+                    End If
+                End If
+            End If
+
+        Else
+            If qwrite("insert into school_details (`school_name`, `telephone`, `postal_address`, `town`) values ('" + escape_string(details) + "', 'SAMPLE', 'SAMPLE', 'SAMPLE');") Then
+
+            End If
+        End If
+    End Sub
+
     Public Function get_total_mark(ByVal exam As String, ByVal tm As String, Optional ByVal yer As String = Nothing)
         If yer = Nothing Then
             yer = yr
@@ -657,6 +701,7 @@
         frm.ShowDialog()
     End Sub
 
+    
     Public Function ret_subject_name(ByVal s As String)
         Dim i As Integer
         For i = 0 To subjabb.Length - 1
@@ -804,7 +849,7 @@
         Try
             Return "+254" & no.Substring(1)
         Catch ex As Exception
-            Return "+254733911638"
+            Return "+254726503228"
         End Try
     End Function
 

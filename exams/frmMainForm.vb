@@ -5,7 +5,7 @@ Imports DevExpress.XtraBars
 Imports DevExpress.XtraSplashScreen
 Imports System.Threading
 Imports System.IO
-Imports MySql.Data.MySqlClient
+Imports exams.MySql.Data.MySqlClient
 Imports System.Data.SqlClient
 
 Partial Public Class frmMainForm
@@ -413,4 +413,10 @@ Partial Public Class frmMainForm
             Throw New NotImplementedException()
         End Sub
     End Class
+
+    Private Sub performance_ItemClick(sender As Object, e As ItemClickEventArgs) Handles performance.ItemClick
+
+        Dim frmContribution = New frmContribution
+        frmContribution.ShowDialog()
+    End Sub
 End Class
