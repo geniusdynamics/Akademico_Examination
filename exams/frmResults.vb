@@ -2382,7 +2382,7 @@ Public Class frmResults
         End If
         If start_from = 0 Then
             Try
-                e.Graphics.DrawImage(Image.FromFile(path & "\student_images\" & logo()), left_margin + 10, line, 100, 100)
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 10, line, 100, 100)
                 line += 15
             Catch ex As Exception
                 Timer1.Enabled = False
@@ -2694,7 +2694,7 @@ Public Class frmResults
         End If
         If start_from = 0 Then
             Try
-                e.Graphics.DrawImage(Image.FromFile(path & "\student_images\" & logo()), left_margin + 10, line, 90, 90)
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 10, line, 90, 90)
                 line += 15
             Catch ex As Exception
                 Timer1.Enabled = False
@@ -3186,14 +3186,14 @@ Public Class frmResults
         line = 15
         If report.school_logo Then
             Try
-                e.Graphics.DrawImage(Image.FromFile(path & "\student_images\" & logo()), left_margin + 5, topline - 170, 90, 90)
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 5, topline - 170, 90, 90)
             Catch ex As Exception
                 Timer1.Enabled = False
             End Try
         End If
         If report.student_photo Then
             Try
-                e.Graphics.DrawImage(Image.FromFile(path & "\student_images\" & dgvEnterMarks.Item("ADMNo", student).Value & ".jpg"), right_margin - 100, topline - 170, 100, 100)
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & dgvEnterMarks.Item("ADMNo", student).Value & ".jpg"), right_margin - 100, topline - 170, 100, 100)
             Catch ex As Exception
                 Timer1.Enabled = False
             End Try
@@ -3929,7 +3929,7 @@ Public Class frmResults
         e.Graphics.DrawString("SIGNATURE:", smallfont, Brushes.Black, left_margin + 450, line)
         If report.class_teacher_signature Then
             If File.Exists(path & "\teacher_images\class_teacher_" & yr & "_" & tm & "_" & get_name(class_form) & "_" & get_name(dgvEnterMarks.Item("str_class", student).Value) & ".jpg") Then
-                e.Graphics.DrawImage(Image.FromFile(path & "\teacher_images\class_teacher_" & yr & "_" & tm & "_" & get_name(class_form) & "_" & get_name(dgvEnterMarks.Item("str_class", student).Value) & ".jpg"), left_margin + 550, line - 10, 100, 30)
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & yr & "_" & tm & "_" & get_name(class_form) & "_" & get_name(dgvEnterMarks.Item("str_class", student).Value) & ".jpg"), left_margin + 550, line - 10, 100, 30)
             End If
         End If
         e.Graphics.DrawString(" ________________________________", smallfont, Brushes.Black, left_margin + 520, line + 5)
@@ -3952,8 +3952,8 @@ Public Class frmResults
         End If
         e.Graphics.DrawString("SIGNATURE:", smallfont, Brushes.Black, left_margin + 450, line)
         If report.head_teacher_signature Then
-            If File.Exists(path & "\teacher_images\head_teacher_" & yr & "_" & tm & ".jpg") Then
-                e.Graphics.DrawImage(Image.FromFile(path & "\teacher_images\head_teacher_" & yr & "_" & tm & ".jpg"), left_margin + 550, line - 10, 100, 30)
+            If File.Exists(path & "\photos_parent_guardians\" & yr & "_" & tm & ".jpg") Then
+                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & yr & "_" & tm & ".jpg"), left_margin + 550, line - 10, 100, 30)
             End If
         End If
         e.Graphics.DrawString("_______________________________", smallfont, Brushes.Black, left_margin + 520, line + 5)

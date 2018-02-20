@@ -1,4 +1,6 @@
-﻿Module publicSubsNFunctions
+﻿Imports System.Environment
+
+Module publicSubsNFunctions
 
     Public dbconn As Odbc.OdbcConnection
     Public dbcommand As Odbc.OdbcCommand
@@ -46,7 +48,7 @@
     Public mode As Boolean = False
     Public attend As Boolean = False
     Public radF, radL, backup, restore, load_from_alumni, watermark, grade As Boolean
-    Public path As String = CurDir()
+    Public path As String = GetFolderPath(Environment.SpecialFolder.ApplicationData)
     Public dbConnNew As Odbc.OdbcConnection
     Public dbcommand1 As Odbc.OdbcCommand
     Public startyear As Integer = 2010
@@ -702,7 +704,7 @@
         frm.ShowDialog()
     End Sub
 
-    
+
     Public Function ret_subject_name(ByVal s As String)
         Dim i As Integer
         For i = 0 To subjabb.Length - 1
