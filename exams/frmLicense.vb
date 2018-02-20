@@ -1,42 +1,46 @@
-﻿Public Class frmLicense
+﻿Imports DevExpress.Utils.Frames
+
+
+Public Class frmLicense
+    Dim DemoDatabase As String = "DemoDatabase"
     Private Sub frmLicense_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         If Not connect() Then
             frmDBConnection.ShowDialog()
         Else
-            schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+            'schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+            'licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+            'activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
 
             If VerifyL.getExpirationDate() = True Then
-                lblInfo.Text = "The License Will Expire On " + VerifyL.licenseExpiration.ToString()
+                LabelInfo.Text = "The License Will Expire On " + VerifyL.licenseExpiration.ToString()
             End If
         End If
     End Sub
 
-    Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
-        ErrorProvider1.Clear()
-        If cboLicensePeriod.SelectedItem Is Nothing Then
-            ErrorProvider1.SetError(cboLicensePeriod, "Please Select The Licensing Period Time")
-        Else
-            Dim time As String() = cboLicensePeriod.SelectedItem.ToString().Split(" "c)
-            txtLicenseInfo.Text = VerifyL.generateLicenseCode(time(0))
-        End If
+    Private Sub btnGenerate_Click(sender As Object, e As EventArgs)
+        'ErrorProvider1.Clear()
+        'If cboLicensePeriod.SelectedItem Is Nothing Then
+        '    ErrorProvider1.SetError(cboLicensePeriod, "Please Select The Licensing Period Time")
+        'Else
+        '    Dim time As String() = cboLicensePeriod.SelectedItem.ToString().Split(" "c)
+        '    txtLicenseInfo.Text = VerifyL.generateLicenseCode(time(0))
+        'End If
     End Sub
 
-    Private Sub radGenerateCode_CheckedChanged(sender As Object, e As EventArgs) Handles radGenerateCode.CheckedChanged
-        If radGenerateCode.Checked = True Then
-            schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            generateCodeLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-        Else
-            schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-            licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-            activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
-            generateCodeLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-            licensePeriodLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
-        End If
+    Private Sub radGenerateCode_CheckedChanged(sender As Object, e As EventArgs)
+        'If radGenerateCode.Checked = True Then
+        '    schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '    licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '    activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '    generateCodeLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        'Else
+        '    schoolNameLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        '    licenseKeyLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        '    activateLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
+        '    generateCodeLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        '    licensePeriodLC.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        'End If
     End Sub
 
     Private Sub btnActivate_Click(sender As Object, e As EventArgs) Handles btnActivate.Click
@@ -75,6 +79,7 @@
                     If applicationKey = txtLicenseKey.Text Then
                         If qwrite("INSERT INTO `license` (`school_name`, `module`, `license`, `time_stamp`) VALUES ('" + VerifyL.Encrypt(txtSchoolName.Text) + "', '" + VerifyL.Encrypt("AKADEMICO_EXAMINATION") + "', '" + VerifyL.Encrypt(txtLicenseKey.Text) + "', '" + VerifyL.Encrypt(extractedInfo) + "');") Then
                             MessageBox.Show("Thank You For Regestering Your Copy Of Akademico Exam")
+                            Me.Close()
                         End If
                     Else
                         MessageBox.Show("The License Is Invalid, Please Contact The Software Vendor")
@@ -88,5 +93,19 @@
 
     Private Sub radActivate_CheckedChanged(sender As Object, e As EventArgs) Handles radActivate.CheckedChanged
 
+    End Sub
+
+    Private Sub sampleDb_Click(sender As Object, e As EventArgs) Handles sampleDb.Click
+
+        'frmDBConnection frmDBConnection = New frmDBConnection();
+        'frmDBConnection.ShowDialog();
+        'My.Settings.dbName = "demodatabase"
+        'the above methods did not work, created a setting parameter named defaultDb to store db value
+        My.Settings.dbName = My.Settings.defaultDb
+        My.Settings.Save()
+        MessageBox.Show("your database has been changed to DemoDatabase  & When you click ok, the application will reload  & During Login, click Db Connect,Enter schoolss to return to New blank")
+        'Restarts the application after setting a new database
+        'Application.Exit()
+        Application.Restart()
     End Sub
 End Class

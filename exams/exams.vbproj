@@ -480,6 +480,12 @@
     <Compile Include="publicSubsNFunctions.vb" />
     <Compile Include="reporting.vb" />
     <Compile Include="sms.vb" />
+    <Compile Include="test.Designer.vb">
+      <DependentUpon>test.vb</DependentUpon>
+    </Compile>
+    <Compile Include="test.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="testRPT.Designer.vb">
       <DependentUpon>testRPT.vb</DependentUpon>
     </Compile>
@@ -682,6 +688,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaitForm1.resx">
       <DependentUpon>WaitForm1.vb</DependentUpon>
     </EmbeddedResource>
@@ -703,6 +712,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\users.png" />
   </ItemGroup>
   <ItemGroup>

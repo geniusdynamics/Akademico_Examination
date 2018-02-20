@@ -286,7 +286,7 @@ Partial Public Class frmMainForm
             If files.Length = 0 Then
                 backupDatabase()
             Else
-                Dim totalDaysNow As Integer = DateTime.Now.DayOfYear
+                Dim totalDaysNow As Integer = Date.Now.Year
                 Dim totalDaysPrevious As Integer = File.GetCreationTime(files(files.Length - 1)).DayOfYear
                 Dim difference As Integer = totalDaysNow - totalDaysPrevious
 
@@ -312,7 +312,9 @@ Partial Public Class frmMainForm
     End Sub
 
     Private Sub backupDatabase()
-        Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";convert zero datetime=True"
+        Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";"
+
+        'Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dbPort + ";convert zero datetime=True"
         Dim filePath As String = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "app_databases") + "\\" + DateTime.Now.ToString("dd-MM-yyyy hh-mm-ss") + ".sql"
         Using New DevExpress.Utils.WaitDialogForm("Backing Up Database")
             Try
@@ -416,7 +418,12 @@ Partial Public Class frmMainForm
 
     Private Sub performance_ItemClick(sender As Object, e As ItemClickEventArgs) Handles performance.ItemClick
 
-        Dim frmContribution = New frmContribution
+        frmResultMeanAnalysis.ShowDialog()
+        'calls frmMeanResults
+    End Sub
+
+    Private Sub newPerformance_ItemClick(sender As Object, e As ItemClickEventArgs) Handles newPerformance.ItemClick
         frmContribution.ShowDialog()
+        'calls frmcomputeResults
     End Sub
 End Class

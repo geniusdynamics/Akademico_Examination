@@ -42,6 +42,7 @@
     Public bk_id, t_no, row_from, row_to, rankno As Integer
     Public None As String = "None"
     Public dbreader2 As Odbc.OdbcDataReader
+    Public DemoDatabase As String = "DemoDatabase"
     Public mode As Boolean = False
     Public attend As Boolean = False
     Public radF, radL, backup, restore, load_from_alumni, watermark, grade As Boolean
@@ -71,7 +72,7 @@
     End Structure
 
     Public Function connect() As Boolean
-        dbconn = New Odbc.OdbcConnection("Driver=MySQl ODBC 5.1 Driver;server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";")
+        dbconn = New Odbc.OdbcConnection("Driver=MySQl ODBC 5.1 Driver;server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";")
         Try
             dbconn.Open()
             Return True
@@ -82,7 +83,7 @@
     End Function
 
     Public Function dbNewOpen()
-        dbConnNew = New Odbc.OdbcConnection("Driver=MySQl ODBC 5.1 Driver;server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";")
+        dbConnNew = New Odbc.OdbcConnection("Driver=MySQl ODBC 5.1 Driver;server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";")
         Try
             dbConnNew.Open()
             dbcommand1 = New Odbc.OdbcCommand

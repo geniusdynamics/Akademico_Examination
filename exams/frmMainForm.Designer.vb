@@ -59,6 +59,7 @@
         Me.editSubjectBI = New DevExpress.XtraBars.BarButtonItem()
         Me.deleteSubjectBI = New DevExpress.XtraBars.BarButtonItem()
         Me.aboutBI = New DevExpress.XtraBars.BarButtonItem()
+        Me.performance = New DevExpress.XtraBars.BarButtonItem()
         Me.configurationsMenu = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpgPerformanceComments = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgPrinciapalsComments = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -90,6 +91,7 @@
         Me.rpgStudentPerformance = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgSubjectPerformance = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgSubjectPerformanceIndex = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
+        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgUsers = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.rpgSystemUsers = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.rpgRights = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
@@ -110,8 +112,7 @@
         Me.licenseNB = New DevExpress.XtraNavBar.NavBarItem()
         Me.myDefaultLookAndFeel = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
         Me.SplashScreenManager2 = New DevExpress.XtraSplashScreen.SplashScreenManager(Me, GetType(Global.exams.WaitForm1), True, True, True)
-        Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.performance = New DevExpress.XtraBars.BarButtonItem()
+        Me.newPerformance = New DevExpress.XtraBars.BarButtonItem()
         CType(Me.mainRibbon, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.myXtraTabbedMdiManager, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.mainNavBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -120,9 +121,9 @@
         'mainRibbon
         '
         Me.mainRibbon.ExpandCollapseItem.Id = 0
-        Me.mainRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainRibbon.ExpandCollapseItem, Me.performanceCommentsBI, Me.principalCommentBI, Me.classBasedBI, Me.subjectBasedBI, Me.createExamBI, Me.editExamBI, Me.localExaminationBI, Me.studentProfileBI, Me.performanceIndexBI, Me.subjectPerformanceIndexBI, Me.generalPerformanceBI, Me.studentPerformanceBI, Me.subjectPerformanceBI, Me.reportFormConfigurationFormBI, Me.meritListConfigBI, Me.splitSubjectBI, Me.editSplitBI, Me.subjectTakenBI, Me.assignIndexNoBI, Me.createNationalExamBI, Me.editNationalExamBI, Me.enterNationExams, Me.SkinRibbonGalleryBarItem1, Me.applicationFontBI, Me.defaultBI, Me.systemUsersBI, Me.rightsBI, Me.classSubjectBI, Me.showSubjectsBI, Me.markSheetBI, Me.addSubjectsBI, Me.editSubjectBI, Me.deleteSubjectBI, Me.aboutBI, Me.performance})
+        Me.mainRibbon.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.mainRibbon.ExpandCollapseItem, Me.performanceCommentsBI, Me.principalCommentBI, Me.classBasedBI, Me.subjectBasedBI, Me.createExamBI, Me.editExamBI, Me.localExaminationBI, Me.studentProfileBI, Me.performanceIndexBI, Me.subjectPerformanceIndexBI, Me.generalPerformanceBI, Me.studentPerformanceBI, Me.subjectPerformanceBI, Me.reportFormConfigurationFormBI, Me.meritListConfigBI, Me.splitSubjectBI, Me.editSplitBI, Me.subjectTakenBI, Me.assignIndexNoBI, Me.createNationalExamBI, Me.editNationalExamBI, Me.enterNationExams, Me.SkinRibbonGalleryBarItem1, Me.applicationFontBI, Me.defaultBI, Me.systemUsersBI, Me.rightsBI, Me.classSubjectBI, Me.showSubjectsBI, Me.markSheetBI, Me.addSubjectsBI, Me.editSubjectBI, Me.deleteSubjectBI, Me.aboutBI, Me.performance, Me.newPerformance})
         Me.mainRibbon.Location = New System.Drawing.Point(0, 0)
-        Me.mainRibbon.MaxItemId = 36
+        Me.mainRibbon.MaxItemId = 37
         Me.mainRibbon.Name = "mainRibbon"
         Me.mainRibbon.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.configurationsMenu, Me.subjectsMenu, Me.gradingMenu, Me.examinationsMenu, Me.performanceEntryMenu, Me.resultAnalysisMenu, Me.rpgUsers, Me.rpgChangeLook, Me.aboutRP})
         Me.mainRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010
@@ -397,6 +398,13 @@
         Me.aboutBI.ImageOptions.LargeImage = CType(resources.GetObject("aboutBI.ImageOptions.LargeImage"), System.Drawing.Image)
         Me.aboutBI.Name = "aboutBI"
         '
+        'performance
+        '
+        Me.performance.Caption = "Mean Performance"
+        Me.performance.Id = 35
+        Me.performance.ImageOptions.Image = CType(resources.GetObject("performance.ImageOptions.Image"), System.Drawing.Image)
+        Me.performance.Name = "performance"
+        '
         'configurationsMenu
         '
         Me.configurationsMenu.Groups.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPageGroup() {Me.rpgPerformanceComments, Me.rpgPrinciapalsComments, Me.rpgReportConfiguration, Me.rpgMeritConfig})
@@ -571,6 +579,8 @@
         'rpgStudentPerformance
         '
         Me.rpgStudentPerformance.ItemLinks.Add(Me.studentPerformanceBI)
+        Me.rpgStudentPerformance.ItemLinks.Add(Me.performance)
+        Me.rpgStudentPerformance.ItemLinks.Add(Me.newPerformance)
         Me.rpgStudentPerformance.Name = "rpgStudentPerformance"
         Me.rpgStudentPerformance.Text = "Student Performance"
         '
@@ -585,6 +595,11 @@
         Me.rpgSubjectPerformanceIndex.ItemLinks.Add(Me.subjectPerformanceIndexBI)
         Me.rpgSubjectPerformanceIndex.Name = "rpgSubjectPerformanceIndex"
         Me.rpgSubjectPerformanceIndex.Text = "Subject Performance Index"
+        '
+        'RibbonPageGroup1
+        '
+        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
+        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
         '
         'rpgUsers
         '
@@ -705,18 +720,12 @@
         '
         Me.SplashScreenManager2.ClosingDelay = 500
         '
-        'RibbonPageGroup1
+        'newPerformance
         '
-        Me.RibbonPageGroup1.ItemLinks.Add(Me.performance)
-        Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
-        Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
-        '
-        'performance
-        '
-        Me.performance.Caption = "Performance"
-        Me.performance.Id = 35
-        Me.performance.ImageOptions.Image = CType(resources.GetObject("BarButtonItem1.ImageOptions.Image"), System.Drawing.Image)
-        Me.performance.Name = "performance"
+        Me.newPerformance.Caption = "New Performance"
+        Me.newPerformance.Id = 36
+        Me.newPerformance.ImageOptions.Image = CType(resources.GetObject("newPerformance.ImageOptions.Image"), System.Drawing.Image)
+        Me.newPerformance.Name = "newPerformance"
         '
         'frmMainForm
         '
@@ -830,4 +839,5 @@
     Friend WithEvents licenseNB As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents performance As DevExpress.XtraBars.BarButtonItem
     Friend WithEvents RibbonPageGroup1 As DevExpress.XtraBars.Ribbon.RibbonPageGroup
+    Friend WithEvents newPerformance As DevExpress.XtraBars.BarButtonItem
 End Class

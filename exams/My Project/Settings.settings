@@ -26,5 +26,11 @@
     <Setting Name="users" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="dPport" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7474</Value>
+    </Setting>
+    <Setting Name="defaultDb" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DemoDatabase</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

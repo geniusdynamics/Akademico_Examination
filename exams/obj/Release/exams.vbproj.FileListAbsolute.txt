@@ -198,7 +198,6 @@ C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Release\d
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Release\es\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Release\ja\DevExpress.Diagram.v17.1.Core.resources.dll
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Release\ru\DevExpress.Diagram.v17.1.Core.resources.dll
-C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.vbprojResolveAssemblyReference.cache
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.vbproj.ResolveComReference.cache
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.frmAddSplitSubject.resources
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.frmAddSubject.resources
@@ -266,3 +265,5 @@ C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\e
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.frmContribution.resources
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.frmMeanResults.resources
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.frmResultMeanAnalysis.resources
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.test.resources
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Release\exams.vbprojResolveAssemblyReference.cache

@@ -521,7 +521,12 @@ Public Class frmMeanResults
                             While dbreader.Read
 
                                 For Each s As String In subjectColumns
-                                    subjectMark = dbreader(s)
+                                    If IsDBNull(dbreader(s)) Then
+                                        subjectMark = 0
+                                    Else
+                                        subjectMark = dbreader(s)
+                                    End If
+
                                     rowValues.Add(subjectMark)
 
                                     subjectGrade = convertMarksToGrade(subjectMark, gradingType, s)

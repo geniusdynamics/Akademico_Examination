@@ -208,7 +208,7 @@
             '/////////////////////////////////////////////////////////////////////
 
             Me.Close()
-
+            'total be converted to devexpress
             Dim computeResultForm As New frmComputeResults
             computeResultForm.MdiParent = frmMainForm
             computeResultForm.Show()

@@ -31,16 +31,16 @@ Partial Class frmMeanResults
         Me.Column2 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewImageColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewImageColumn()
-        Me.Button6 = New DevExpress.XtraEditors.SimpleButton()
-        Me.Button3 = New DevExpress.XtraEditors.SimpleButton()
         Me.chkMode = New System.Windows.Forms.CheckBox()
-        Me.btnCancel = New DevExpress.XtraEditors.SimpleButton()
         Me.marksGrade = New System.Windows.Forms.CheckBox()
-        Me.btnStreamPerformance = New DevExpress.XtraEditors.SimpleButton()
-        Me.btnClassPerformance = New DevExpress.XtraEditors.SimpleButton()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.radSubject = New System.Windows.Forms.CheckBox()
         Me.Button4 = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnStreamPerformance = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnClassPerformance = New DevExpress.XtraEditors.SimpleButton()
+        Me.btnCancel = New DevExpress.XtraEditors.SimpleButton()
+        Me.Button3 = New DevExpress.XtraEditors.SimpleButton()
+        Me.Button6 = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.dgvMeanMarks, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -98,26 +98,6 @@ Partial Class frmMeanResults
         Me.Column4.Visible = False
         Me.Column4.Width = 54
         '
-        'Button6
-        '
-        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button6.Location = New System.Drawing.Point(12, 445)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(135, 39)
-        Me.Button6.TabIndex = 14
-        Me.Button6.Text = "Use Analysis For Indexing"
-        '
-        'Button3
-        '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button3.Location = New System.Drawing.Point(153, 445)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(122, 39)
-        Me.Button3.TabIndex = 15
-        Me.Button3.Text = "Export To Excel"
-        '
         'chkMode
         '
         Me.chkMode.Location = New System.Drawing.Point(294, 464)
@@ -127,16 +107,6 @@ Partial Class frmMeanResults
         Me.chkMode.Text = "Best Of 7"
         Me.chkMode.UseVisualStyleBackColor = True
         '
-        'btnCancel
-        '
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnCancel.Location = New System.Drawing.Point(1150, 445)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(53, 39)
-        Me.btnCancel.TabIndex = 17
-        Me.btnCancel.Text = "&Quit"
-        '
         'marksGrade
         '
         Me.marksGrade.Location = New System.Drawing.Point(413, 464)
@@ -145,26 +115,6 @@ Partial Class frmMeanResults
         Me.marksGrade.TabIndex = 18
         Me.marksGrade.Text = "Show Marks + Grade"
         Me.marksGrade.UseVisualStyleBackColor = True
-        '
-        'btnStreamPerformance
-        '
-        Me.btnStreamPerformance.Image = CType(resources.GetObject("btnStreamPerformance.Image"), System.Drawing.Image)
-        Me.btnStreamPerformance.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnStreamPerformance.Location = New System.Drawing.Point(707, 445)
-        Me.btnStreamPerformance.Name = "btnStreamPerformance"
-        Me.btnStreamPerformance.Size = New System.Drawing.Size(128, 39)
-        Me.btnStreamPerformance.TabIndex = 22
-        Me.btnStreamPerformance.Text = "&Stream Merit List"
-        '
-        'btnClassPerformance
-        '
-        Me.btnClassPerformance.Image = CType(resources.GetObject("btnClassPerformance.Image"), System.Drawing.Image)
-        Me.btnClassPerformance.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnClassPerformance.Location = New System.Drawing.Point(550, 445)
-        Me.btnClassPerformance.Name = "btnClassPerformance"
-        Me.btnClassPerformance.Size = New System.Drawing.Size(138, 39)
-        Me.btnClassPerformance.TabIndex = 21
-        Me.btnClassPerformance.Text = "&Class Merit List"
         '
         'radSubject
         '
@@ -180,13 +130,63 @@ Partial Class frmMeanResults
         '
         'Button4
         '
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.ImageOptions.Image = CType(resources.GetObject("Button4.ImageOptions.Image"), System.Drawing.Image)
         Me.Button4.Location = New System.Drawing.Point(943, 445)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(179, 41)
         Me.Button4.TabIndex = 24
         Me.Button4.Text = "Save Examination Performance"
         Me.Button4.Visible = False
+        '
+        'btnStreamPerformance
+        '
+        Me.btnStreamPerformance.ImageOptions.Image = CType(resources.GetObject("btnStreamPerformance.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnStreamPerformance.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnStreamPerformance.Location = New System.Drawing.Point(707, 445)
+        Me.btnStreamPerformance.Name = "btnStreamPerformance"
+        Me.btnStreamPerformance.Size = New System.Drawing.Size(128, 39)
+        Me.btnStreamPerformance.TabIndex = 22
+        Me.btnStreamPerformance.Text = "&Stream Merit List"
+        '
+        'btnClassPerformance
+        '
+        Me.btnClassPerformance.ImageOptions.Image = CType(resources.GetObject("btnClassPerformance.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnClassPerformance.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnClassPerformance.Location = New System.Drawing.Point(550, 445)
+        Me.btnClassPerformance.Name = "btnClassPerformance"
+        Me.btnClassPerformance.Size = New System.Drawing.Size(138, 39)
+        Me.btnClassPerformance.TabIndex = 21
+        Me.btnClassPerformance.Text = "&Class Merit List"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.ImageOptions.Image = CType(resources.GetObject("btnCancel.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnCancel.Location = New System.Drawing.Point(1150, 445)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(53, 39)
+        Me.btnCancel.TabIndex = 17
+        Me.btnCancel.Text = "&Quit"
+        '
+        'Button3
+        '
+        Me.Button3.ImageOptions.Image = CType(resources.GetObject("Button3.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button3.Location = New System.Drawing.Point(153, 445)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(122, 39)
+        Me.Button3.TabIndex = 15
+        Me.Button3.Text = "Export To Excel"
+        '
+        'Button6
+        '
+        Me.Button6.ImageOptions.Image = CType(resources.GetObject("Button6.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button6.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button6.Location = New System.Drawing.Point(12, 445)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(135, 39)
+        Me.Button6.TabIndex = 14
+        Me.Button6.Text = "Use Analysis For Indexing"
         '
         'frmMeanResults
         '
