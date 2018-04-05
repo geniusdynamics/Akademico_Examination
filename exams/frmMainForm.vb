@@ -312,24 +312,23 @@ Partial Public Class frmMainForm
     End Sub
 
     Private Sub backupDatabase()
-        Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";"
+        ' dbconn = New Odbc.OdbcConnection("Driver=MySQl ODBC 5.1 Driver;server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";")
+        ' Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dPport + ";"
 
-        'Dim conString As String = "server=" + My.Settings.host + ";user=" + My.Settings.userName + ";password=" + My.Settings.passWord + ";database=" + My.Settings.dbName + ";port=" + My.Settings.dbPort + ";convert zero datetime=True"
         Dim filePath As String = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "app_databases") + "\\" + DateTime.Now.ToString("dd-MM-yyyy hh-mm-ss") + ".sql"
         Using New DevExpress.Utils.WaitDialogForm("Backing Up Database")
             Try
-                Dim conn As SqlConnection = New SqlConnection(conString)
+
                 Dim cmd As SqlCommand = New SqlCommand()
                 Dim mb As MySqlBackup = New MySqlBackup(cmd)
-
-                cmd.Connection = conn
-                conn.Open()
+                'cmd.Connection = dbconn
+                connect()
                 mb.ExportInfo.AddCreateDatabase = True
                 mb.ExportToFile(filePath)
-                conn.Close()
+                dbconn.Close()
                 MessageBox.Show("The Operation Was Successful")
             Catch ex As Exception
-                MessageBox.Show(ex.Message)
+                'MessageBox.Show(ex.Message)
                 Return
             End Try
         End Using

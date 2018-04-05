@@ -192,8 +192,11 @@
     End Sub
     Private Function exists(ByVal str As String)
         Dim i As Integer
+        Dim selectedTerm As String = String.Empty
+
         For i = 0 To lstExaminations.Items.Count - 1
-            If lstExaminations.Items.Item(i).Text = str Then
+            If lstExaminations.Items.Item(i).Text = str And lstExaminations.Items.Item(i).SubItems(2).Text = cboYear.SelectedItem And lstExaminations.Items.Item(i).SubItems(3).Text = cboTerm.SelectedItem Then
+                MsgBox("The Exam Already Exist In The List")
                 Return True
             End If
         Next

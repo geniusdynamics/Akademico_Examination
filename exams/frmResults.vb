@@ -25,6 +25,9 @@ Public Class frmResults
     Dim comp_names() As String
     Dim points As Boolean = False
     Dim admnos() As String
+    Dim logoPath As String
+
+
     Private Function total_days(from_ As String, to_ As String) As Integer
         qread("SELECT DISTINCT date FROM student_attendance WHERE date >= '" & from_ & "' AND date <='" & to_ & "';")
         Return dbreader.RecordsAffected
@@ -480,7 +483,15 @@ Public Class frmResults
             failure("You are missing a critical configuration setting in your software!")
         End If
     End Sub
+
+    Dim parentsGuardiansFolder As String = String.Empty
+    Dim studentImagePath As String = String.Empty
     Private Sub frmResults_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Dim folder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+        parentsGuardiansFolder = System.IO.Path.Combine(folder, "photos_parent_guardians")
+
+        chkMode.CheckState = CheckState.Unchecked
 
         If Not connect() Or Not dbNewOpen() Then
             Me.Close()
@@ -499,9 +510,9 @@ Public Class frmResults
                 ' Me.Close()
             Else
                 Using (New DevExpress.Utils.WaitDialogForm("Processing Results, Please Wait .....", "Computing Results"))
-                    create_dataform()
-                    loadReportFormDefaults()
                     get_merit_list_configuration()
+                    loadReportFormDefaults()
+                    create_dataform()
                     If mode Then
                         load_multi()
                     Else
@@ -512,11 +523,18 @@ Public Class frmResults
         End If
         chkMode.Visible = radSubject.Checked
         state = True
+        logo()
+
     End Sub
     Public Function logo() As String
         qread("SELECT image_path FROM school_details")
         dbreader.Read()
-        logo = dbreader("image_path")
+
+        logoPath = dbreader("image_path")
+        Dim folder As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
+        parentsGuardiansFolder = System.IO.Path.Combine(folder, "photos_parent_guardians")
+        logoPath = parentsGuardiansFolder + "\schoolLogo.png"
+        Return logoPath
     End Function
     Private Function contribute(ByVal val As Integer, ByVal cont As Integer)
         If cont = 0 Then
@@ -545,19 +563,25 @@ Public Class frmResults
     Dim student_no As Integer
     Private Sub re_read_table()
         Dim j As Integer
+        Dim term As String = String.Empty
+        Dim year As Integer
         Dim re_read_table As String = Nothing
         For k As Integer = 0 To tables.Length - 1
-            qread("SELECT ADMNo FROM " & table & " WHERE Examination='" & tables(k) & "' AND Term='" & tm & "' AND Year='" & yr & "' AND Class='" & escape_string(ret_name(class_form)) & "'")
+            qread("SELECT ADMNo FROM " & table & " WHERE Examination='" & tables(k) & "' AND Term='" & tms(k) & "' AND Year='" & yrs(k) & "' AND Class='" & escape_string(ret_name(class_form)) & "'")
             If k = 0 Then
                 student_no = dbreader.RecordsAffected
+                term = tms(k)
+                year = yrs(k)
                 re_read_table = tables(k)
             End If
             If k > 0 And dbreader.RecordsAffected > student_no Then
                 student_no = dbreader.RecordsAffected
+                term = tms(k)
+                year = yrs(k)
                 re_read_table = tables(k)
             End If
         Next
-        qread("SELECT ADMNo FROM " & table & " WHERE Examination='" & re_read_table & "'  AND Term='" & tm & "' AND Year='" & yr & "' AND Class='" & escape_string(ret_name(class_form)) & "'")
+        qread("SELECT ADMNo FROM " & table & " WHERE Examination='" & re_read_table & "'  AND Term='" & term & "' AND Year='" & year & "' AND Class='" & escape_string(ret_name(class_form)) & "'")
         If dbreader.RecordsAffected > 0 Then
             ReDim subjects_7(dbreader.RecordsAffected - 1)(7)
             For k As Integer = 0 To subjects_7.Length - 1
@@ -632,6 +656,11 @@ Public Class frmResults
                 Dim out_of As Double
                 Dim tp As Integer = 0
                 For i = 0 To tables.Length - 1
+
+                    'I've overridden the default year for tm and yr which represent the current year and term
+                    tm = tms(i)
+                    yr = yrs(i)
+
                     If qread("SELECT * FROM " & table & " WHERE ADMNo='" &
                             admnos(j) & "' AND Examination='" & escape_string(tables(i)) & "' AND Term='" & tm & "' AND Year='" & yr & "' LIMIT 1") Then
                         Try
@@ -931,6 +960,11 @@ Public Class frmResults
                 Next
                 totals = 0
                 For i = 0 To tables.Length - 1
+
+                    'I've overridden the default year for tm and yr which represent the current year and term
+                    tm = tms(i)
+                    yr = yrs(i)
+
                     If qread("SELECT * FROM " & table & " WHERE ADMNo='" &
                     admnos(j) & "' AND Examination='" & escape_string(tables(i)) & "' AND Term='" & tm & "' AND Year='" & yr & "' LIMIT 1") Then
                         If dbreader.RecordsAffected > 0 Then
@@ -980,10 +1014,21 @@ Public Class frmResults
                 dgvEnterMarks.Item("ADMNo", j).Value = get_id(admnos(j))
                 dgvEnterMarks.Item("StudentName", j).Value = sname
                 For k As Integer = 0 To subjabb.Length - 1
+
                     'new code start
                     Try
                         dgvEnterMarks.Item(subjname(k), j).Value = CInt(total(k))
                     Catch ex As Exception
+
+                        Try
+                            If Double.IsInfinity(total(k)) Then
+                                total(k) = "X"
+                                dgvEnterMarks.Item(subjname(k), j).Value = "X"
+                            End If
+                        Catch e As Exception
+
+                        End Try
+
                         If total(k) = "X" Then
                             dgvEnterMarks.Item(subjname(k), j).Value = "X"
                         ElseIf total(k) = "Y" Then
@@ -1373,7 +1418,7 @@ Public Class frmResults
         mean_point()
         meangrade()
         For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
-            dgvEnterMarks.Item(sortby, k).Value = Convert.ToDouble(dgvEnterMarks.Item("MP", k).Value)
+            dgvEnterMarks.Item(sortby, k).Value = Convert.ToDouble(dgvEnterMarks.Item("Total", k).Value)
         Next
         dgvEnterMarks.Sort(dgvEnterMarks.Columns(sortby), System.ComponentModel.ListSortDirection.Descending)
 
@@ -2382,7 +2427,7 @@ Public Class frmResults
         End If
         If start_from = 0 Then
             Try
-                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 10, line, 100, 100)
+                e.Graphics.DrawImage(Image.FromFile(logoPath), left_margin + 10, line, 100, 100)
                 line += 15
             Catch ex As Exception
                 Timer1.Enabled = False
@@ -2695,6 +2740,7 @@ Public Class frmResults
         If start_from = 0 Then
             Try
                 e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 10, line, 90, 90)
+                'e.Graphics.DrawImage(Image.FromFile(logoPath), left_margin + 10, line, 90, 90)
                 line += 15
             Catch ex As Exception
                 Timer1.Enabled = False
@@ -3007,9 +3053,12 @@ Public Class frmResults
     Dim print_reports As Boolean = False
     Dim mode_view As Boolean = True
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnViewReport.Click
+
+        resetSchoolName()
+
         mode_view = True
         If stream_mode Then
-            failure("Cannot Print Or View Report Form! Please Consider Analysing Results For The Entire Class")
+            failure("Cannot Print Or View Report Form! Please Consider Analyzing Results For The Entire Class")
             Exit Sub
         End If
         cont = False
@@ -3143,6 +3192,7 @@ Public Class frmResults
     End Function
     Dim subject_splits(subjects.Length - 1) As Integer
     Dim selected_print As Boolean = False
+    Dim total_fees As Double
     Private Sub print_report(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs)
         e.HasMorePages = False
         total_fees = 0
@@ -3185,6 +3235,7 @@ Public Class frmResults
         End Try
         line = 15
         If report.school_logo Then
+            ' If True Then
             Try
                 e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & "schoolLogo" & ".jpg"), left_margin + 5, topline - 170, 90, 90)
             Catch ex As Exception
@@ -3915,6 +3966,7 @@ Public Class frmResults
         line += 2
         e.Graphics.DrawString("CLASS TEACHER'S COMMENTS: ", smallfont, Brushes.Black, left_margin + 2, line + 3)
         If report.class_teacher_comments Then
+            'comment of perf variable
             e.Graphics.DrawString(get_class_teacher_comments(class_form, dgvEnterMarks.Item("str_class", student).Value, perf), italisized_font, Brushes.Black, left_margin + 210, line)
         End If
         line += 22
@@ -3936,9 +3988,10 @@ Public Class frmResults
         line += 20
         drline = line
         e.Graphics.DrawLine(Pens.Black, left_margin, line, right_margin, line)
-        e.Graphics.DrawString("HEAD TEACHER'S COMMENTS: ", smallfont, Brushes.Black, left_margin + 2, line + 10)
+        e.Graphics.DrawString("PRINCIPAL'S COMMENTS: ", smallfont, Brushes.Black, left_margin + 2, line + 10)
         If report.head_teacher_comments Then
-            e.Graphics.DrawString(get_head_teacher_comments(perf), italisized_font, Brushes.Black, left_margin + 210, line)
+            'commented on perf
+            e.Graphics.DrawString(get_head_teacher_comments(dgvEnterMarks.Item("MG", student).Value), italisized_font, Brushes.Black, left_margin + 210, line)
         End If
         e.Graphics.DrawLine(Pens.Black, left_margin + 200, line + 20, right_margin, line + 20)
         line += 40
@@ -3948,7 +4001,7 @@ Public Class frmResults
         e.Graphics.DrawLine(Pens.Black, left_margin + 200, line, left_margin + 200, drline)
         line += 15
         If report.head_teacher_name Then
-            e.Graphics.DrawString("HEAD TEACHER'S NAME: " & get_head_teacher(), smallfont, Brushes.Black, left_margin + 150, line)
+            e.Graphics.DrawString("PRINCIPAL'S NAME: " & get_head_teacher(), smallfont, Brushes.Black, left_margin + 150, line)
         End If
         e.Graphics.DrawString("SIGNATURE:", smallfont, Brushes.Black, left_margin + 450, line)
         If report.head_teacher_signature Then
@@ -4040,10 +4093,10 @@ Public Class frmResults
         'End While
 
         'todo fee structure
-        total_fees += amt
+        '  total_fees += amt
         next_term = Format(amt, "0.00")
     End Function
-    Dim total_fees As Double
+    ' Dim total_fees As Double
     Dim ignore_class_teacher, ignore_head_teacher As Boolean
     Dim zline As Integer
     Private Function get_head_teacher()
@@ -4052,6 +4105,7 @@ Public Class frmResults
         get_head_teacher = dbreader("head")
     End Function
     Private Function get_class_teacher_comments(ByVal cf As String, ByVal str As String, ByVal performance As String)
+        Dim test As String = ret_name(cf)
         qread("SELECT comment FROM class_teachers_comments WHERE (class='" & ret_name(cf) & "' AND stream='" & str & "' AND trend='" & performance & "')")
         If dbreader.RecordsAffected > 0 Then
             dbreader.Read()
@@ -4382,17 +4436,21 @@ Public Class frmResults
     End Sub
 
     Private Sub chkmode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkMode.CheckedChanged
-        If chkMode.Checked Then
-            form_4_mode = True
-        Else
-            form_4_mode = False
-        End If
-        dgvEnterMarks.Rows.Clear()
-        If mode Then
-            load_multi()
-        Else
-            load_entered()
-        End If
+
+        Using New DevExpress.Utils.WaitDialogForm("Computing Please Wait ...")
+            If chkMode.Checked Then
+                form_4_mode = True
+            Else
+                form_4_mode = False
+            End If
+            dgvEnterMarks.Rows.Clear()
+            If mode Then
+                load_multi()
+            Else
+                load_entered()
+            End If
+        End Using
+
     End Sub
     Private Function get_sciences()
         If qread("SELECT Abbreviation FROM subjects WHERE Department='" & GRP_SCIENCES & "'") Then
@@ -4502,6 +4560,9 @@ Public Class frmResults
     End Function
     Dim from_row, to_row As Integer
     Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+        resetSchoolName()
+
         If confirm("Do You Want To Print All Report Forms?") Then
             selected_print = False
             Dim frm2 As New frmPrompt
@@ -5758,7 +5819,7 @@ Public Class frmResults
     End Sub
 
     Private Sub save_examination()
-        Dim inc As Integer = dgvEnterMarks.Rows.Count - 8 / 100
+        Dim inc As Integer = dgvEnterMarks.Rows.Count - 4 / 100
         'qwrite("CREATE TABLE `examination_performance` (" &
         '        "`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ," &
         '        "`ADMNo` BIGINT( 255 ) NOT NULL," &
@@ -5771,6 +5832,7 @@ Public Class frmResults
         '        ") ENGINE = Innodb ;")
         Pbar.Increment(-100)
         Pbar.Visible = True
+
         For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
             Dim test As String = "SELECT * FROM examination_performance WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')"
 

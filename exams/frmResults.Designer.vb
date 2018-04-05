@@ -313,31 +313,35 @@ Partial Class frmResults
         '
         Me.StudentName.HeaderText = "Name Of Student"
         Me.StudentName.Name = "StudentName"
-        Me.StudentName.Width = 115
+        Me.StudentName.Width = 105
         '
         'Column1
         '
         Me.Column1.HeaderText = "Column1"
         Me.Column1.Name = "Column1"
         Me.Column1.Visible = False
+        Me.Column1.Width = 54
         '
         'Column2
         '
         Me.Column2.HeaderText = "Column2"
         Me.Column2.Name = "Column2"
         Me.Column2.Visible = False
+        Me.Column2.Width = 54
         '
         'Column3
         '
         Me.Column3.HeaderText = "Column3"
         Me.Column3.Name = "Column3"
         Me.Column3.Visible = False
+        Me.Column3.Width = 54
         '
         'Column4
         '
         Me.Column4.HeaderText = "Column4"
         Me.Column4.Name = "Column4"
         Me.Column4.Visible = False
+        Me.Column4.Width = 54
         '
         'LayoutControlGroup1
         '
@@ -540,6 +544,8 @@ Partial Class frmResults
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1079, 503)
         Me.Controls.Add(Me.LayoutControl1)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "frmResults"
         Me.Text = "Examination Result Analysis"
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).EndInit()

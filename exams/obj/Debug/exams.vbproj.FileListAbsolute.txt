@@ -267,3 +267,6 @@ C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exa
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.frmResultMeanAnalysis.resources
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.test.resources
 C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.vbprojResolveAssemblyReference.cache
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Debug\MySql.Data.dll
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Debug\MySqlBackup.dll
+C:\Users\nitram\Documents\Source\Repos\Akademico_Examination\exams\bin\Debug\MySQLConnection.dll
