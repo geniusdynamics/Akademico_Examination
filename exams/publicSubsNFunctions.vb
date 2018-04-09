@@ -800,13 +800,18 @@ Module publicSubsNFunctions
         'todo added the list of string code and the distinct in sql 
         Dim schoolClasses As New List(Of String)
         Dim ret As String()
+
         qread("SELECT distinct class FROM class_stream ORDER BY id")
+
         ReDim ret(dbreader.RecordsAffected - 1), classIDs(dbreader.RecordsAffected - 1)
 
         qread("SELECT id, class FROM class_stream ORDER BY id")
         Dim i As Integer = 0
         While dbreader.Read
             If Not schoolClasses.Contains(dbreader("class").ToString()) Then
+                If i >= classIDs.Count Then
+                    Exit While
+                End If
                 ret(i) = dbreader("class")
                 classIDs(i) = dbreader("id")
                 schoolClasses.Add(dbreader("class").ToString())
