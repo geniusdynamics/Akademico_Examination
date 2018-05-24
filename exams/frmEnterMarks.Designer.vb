@@ -47,6 +47,7 @@ Partial Class frmEnterMarks
         Me.cboTerm = New System.Windows.Forms.ComboBox()
         Me.cboExamName = New System.Windows.Forms.ComboBox()
         Me.cboSubject = New System.Windows.Forms.ComboBox()
+        Me.btnImportResults = New DevExpress.XtraEditors.SimpleButton()
         Me.LayoutControlGroup1 = New DevExpress.XtraLayout.LayoutControlGroup()
         Me.LayoutControlItem1 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem7 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -58,7 +59,6 @@ Partial Class frmEnterMarks
         Me.LayoutControlItem4 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem10 = New DevExpress.XtraLayout.LayoutControlItem()
-        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.LayoutControlItem15 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem16 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem13 = New DevExpress.XtraLayout.LayoutControlItem()
@@ -70,8 +70,13 @@ Partial Class frmEnterMarks
         Me.LayoutControlItem18 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem19 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.LayoutControlItem20 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.LayoutControlItem21 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.EmptySpaceItem1 = New DevExpress.XtraLayout.EmptySpaceItem()
+        Me.EmptySpaceItem4 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.Editor = New DevExpress.XtraEditors.SimpleButton()
+        Me.LayoutControlItem22 = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.dgvEnterMarks, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,7 +91,6 @@ Partial Class frmEnterMarks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,6 +102,10 @@ Partial Class frmEnterMarks
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
@@ -122,6 +130,8 @@ Partial Class frmEnterMarks
         Me.LayoutControl1.Controls.Add(Me.cboTerm)
         Me.LayoutControl1.Controls.Add(Me.cboExamName)
         Me.LayoutControl1.Controls.Add(Me.cboSubject)
+        Me.LayoutControl1.Controls.Add(Me.btnImportResults)
+        Me.LayoutControl1.Controls.Add(Me.Editor)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControl1.Name = "LayoutControl1"
@@ -133,16 +143,16 @@ Partial Class frmEnterMarks
         '
         'CheckBox2
         '
-        Me.CheckBox2.Location = New System.Drawing.Point(588, 437)
+        Me.CheckBox2.Location = New System.Drawing.Point(610, 437)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(119, 20)
+        Me.CheckBox2.Size = New System.Drawing.Size(104, 20)
         Me.CheckBox2.TabIndex = 23
         Me.CheckBox2.Text = "Landscape"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
         'lblWait
         '
-        Me.lblWait.Location = New System.Drawing.Point(569, 389)
+        Me.lblWait.Location = New System.Drawing.Point(569, 386)
         Me.lblWait.Name = "lblWait"
         Me.lblWait.Size = New System.Drawing.Size(553, 20)
         Me.lblWait.TabIndex = 22
@@ -150,7 +160,7 @@ Partial Class frmEnterMarks
         '
         'lblSave
         '
-        Me.lblSave.Location = New System.Drawing.Point(12, 389)
+        Me.lblSave.Location = New System.Drawing.Point(12, 386)
         Me.lblSave.Name = "lblSave"
         Me.lblSave.Size = New System.Drawing.Size(553, 20)
         Me.lblSave.TabIndex = 21
@@ -158,62 +168,62 @@ Partial Class frmEnterMarks
         '
         'progress
         '
-        Me.progress.Location = New System.Drawing.Point(12, 413)
+        Me.progress.Location = New System.Drawing.Point(12, 410)
         Me.progress.Name = "progress"
-        Me.progress.Size = New System.Drawing.Size(1110, 20)
+        Me.progress.Size = New System.Drawing.Size(1110, 23)
         Me.progress.TabIndex = 20
         '
         'Button3
         '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button3.Location = New System.Drawing.Point(960, 437)
+        Me.Button3.ImageOptions.Image = CType(resources.GetObject("Button3.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button3.Location = New System.Drawing.Point(963, 437)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(79, 39)
+        Me.Button3.Size = New System.Drawing.Size(78, 39)
         Me.Button3.StyleController = Me.LayoutControl1
         Me.Button3.TabIndex = 19
         Me.Button3.Text = "Export"
         '
         'Button1
         '
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(1043, 437)
+        Me.Button1.ImageOptions.Image = CType(resources.GetObject("Button1.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button1.Location = New System.Drawing.Point(1045, 437)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(79, 39)
+        Me.Button1.Size = New System.Drawing.Size(77, 39)
         Me.Button1.StyleController = Me.LayoutControl1
         Me.Button1.TabIndex = 18
         Me.Button1.Text = "Print"
         '
         'btnCancel
         '
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnCancel.Location = New System.Drawing.Point(711, 437)
+        Me.btnCancel.ImageOptions.Image = CType(resources.GetObject("btnCancel.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnCancel.Location = New System.Drawing.Point(718, 437)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(79, 39)
+        Me.btnCancel.Size = New System.Drawing.Size(78, 39)
         Me.btnCancel.StyleController = Me.LayoutControl1
         Me.btnCancel.TabIndex = 17
         Me.btnCancel.Text = "Cancel"
         '
         'btnSave
         '
-        Me.btnSave.Image = CType(resources.GetObject("btnSave.Image"), System.Drawing.Image)
-        Me.btnSave.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnSave.Location = New System.Drawing.Point(877, 437)
+        Me.btnSave.ImageOptions.Image = CType(resources.GetObject("btnSave.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnSave.Location = New System.Drawing.Point(882, 437)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(79, 39)
+        Me.btnSave.Size = New System.Drawing.Size(77, 39)
         Me.btnSave.StyleController = Me.LayoutControl1
         Me.btnSave.TabIndex = 16
         Me.btnSave.Text = "Save"
         '
         'btnClear
         '
-        Me.btnClear.Image = CType(resources.GetObject("btnClear.Image"), System.Drawing.Image)
-        Me.btnClear.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnClear.Location = New System.Drawing.Point(794, 437)
+        Me.btnClear.ImageOptions.Image = CType(resources.GetObject("btnClear.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnClear.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnClear.Location = New System.Drawing.Point(800, 437)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(79, 39)
+        Me.btnClear.Size = New System.Drawing.Size(78, 39)
         Me.btnClear.StyleController = Me.LayoutControl1
         Me.btnClear.TabIndex = 15
         Me.btnClear.Text = "Import"
@@ -227,7 +237,7 @@ Partial Class frmEnterMarks
         Me.dgvEnterMarks.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.admin_no, Me.IndexNo, Me.StudentName, Me.Examination, Me.Term, Me.Year})
         Me.dgvEnterMarks.Location = New System.Drawing.Point(12, 90)
         Me.dgvEnterMarks.Name = "dgvEnterMarks"
-        Me.dgvEnterMarks.Size = New System.Drawing.Size(1110, 295)
+        Me.dgvEnterMarks.Size = New System.Drawing.Size(1110, 292)
         Me.dgvEnterMarks.TabIndex = 14
         '
         'admin_no
@@ -265,41 +275,41 @@ Partial Class frmEnterMarks
         '
         'Button4
         '
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button4.Location = New System.Drawing.Point(925, 47)
+        Me.Button4.ImageOptions.Image = CType(resources.GetObject("Button4.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button4.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button4.Location = New System.Drawing.Point(985, 47)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(197, 39)
+        Me.Button4.Size = New System.Drawing.Size(137, 39)
         Me.Button4.StyleController = Me.LayoutControl1
         Me.Button4.TabIndex = 13
         Me.Button4.Text = "Enter Subject Based Marks"
         '
         'Button2
         '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.Button2.Location = New System.Drawing.Point(773, 47)
+        Me.Button2.ImageOptions.Image = CType(resources.GetObject("Button2.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button2.Location = New System.Drawing.Point(638, 47)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(148, 39)
+        Me.Button2.Size = New System.Drawing.Size(343, 39)
         Me.Button2.StyleController = Me.LayoutControl1
         Me.Button2.TabIndex = 12
-        Me.Button2.Text = "Enter Marks"
+        Me.Button2.Text = "Load Marks"
         '
         'ComboBox1
         '
         Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"Adm. No.", "Index No.", "Name"})
-        Me.ComboBox1.Location = New System.Drawing.Point(492, 47)
+        Me.ComboBox1.Location = New System.Drawing.Point(384, 47)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(277, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(250, 21)
         Me.ComboBox1.TabIndex = 11
         '
         'CheckBox1
         '
         Me.CheckBox1.Location = New System.Drawing.Point(12, 47)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(430, 20)
+        Me.CheckBox1.Size = New System.Drawing.Size(322, 20)
         Me.CheckBox1.TabIndex = 10
         Me.CheckBox1.Text = "Show Constituent Subjects"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -359,11 +369,21 @@ Partial Class frmEnterMarks
         Me.cboSubject.Size = New System.Drawing.Size(221, 21)
         Me.cboSubject.TabIndex = 4
         '
+        'btnImportResults
+        '
+        Me.btnImportResults.ImageOptions.Image = CType(resources.GetObject("btnImportResults.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnImportResults.Location = New System.Drawing.Point(12, 437)
+        Me.btnImportResults.Name = "btnImportResults"
+        Me.btnImportResults.Size = New System.Drawing.Size(95, 22)
+        Me.btnImportResults.StyleController = Me.LayoutControl1
+        Me.btnImportResults.TabIndex = 24
+        Me.btnImportResults.Text = "Simple Import"
+        '
         'LayoutControlGroup1
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem11, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem10, Me.EmptySpaceItem1, Me.LayoutControlItem15, Me.LayoutControlItem16, Me.LayoutControlItem13, Me.LayoutControlItem12, Me.LayoutControlItem14, Me.EmptySpaceItem2, Me.LayoutControlItem9, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.LayoutControlItem19, Me.LayoutControlItem20})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem7, Me.LayoutControlItem11, Me.LayoutControlItem6, Me.LayoutControlItem5, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem8, Me.LayoutControlItem10, Me.LayoutControlItem15, Me.LayoutControlItem16, Me.LayoutControlItem13, Me.LayoutControlItem12, Me.LayoutControlItem14, Me.EmptySpaceItem2, Me.LayoutControlItem9, Me.LayoutControlItem17, Me.LayoutControlItem18, Me.LayoutControlItem19, Me.LayoutControlItem20, Me.LayoutControlItem21, Me.EmptySpaceItem4, Me.LayoutControlItem22, Me.EmptySpaceItem1})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "Root"
         Me.LayoutControlGroup1.Size = New System.Drawing.Size(1134, 488)
@@ -383,7 +403,7 @@ Partial Class frmEnterMarks
         Me.LayoutControlItem7.Control = Me.CheckBox1
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 35)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(434, 43)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(326, 43)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
@@ -392,7 +412,7 @@ Partial Class frmEnterMarks
         Me.LayoutControlItem11.Control = Me.dgvEnterMarks
         Me.LayoutControlItem11.Location = New System.Drawing.Point(0, 78)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(1114, 299)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(1114, 296)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
@@ -444,71 +464,63 @@ Partial Class frmEnterMarks
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.ComboBox1
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(434, 35)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(326, 35)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(327, 43)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(300, 43)
         Me.LayoutControlItem8.Text = "Order By"
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(43, 13)
         '
         'LayoutControlItem10
         '
         Me.LayoutControlItem10.Control = Me.Button4
-        Me.LayoutControlItem10.Location = New System.Drawing.Point(913, 35)
+        Me.LayoutControlItem10.Location = New System.Drawing.Point(973, 35)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(201, 43)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(141, 43)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
-        '
-        'EmptySpaceItem1
-        '
-        Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 425)
-        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(576, 43)
-        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem15
         '
         Me.LayoutControlItem15.Control = Me.Button1
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(1031, 425)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(1033, 425)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(83, 43)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(81, 43)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
         'LayoutControlItem16
         '
         Me.LayoutControlItem16.Control = Me.Button3
-        Me.LayoutControlItem16.Location = New System.Drawing.Point(948, 425)
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(951, 425)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(83, 43)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(82, 43)
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
         'LayoutControlItem13
         '
         Me.LayoutControlItem13.Control = Me.btnSave
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(865, 425)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(870, 425)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(83, 43)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(81, 43)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
         '
         'LayoutControlItem12
         '
         Me.LayoutControlItem12.Control = Me.btnClear
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(782, 425)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(788, 425)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(83, 43)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(82, 43)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem12.TextVisible = False
         '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.btnCancel
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(699, 425)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(706, 425)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(83, 43)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(82, 43)
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem14.TextVisible = False
         '
@@ -523,25 +535,25 @@ Partial Class frmEnterMarks
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.Button2
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(761, 35)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(626, 35)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(152, 43)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(347, 43)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
         'LayoutControlItem17
         '
         Me.LayoutControlItem17.Control = Me.progress
-        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 401)
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(0, 398)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(1114, 24)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(1114, 27)
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
         '
         'LayoutControlItem18
         '
         Me.LayoutControlItem18.Control = Me.lblSave
-        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 377)
+        Me.LayoutControlItem18.Location = New System.Drawing.Point(0, 374)
         Me.LayoutControlItem18.Name = "LayoutControlItem18"
         Me.LayoutControlItem18.Size = New System.Drawing.Size(557, 24)
         Me.LayoutControlItem18.TextSize = New System.Drawing.Size(0, 0)
@@ -550,7 +562,7 @@ Partial Class frmEnterMarks
         'LayoutControlItem19
         '
         Me.LayoutControlItem19.Control = Me.lblWait
-        Me.LayoutControlItem19.Location = New System.Drawing.Point(557, 377)
+        Me.LayoutControlItem19.Location = New System.Drawing.Point(557, 374)
         Me.LayoutControlItem19.Name = "LayoutControlItem19"
         Me.LayoutControlItem19.Size = New System.Drawing.Size(557, 24)
         Me.LayoutControlItem19.TextSize = New System.Drawing.Size(0, 0)
@@ -559,15 +571,58 @@ Partial Class frmEnterMarks
         'LayoutControlItem20
         '
         Me.LayoutControlItem20.Control = Me.CheckBox2
-        Me.LayoutControlItem20.Location = New System.Drawing.Point(576, 425)
+        Me.LayoutControlItem20.Location = New System.Drawing.Point(598, 425)
         Me.LayoutControlItem20.Name = "LayoutControlItem20"
-        Me.LayoutControlItem20.Size = New System.Drawing.Size(123, 43)
+        Me.LayoutControlItem20.Size = New System.Drawing.Size(108, 43)
         Me.LayoutControlItem20.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem20.TextVisible = False
+        '
+        'LayoutControlItem21
+        '
+        Me.LayoutControlItem21.Control = Me.btnImportResults
+        Me.LayoutControlItem21.Location = New System.Drawing.Point(0, 425)
+        Me.LayoutControlItem21.Name = "LayoutControlItem21"
+        Me.LayoutControlItem21.Size = New System.Drawing.Size(99, 26)
+        Me.LayoutControlItem21.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem21.TextVisible = False
+        '
+        'EmptySpaceItem1
+        '
+        Me.EmptySpaceItem1.AllowHotTrack = False
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(207, 425)
+        Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(391, 43)
+        Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
+        '
+        'EmptySpaceItem4
+        '
+        Me.EmptySpaceItem4.AllowHotTrack = False
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(0, 451)
+        Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(99, 17)
+        Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'Editor
+        '
+        Me.Editor.Location = New System.Drawing.Point(111, 437)
+        Me.Editor.Name = "Editor"
+        Me.Editor.Size = New System.Drawing.Size(104, 22)
+        Me.Editor.StyleController = Me.LayoutControl1
+        Me.Editor.TabIndex = 25
+        Me.Editor.Text = "Editor"
+        '
+        'LayoutControlItem22
+        '
+        Me.LayoutControlItem22.Control = Me.Editor
+        Me.LayoutControlItem22.Location = New System.Drawing.Point(99, 425)
+        Me.LayoutControlItem22.Name = "LayoutControlItem22"
+        Me.LayoutControlItem22.Size = New System.Drawing.Size(108, 43)
+        Me.LayoutControlItem22.TextSize = New System.Drawing.Size(0, 0)
+        Me.LayoutControlItem22.TextVisible = False
         '
         'frmEnterMarks
         '
@@ -591,7 +646,6 @@ Partial Class frmEnterMarks
         CType(Me.LayoutControlItem4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem10, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem15, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem16, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem13, System.ComponentModel.ISupportInitialize).EndInit()
@@ -603,6 +657,10 @@ Partial Class frmEnterMarks
         CType(Me.LayoutControlItem18, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem19, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LayoutControlItem20, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem21, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmptySpaceItem4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem22, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -659,4 +717,9 @@ Partial Class frmEnterMarks
     Friend WithEvents Examination As DataGridViewTextBoxColumn
     Friend WithEvents Term As DataGridViewTextBoxColumn
     Friend WithEvents Year As DataGridViewTextBoxColumn
+    Friend WithEvents btnImportResults As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem21 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents EmptySpaceItem4 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents Editor As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents LayoutControlItem22 As DevExpress.XtraLayout.LayoutControlItem
 End Class

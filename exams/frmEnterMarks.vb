@@ -2,6 +2,7 @@
 Imports System.Drawing.Printing
 Imports System.IO
 Imports Excel = Microsoft.Office.Interop.Excel
+Imports System.Diagnostics.Debugger
 Public Class frmEnterMarks
     Dim results_entered As Boolean
     Dim msg As String
@@ -368,12 +369,22 @@ Public Class frmEnterMarks
         Dim wb As Microsoft.Office.Interop.Excel.Workbook = excel.Workbooks.Open(OpenFileDialog1.FileName)
         Dim ws As Microsoft.Office.Interop.Excel.Worksheet = TryCast(excel.ActiveSheet, Microsoft.Office.Interop.Excel.Worksheet)
         Dim i As Integer = 2
+
+
+
+
         progress.Visible = True
         progress.Increment(-100)
 
         Dim counter As String = String.Empty
 
+
         While ws.Cells(i, 1).Value2 <> Nothing
+
+            'If i = 70 Then
+            '    Debugger.Break()
+            '    Break()
+            'End If
 
             counter = ws.Cells(i, 1).Value.ToString()
 
@@ -394,8 +405,9 @@ Public Class frmEnterMarks
             End If
 
         End While
+        progress.Visible = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        MessageBox.Show("The Operation Was Successful")
 
-        progress.Visible = False
     End Sub
     Private Function getRowIndex(adm As String) As Integer
         For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
@@ -453,6 +465,7 @@ Public Class frmEnterMarks
         End If
     End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        progress.Visible = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         save_now()
     End Sub
     Dim total As Double
@@ -903,6 +916,11 @@ Public Class frmEnterMarks
         If CheckBox1.Checked Then
 
             For i As Integer = 0 To dgvEnterMarks.Rows.Count - 1
+
+                If String.IsNullOrEmpty(dgvEnterMarks.Item("admin_no", i).Value) Then
+                    Break()
+                End If
+
                 If ExistsStudentInRecord(i) Then
                     total = 0
                     For k As Integer = 0 To subjabb.Length - 1
@@ -1021,8 +1039,8 @@ Public Class frmEnterMarks
                                 End If
 
                                 query = query & "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`='" & dgvEnterMarks.Item(dgvEnterMarks.Columns(k).Name, i).Value & "'"
-                                    availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
-                                    count_ += 1
+                                availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                                count_ += 1
 
                             End If
                         Next
@@ -1240,6 +1258,11 @@ Public Class frmEnterMarks
         If Not CheckBox1.Checked Then
             query = "INSERT INTO " & table & "(`id`, `admno`, `StudentName`, `Examination`, `Term`, `Year`,"
             For i = 0 To dgvEnterMarks.Rows.Count - 1
+
+                If String.IsNullOrEmpty(dgvEnterMarks.Item("admin_no", i).Value) Then
+                    Continue For
+                End If
+
                 If i = 0 Then
                     For k As Integer = 0 To subjabb.Length - 1
                         out_of = markOutOf(subjname(k), dgvEnterMarks.Item("Stream", i).Value)
@@ -1277,6 +1300,13 @@ Public Class frmEnterMarks
                 total = 0
                 If i < dgvEnterMarks.Rows.Count - 1 Then
                     query = query & ", "
+                    'If i = dgvEnterMarks.Rows.Count - 2 Then
+                    '    query = query & "; "
+                    'Else
+                    '    query = query & ", "
+                    'End If
+
+
                 End If
                 progress.Increment(increment)
             Next
@@ -1369,7 +1399,9 @@ Public Class frmEnterMarks
         Else
             confirmRows()
 
-            If qwrite(query) Then
+            Dim test As String = parseQuery(query)
+
+            If qwrite(parseQuery(query)) Then
                 results_entered = True
                 commit()
                 success("Examination Results Successfully Saved!")
@@ -1533,56 +1565,56 @@ Public Class frmEnterMarks
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        exportToExcel(dgvEnterMarks)
+        'exportToExcel(dgvEnterMarks)
 
-        'If SaveFileDialog1.ShowDialog() <> Windows.Forms.DialogResult.OK Then
-        '    Exit Sub
-        'End If
-        'Dim filename As String = SaveFileDialog1.FileName
-        'If filename = Nothing Then
-        '    filename = Environment.GetEnvironmentVariable("HOMEDRIVE") & "\export_data"
-        'End If
-        'filename &= ".csv"
-        'FileOpen(1, filename, OpenMode.Output)
-        'Dim line As String = Nothing
-        'For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
-        '    If dgvEnterMarks.Columns(k).Visible = True Then
-        '        line &= dgvEnterMarks.Columns(k).HeaderText
-        '        If k < dgvEnterMarks.Columns.Count - 1 Then
-        '            line &= ","
-        '        End If
-        '    End If
-        'Next
-        'line += vbNewLine
-        'For row As Integer = 0 To dgvEnterMarks.Rows.Count - 1
-        '    For col As Integer = 0 To dgvEnterMarks.Columns.Count - 1
-        '        If dgvEnterMarks.Columns(col).Visible = True Then
-        '            line &= dgvEnterMarks.Item(dgvEnterMarks.Columns(col).Name, row).Value
-        '            If col < dgvEnterMarks.Columns.Count - 1 Then
-        '                line &= ","
-        '            End If
-        '        End If
-        '    Next
-        '    line += vbNewLine
-        'Next
-        'Print(1, line)
-        'FileClose(1)
-        'Dim oExcelFile As Object
-        'Try
-        '    oExcelFile = GetObject(, "Excel.Application")
-        'Catch
-        '    oExcelFile = CreateObject("Excel.Application")
-        'End Try
-        'oExcelFile.Visible = False
-        'oExcelFile.Workbooks.Open(SaveFileDialog1.FileName)
-        'oExcelFile.DisplayAlerts = False
-        ''todo commented the below code
-        ''  oExcelFile.ActiveWorkbook.SaveAs(Filename:=SaveFileDialog1.FileName, FileFormat:=Excel.XlFileFormat.xlExcel5, CreateBackup:=False)
-        'oExcelFile.ActiveWorkbook.Close(SaveChanges:=False)
-        'oExcelFile.DisplayAlerts = True
-        'oExcelFile.Quit()
+        If SaveFileDialog1.ShowDialog() <> Windows.Forms.DialogResult.OK Then
+            Exit Sub
+        End If
+        Dim filename As String = SaveFileDialog1.FileName
+        If filename = Nothing Then
+            filename = Environment.GetEnvironmentVariable("HOMEDRIVE") & "\export_data"
+        End If
+        filename &= ".csv"
+        FileOpen(1, filename, OpenMode.Output)
+        Dim line As String = Nothing
+        For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
+            If dgvEnterMarks.Columns(k).Visible = True Then
+                line &= dgvEnterMarks.Columns(k).HeaderText
+                If k < dgvEnterMarks.Columns.Count - 1 Then
+                    line &= ","
+                End If
+            End If
+        Next
+        line += vbNewLine
+        For row As Integer = 0 To dgvEnterMarks.Rows.Count - 1
+            For col As Integer = 0 To dgvEnterMarks.Columns.Count - 1
+                If dgvEnterMarks.Columns(col).Visible = True Then
+                    line &= dgvEnterMarks.Item(dgvEnterMarks.Columns(col).Name, row).Value
+                    If col < dgvEnterMarks.Columns.Count - 1 Then
+                        line &= ","
+                    End If
+                End If
+            Next
+            line += vbNewLine
+        Next
+        Print(1, line)
+        FileClose(1)
+        Dim oExcelFile As Object
+        Try
+            oExcelFile = GetObject(, "Excel.Application")
+        Catch
+            oExcelFile = CreateObject("Excel.Application")
+        End Try
+        oExcelFile.Visible = False
+        oExcelFile.Workbooks.Open(SaveFileDialog1.FileName)
+        oExcelFile.DisplayAlerts = False
+        'todo commented the below code
+        '  oExcelFile.ActiveWorkbook.SaveAs(Filename:=SaveFileDialog1.FileName, FileFormat:=Excel.XlFileFormat.xlExcel5, CreateBackup:=False)
+        oExcelFile.ActiveWorkbook.Close(SaveChanges:=False)
+        oExcelFile.DisplayAlerts = True
+        oExcelFile.Quit()
         'File.Delete(SaveFileDialog1.FileName & ".csv")
-        'success("Data Successfully Exported To " & SaveFileDialog1.FileName & ".xls")
+        success("Data Successfully Exported To " & SaveFileDialog1.FileName & ".xls")
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -1720,6 +1752,189 @@ Public Class frmEnterMarks
             cboClass.Items.Add(dbreader("class"))
         End While
     End Sub
+
+    Private Sub btnImportResults_Click(sender As Object, e As EventArgs) Handles btnImportResults.Click
+
+        If dgvEnterMarks.Rows.Count = 0 Then
+            MsgBox("Please select the year, term, exam .... inorder to add students to the list")
+            Return
+        End If
+
+        Dim abbr As String = String.Empty
+        qread("select abbreviation from subjects where subject = '" + cboSubject.SelectedItem.ToString() + "';")
+        While dbreader.Read
+            abbr = dbreader("abbreviation")
+        End While
+
+        For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
+            dgvEnterMarks.Rows(k).Cells(abbr).Value = "-"
+        Next
+
+        If Not OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Exit Sub
+        End If
+
+        Dim xlApp As Excel.Application
+        Dim xlWorkBook As Excel.Workbook
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim range As Excel.Range
+        Dim rCnt As Integer
+        Dim cCnt As Integer
+        Dim Obj As Object
+        Dim Obj2 As Object
+
+        xlApp = New Excel.Application
+        xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
+        xlWorkSheet = xlWorkBook.Worksheets("sheet1")
+
+        range = xlWorkSheet.UsedRange
+
+        For rCnt = 1 To range.Rows.Count
+            Obj = CType(range.Cells(rCnt, 1), Excel.Range)
+            Obj2 = CType(range.Cells(rCnt, 3), Excel.Range)
+            For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
+                If dgvEnterMarks.Rows(k).Cells("admin_no").Value.ToString() = Obj.value.ToString() Then
+                    dgvEnterMarks.Rows(k).Cells(abbr).Value = Obj2.value.ToString()
+                End If
+            Next
+        Next
+
+        xlWorkBook.Close()
+        xlApp.Quit()
+
+        releaseObject(xlApp)
+        releaseObject(xlWorkBook)
+        releaseObject(xlWorkSheet)
+    End Sub
+
+    Private Sub releaseObject(ByVal obj As Object)
+        Try
+            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
+            obj = Nothing
+        Catch ex As Exception
+            obj = Nothing
+        Finally
+            GC.Collect()
+        End Try
+    End Sub
+
+    Private Sub Editor_Click(sender As Object, e As EventArgs) Handles Editor.Click
+
+        If Not OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            Exit Sub
+        End If
+
+        Dim xlApp As Excel.Application
+        Dim xlWorkBook As Excel.Workbook
+        Dim xlWorkSheet As Excel.Worksheet
+        Dim range As Excel.Range
+        Dim rCnt As Integer
+        Dim cCnt As Integer
+        Dim Obj As Object
+        Dim Obj2 As Object
+
+        xlApp = New Excel.Application
+        xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
+        xlWorkSheet = xlWorkBook.Worksheets("sheet1")
+
+        range = xlWorkSheet.UsedRange
+        Dim rowValues As New Dictionary(Of String, String)
+        Dim col As String
+        Dim query As String
+        Dim values As String
+        Dim admNumber As String
+        Dim parentQuery As String
+        Dim parentsColums As New List(Of String)(New String() {"father", "mother", "phone", "address", "admin_no"})
+        Dim pCol As String
+        Dim pVal As String
+
+        For rCnt = 2 To range.Rows.Count
+            rowValues.Clear()
+            query = String.Empty
+            values = String.Empty
+            admNumber = String.Empty
+            pCol = String.Empty
+            pVal = String.Empty
+
+            For cCnt = 1 To range.Columns.Count
+
+                Obj = CType(range.Cells(rCnt, cCnt), Excel.Range)
+                If (Not String.IsNullOrEmpty(Obj.value)) Then
+                    Obj2 = CType(range.Cells(1, cCnt), Excel.Range)
+                    col = Obj2.value
+
+                    rowValues.Add(col, Obj.value)
+                End If
+            Next
+
+            If rowValues.Count > 0 Then
+                For j As Integer = 0 To rowValues.Count - 1
+                    If Not parentsColums.Contains(rowValues.Keys(j).ToLower()) Then
+                        values += rowValues.Keys(j) + "= '" + rowValues(rowValues.Keys(j)) + "', "
+                    End If
+                Next
+
+                values = values.Remove(values.Length - 2, 2)
+                Obj2 = CType(range.Cells(rCnt, 1), Excel.Range)
+                admNumber = Obj2.value
+                query = "UPDATE students SET " + values + " WHERE  admin_no=" + admNumber + ""
+
+                If qwrite(query) Then
+                    Dim parents As New List(Of String)(New String() {"father", "mother"})
+                    For z As Integer = 0 To parents.Count - 1
+
+                        pCol = String.Empty
+                        pVal = String.Empty
+
+                        If rowValues.ContainsKey(parents(z)) Then
+                            pCol += "type, "
+                            If parents(z) = "father" Then
+                                pVal += "'Father', "
+                            Else
+                                pVal += "'Mother', "
+                            End If
+                            For i = 0 To parentsColums.Count - 1
+                                If rowValues.ContainsKey(parentsColums(i)) Then
+                                    If z = 0 Then
+                                        If Not parentsColums(i) = "mother" Then
+                                            pCol += parentsColums(i) + ", "
+                                            pVal += "'" + rowValues(parentsColums(i)) + "', "
+                                        End If
+                                    Else
+                                        If Not parentsColums(i) = "father" Then
+                                            pCol += parentsColums(i) + ", "
+                                            pVal += "'" + rowValues(parentsColums(i)) + "', "
+                                        End If
+                                    End If
+                                End If
+
+                            Next
+
+
+                            pCol = pCol.Remove(pCol.Count - 2, 2).Replace("father", "name").Replace("mother", "name")
+                            pVal = pVal.Remove(pVal.Count - 2, 2)
+
+                            parentQuery = "INSERT INTO parents_guardians (" + pCol + ") VALUES (" + pVal + ");"
+                            If qwrite(parentQuery) Then
+                            End If
+
+
+                        End If
+                    Next
+                End If
+            End If
+
+        Next
+
+
+        xlWorkBook.Close()
+        xlApp.Quit()
+
+        releaseObject(xlApp)
+        releaseObject(xlWorkBook)
+        releaseObject(xlWorkSheet)
+    End Sub
+
     Private Sub cboExamName_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboExamName.SelectedIndexChanged
         loadClasses()
     End Sub
