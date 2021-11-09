@@ -21,8 +21,6 @@ Partial Class frmSubjectPerformanceSpecific
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSubjectPerformanceSpecific))
         Me.printpreview = New System.Windows.Forms.PrintPreviewDialog()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -46,13 +44,16 @@ Partial Class frmSubjectPerformanceSpecific
         Me.Label3 = New System.Windows.Forms.Label()
         Me.cboYear = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.chkBestOf7 = New System.Windows.Forms.CheckBox()
+        Me.grpAnalyze = New System.Windows.Forms.GroupBox()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.radSubject = New System.Windows.Forms.CheckBox()
+        Me.btnMeanGradeAnalysis = New System.Windows.Forms.Button()
         Me.btnGradesAttained = New System.Windows.Forms.Button()
         Me.btnStudentRank = New System.Windows.Forms.Button()
-        Me.btnMeanGradeAnalysis = New System.Windows.Forms.Button()
-        Me.chkBestOf7 = New System.Windows.Forms.CheckBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.grpAnalyze = New System.Windows.Forms.GroupBox()
-        Me.radSubject = New System.Windows.Forms.CheckBox()
+        Me.btnClear = New System.Windows.Forms.Button()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.bestStud = New System.Windows.Forms.Button()
         Me.grpSelect.SuspendLayout()
         Me.grpMultiExaminations.SuspendLayout()
         Me.grpAnalyze.SuspendLayout()
@@ -68,33 +69,11 @@ Partial Class frmSubjectPerformanceSpecific
         Me.printpreview.Name = "printpreview"
         Me.printpreview.Visible = False
         '
-        'btnClear
-        '
-        Me.btnClear.Image = CType(resources.GetObject("btnClear.Image"), System.Drawing.Image)
-        Me.btnClear.Location = New System.Drawing.Point(404, 490)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(72, 38)
-        Me.btnClear.TabIndex = 17
-        Me.btnClear.Text = "C&lear"
-        Me.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.Location = New System.Drawing.Point(291, 490)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(72, 38)
-        Me.btnCancel.TabIndex = 18
-        Me.btnCancel.Text = "&Cancel"
-        Me.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
         'Label5
         '
-        Me.Label5.Location = New System.Drawing.Point(8, 13)
+        Me.Label5.Location = New System.Drawing.Point(9, 16)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(338, 15)
+        Me.Label5.Size = New System.Drawing.Size(394, 18)
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "List Of Examinations And Their Respective Contributions For Analysis:"
         '
@@ -124,9 +103,10 @@ Partial Class frmSubjectPerformanceSpecific
         Me.lstExaminations.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lstExaminations.ForeColor = System.Drawing.Color.IndianRed
         Me.lstExaminations.GridLines = True
-        Me.lstExaminations.Location = New System.Drawing.Point(6, 31)
+        Me.lstExaminations.Location = New System.Drawing.Point(7, 38)
+        Me.lstExaminations.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lstExaminations.Name = "lstExaminations"
-        Me.lstExaminations.Size = New System.Drawing.Size(340, 101)
+        Me.lstExaminations.Size = New System.Drawing.Size(396, 123)
         Me.lstExaminations.TabIndex = 6
         Me.lstExaminations.UseCompatibleStateImageBehavior = False
         Me.lstExaminations.View = System.Windows.Forms.View.Details
@@ -135,9 +115,9 @@ Partial Class frmSubjectPerformanceSpecific
         '
         Me.lblTitle.BackColor = System.Drawing.SystemColors.Control
         Me.lblTitle.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitle.Location = New System.Drawing.Point(25, 8)
+        Me.lblTitle.Location = New System.Drawing.Point(29, 10)
         Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(482, 29)
+        Me.lblTitle.Size = New System.Drawing.Size(562, 36)
         Me.lblTitle.TabIndex = 21
         Me.lblTitle.Text = "SUBJECT PERFORMANCE ANALYSIS"
         Me.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -159,9 +139,11 @@ Partial Class frmSubjectPerformanceSpecific
         Me.grpSelect.Controls.Add(Me.Label3)
         Me.grpSelect.Controls.Add(Me.cboYear)
         Me.grpSelect.Controls.Add(Me.Label4)
-        Me.grpSelect.Location = New System.Drawing.Point(38, 40)
+        Me.grpSelect.Location = New System.Drawing.Point(44, 49)
+        Me.grpSelect.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.grpSelect.Name = "grpSelect"
-        Me.grpSelect.Size = New System.Drawing.Size(460, 312)
+        Me.grpSelect.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.grpSelect.Size = New System.Drawing.Size(537, 384)
         Me.grpSelect.TabIndex = 19
         Me.grpSelect.TabStop = False
         Me.grpSelect.Text = "Select Examination(s)"
@@ -169,9 +151,10 @@ Partial Class frmSubjectPerformanceSpecific
         'chkMode
         '
         Me.chkMode.AutoSize = True
-        Me.chkMode.Location = New System.Drawing.Point(92, 15)
+        Me.chkMode.Location = New System.Drawing.Point(107, 18)
+        Me.chkMode.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.chkMode.Name = "chkMode"
-        Me.chkMode.Size = New System.Drawing.Size(202, 17)
+        Me.chkMode.Size = New System.Drawing.Size(253, 21)
         Me.chkMode.TabIndex = 27
         Me.chkMode.Text = "Analyse More Than One Examination"
         Me.chkMode.UseVisualStyleBackColor = True
@@ -180,17 +163,19 @@ Partial Class frmSubjectPerformanceSpecific
         '
         Me.txtContribution.BackColor = System.Drawing.SystemColors.Info
         Me.txtContribution.ForeColor = System.Drawing.Color.IndianRed
-        Me.txtContribution.Location = New System.Drawing.Point(92, 98)
+        Me.txtContribution.Location = New System.Drawing.Point(107, 121)
+        Me.txtContribution.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtContribution.Name = "txtContribution"
-        Me.txtContribution.Size = New System.Drawing.Size(123, 21)
+        Me.txtContribution.Size = New System.Drawing.Size(143, 23)
         Me.txtContribution.TabIndex = 48
         '
         'btnAddExam
         '
         Me.btnAddExam.Image = CType(resources.GetObject("btnAddExam.Image"), System.Drawing.Image)
-        Me.btnAddExam.Location = New System.Drawing.Point(311, 97)
+        Me.btnAddExam.Location = New System.Drawing.Point(363, 119)
+        Me.btnAddExam.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAddExam.Name = "btnAddExam"
-        Me.btnAddExam.Size = New System.Drawing.Size(127, 23)
+        Me.btnAddExam.Size = New System.Drawing.Size(148, 28)
         Me.btnAddExam.TabIndex = 49
         Me.btnAddExam.Text = "&Add Examination"
         Me.btnAddExam.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -199,18 +184,18 @@ Partial Class frmSubjectPerformanceSpecific
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(221, 101)
+        Me.Label8.Location = New System.Drawing.Point(258, 124)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(63, 13)
+        Me.Label8.Size = New System.Drawing.Size(80, 17)
         Me.Label8.TabIndex = 51
         Me.Label8.Text = "% of 100%"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(18, 101)
+        Me.Label6.Location = New System.Drawing.Point(21, 124)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(70, 13)
+        Me.Label6.Size = New System.Drawing.Size(89, 17)
         Me.Label6.TabIndex = 50
         Me.Label6.Text = "Contribution:"
         '
@@ -218,18 +203,21 @@ Partial Class frmSubjectPerformanceSpecific
         '
         Me.grpMultiExaminations.Controls.Add(Me.lstExaminations)
         Me.grpMultiExaminations.Controls.Add(Me.Label5)
-        Me.grpMultiExaminations.Location = New System.Drawing.Point(85, 117)
+        Me.grpMultiExaminations.Location = New System.Drawing.Point(99, 144)
+        Me.grpMultiExaminations.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.grpMultiExaminations.Name = "grpMultiExaminations"
-        Me.grpMultiExaminations.Size = New System.Drawing.Size(355, 136)
+        Me.grpMultiExaminations.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.grpMultiExaminations.Size = New System.Drawing.Size(414, 167)
         Me.grpMultiExaminations.TabIndex = 52
         Me.grpMultiExaminations.TabStop = False
         '
         'btnAnalyze
         '
         Me.btnAnalyze.Image = CType(resources.GetObject("btnAnalyze.Image"), System.Drawing.Image)
-        Me.btnAnalyze.Location = New System.Drawing.Point(301, 278)
+        Me.btnAnalyze.Location = New System.Drawing.Point(351, 342)
+        Me.btnAnalyze.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAnalyze.Name = "btnAnalyze"
-        Me.btnAnalyze.Size = New System.Drawing.Size(137, 30)
+        Me.btnAnalyze.Size = New System.Drawing.Size(160, 37)
         Me.btnAnalyze.TabIndex = 3
         Me.btnAnalyze.Text = "Analyze Examination"
         Me.btnAnalyze.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -241,9 +229,10 @@ Partial Class frmSubjectPerformanceSpecific
         Me.cboClass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboClass.ForeColor = System.Drawing.Color.IndianRed
         Me.cboClass.FormattingEnabled = True
-        Me.cboClass.Location = New System.Drawing.Point(92, 255)
+        Me.cboClass.Location = New System.Drawing.Point(107, 314)
+        Me.cboClass.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboClass.Name = "cboClass"
-        Me.cboClass.Size = New System.Drawing.Size(346, 21)
+        Me.cboClass.Size = New System.Drawing.Size(403, 24)
         Me.cboClass.TabIndex = 1
         '
         'cboExamName
@@ -252,26 +241,27 @@ Partial Class frmSubjectPerformanceSpecific
         Me.cboExamName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboExamName.ForeColor = System.Drawing.Color.IndianRed
         Me.cboExamName.FormattingEnabled = True
-        Me.cboExamName.Location = New System.Drawing.Point(92, 76)
+        Me.cboExamName.Location = New System.Drawing.Point(107, 94)
+        Me.cboExamName.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboExamName.Name = "cboExamName"
-        Me.cboExamName.Size = New System.Drawing.Size(346, 21)
+        Me.cboExamName.Size = New System.Drawing.Size(403, 24)
         Me.cboExamName.TabIndex = 1
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(54, 35)
+        Me.Label1.Location = New System.Drawing.Point(63, 43)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(33, 13)
+        Me.Label1.Size = New System.Drawing.Size(40, 17)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Year:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(53, 57)
+        Me.Label2.Location = New System.Drawing.Point(62, 70)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(35, 13)
+        Me.Label2.Size = New System.Drawing.Size(45, 17)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Term:"
         '
@@ -282,17 +272,18 @@ Partial Class frmSubjectPerformanceSpecific
         Me.cboTerm.ForeColor = System.Drawing.Color.IndianRed
         Me.cboTerm.FormattingEnabled = True
         Me.cboTerm.Items.AddRange(New Object() {"None", "I", "II", "III"})
-        Me.cboTerm.Location = New System.Drawing.Point(91, 54)
+        Me.cboTerm.Location = New System.Drawing.Point(106, 66)
+        Me.cboTerm.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboTerm.Name = "cboTerm"
-        Me.cboTerm.Size = New System.Drawing.Size(346, 21)
+        Me.cboTerm.Size = New System.Drawing.Size(403, 24)
         Me.cboTerm.TabIndex = 1
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(19, 78)
+        Me.Label3.Location = New System.Drawing.Point(22, 96)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(69, 13)
+        Me.Label3.Size = New System.Drawing.Size(88, 17)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Examination:"
         '
@@ -302,73 +293,31 @@ Partial Class frmSubjectPerformanceSpecific
         Me.cboYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboYear.ForeColor = System.Drawing.Color.IndianRed
         Me.cboYear.FormattingEnabled = True
-        Me.cboYear.Location = New System.Drawing.Point(92, 32)
+        Me.cboYear.Location = New System.Drawing.Point(107, 39)
+        Me.cboYear.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboYear.Name = "cboYear"
-        Me.cboYear.Size = New System.Drawing.Size(346, 21)
+        Me.cboYear.Size = New System.Drawing.Size(403, 24)
         Me.cboYear.TabIndex = 1
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(52, 258)
+        Me.Label4.Location = New System.Drawing.Point(61, 318)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(36, 13)
+        Me.Label4.Size = New System.Drawing.Size(43, 17)
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Class:"
-        '
-        'btnGradesAttained
-        '
-        Me.btnGradesAttained.Image = CType(resources.GetObject("btnGradesAttained.Image"), System.Drawing.Image)
-        Me.btnGradesAttained.Location = New System.Drawing.Point(224, 35)
-        Me.btnGradesAttained.Name = "btnGradesAttained"
-        Me.btnGradesAttained.Size = New System.Drawing.Size(214, 40)
-        Me.btnGradesAttained.TabIndex = 3
-        Me.btnGradesAttained.Text = "Subject Performance Analysis"
-        Me.btnGradesAttained.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnGradesAttained.UseVisualStyleBackColor = True
-        '
-        'btnStudentRank
-        '
-        Me.btnStudentRank.Image = CType(resources.GetObject("btnStudentRank.Image"), System.Drawing.Image)
-        Me.btnStudentRank.Location = New System.Drawing.Point(26, 35)
-        Me.btnStudentRank.Name = "btnStudentRank"
-        Me.btnStudentRank.Size = New System.Drawing.Size(192, 40)
-        Me.btnStudentRank.TabIndex = 3
-        Me.btnStudentRank.Text = "Student Ranking Per Subject"
-        Me.btnStudentRank.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnStudentRank.UseVisualStyleBackColor = True
-        '
-        'btnMeanGradeAnalysis
-        '
-        Me.btnMeanGradeAnalysis.Image = CType(resources.GetObject("btnMeanGradeAnalysis.Image"), System.Drawing.Image)
-        Me.btnMeanGradeAnalysis.Location = New System.Drawing.Point(27, 78)
-        Me.btnMeanGradeAnalysis.Name = "btnMeanGradeAnalysis"
-        Me.btnMeanGradeAnalysis.Size = New System.Drawing.Size(192, 40)
-        Me.btnMeanGradeAnalysis.TabIndex = 3
-        Me.btnMeanGradeAnalysis.Text = "Subject Mean Analysis"
-        Me.btnMeanGradeAnalysis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnMeanGradeAnalysis.UseVisualStyleBackColor = True
         '
         'chkBestOf7
         '
         Me.chkBestOf7.AutoSize = True
-        Me.chkBestOf7.Location = New System.Drawing.Point(41, 17)
+        Me.chkBestOf7.Location = New System.Drawing.Point(48, 21)
+        Me.chkBestOf7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.chkBestOf7.Name = "chkBestOf7"
-        Me.chkBestOf7.Size = New System.Drawing.Size(121, 17)
+        Me.chkBestOf7.Size = New System.Drawing.Size(149, 21)
         Me.chkBestOf7.TabIndex = 37
         Me.chkBestOf7.Text = "Use Best Of 7 Mode"
         Me.chkBestOf7.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.Location = New System.Drawing.Point(225, 78)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(214, 40)
-        Me.Button4.TabIndex = 39
-        Me.Button4.Text = "Class Departmental Analysis"
-        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'grpAnalyze
         '
@@ -378,33 +327,122 @@ Partial Class frmSubjectPerformanceSpecific
         Me.grpAnalyze.Controls.Add(Me.btnMeanGradeAnalysis)
         Me.grpAnalyze.Controls.Add(Me.btnGradesAttained)
         Me.grpAnalyze.Controls.Add(Me.btnStudentRank)
-        Me.grpAnalyze.Location = New System.Drawing.Point(37, 358)
+        Me.grpAnalyze.Location = New System.Drawing.Point(43, 441)
+        Me.grpAnalyze.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.grpAnalyze.Name = "grpAnalyze"
-        Me.grpAnalyze.Size = New System.Drawing.Size(460, 126)
+        Me.grpAnalyze.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.grpAnalyze.Size = New System.Drawing.Size(537, 213)
         Me.grpAnalyze.TabIndex = 20
         Me.grpAnalyze.TabStop = False
         Me.grpAnalyze.Text = "Specific Subject Analysis"
         '
+        'Button4
+        '
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.Location = New System.Drawing.Point(262, 96)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(250, 49)
+        Me.Button4.TabIndex = 39
+        Me.Button4.Text = "Class Departmental Analysis"
+        Me.Button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'radSubject
         '
         Me.radSubject.AutoSize = True
-        Me.radSubject.Location = New System.Drawing.Point(238, 17)
+        Me.radSubject.Location = New System.Drawing.Point(278, 21)
+        Me.radSubject.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.radSubject.Name = "radSubject"
-        Me.radSubject.Size = New System.Drawing.Size(155, 17)
+        Me.radSubject.Size = New System.Drawing.Size(194, 21)
         Me.radSubject.TabIndex = 36
         Me.radSubject.Text = "Use Subject Based Grading"
         Me.radSubject.UseVisualStyleBackColor = True
         '
+        'btnMeanGradeAnalysis
+        '
+        Me.btnMeanGradeAnalysis.Image = CType(resources.GetObject("btnMeanGradeAnalysis.Image"), System.Drawing.Image)
+        Me.btnMeanGradeAnalysis.Location = New System.Drawing.Point(31, 96)
+        Me.btnMeanGradeAnalysis.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnMeanGradeAnalysis.Name = "btnMeanGradeAnalysis"
+        Me.btnMeanGradeAnalysis.Size = New System.Drawing.Size(224, 49)
+        Me.btnMeanGradeAnalysis.TabIndex = 3
+        Me.btnMeanGradeAnalysis.Text = "Subject Mean Analysis"
+        Me.btnMeanGradeAnalysis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnMeanGradeAnalysis.UseVisualStyleBackColor = True
+        '
+        'btnGradesAttained
+        '
+        Me.btnGradesAttained.Image = CType(resources.GetObject("btnGradesAttained.Image"), System.Drawing.Image)
+        Me.btnGradesAttained.Location = New System.Drawing.Point(261, 43)
+        Me.btnGradesAttained.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnGradesAttained.Name = "btnGradesAttained"
+        Me.btnGradesAttained.Size = New System.Drawing.Size(250, 49)
+        Me.btnGradesAttained.TabIndex = 3
+        Me.btnGradesAttained.Text = "Subject Performance Analysis"
+        Me.btnGradesAttained.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnGradesAttained.UseVisualStyleBackColor = True
+        '
+        'btnStudentRank
+        '
+        Me.btnStudentRank.Image = CType(resources.GetObject("btnStudentRank.Image"), System.Drawing.Image)
+        Me.btnStudentRank.Location = New System.Drawing.Point(30, 43)
+        Me.btnStudentRank.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnStudentRank.Name = "btnStudentRank"
+        Me.btnStudentRank.Size = New System.Drawing.Size(224, 49)
+        Me.btnStudentRank.TabIndex = 3
+        Me.btnStudentRank.Text = "Student Ranking Per Subject"
+        Me.btnStudentRank.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnStudentRank.UseVisualStyleBackColor = True
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = CType(resources.GetObject("btnClear.Image"), System.Drawing.Image)
+        Me.btnClear.Location = New System.Drawing.Point(462, 662)
+        Me.btnClear.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(84, 47)
+        Me.btnClear.TabIndex = 17
+        Me.btnClear.Text = "C&lear"
+        Me.btnClear.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
+        Me.btnCancel.Location = New System.Drawing.Point(335, 662)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(84, 47)
+        Me.btnCancel.TabIndex = 18
+        Me.btnCancel.Text = "&Cancel"
+        Me.btnCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'bestStud
+        '
+        Me.bestStud.Image = CType(resources.GetObject("bestStud.Image"), System.Drawing.Image)
+        Me.bestStud.Location = New System.Drawing.Point(74, 594)
+        Me.bestStud.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.bestStud.Name = "bestStud"
+        Me.bestStud.Size = New System.Drawing.Size(224, 49)
+        Me.bestStud.TabIndex = 22
+        Me.bestStud.Text = "Best Student Per Subject"
+        Me.bestStud.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.bestStud.UseVisualStyleBackColor = True
+        '
         'frmSubjectPerformanceSpecific
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(542, 534)
+        Me.ClientSize = New System.Drawing.Size(632, 722)
+        Me.Controls.Add(Me.bestStud)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.lblTitle)
         Me.Controls.Add(Me.grpSelect)
         Me.Controls.Add(Me.grpAnalyze)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSubjectPerformanceSpecific"
@@ -452,4 +490,5 @@ Partial Class frmSubjectPerformanceSpecific
     Friend WithEvents Button4 As Button
     Friend WithEvents grpAnalyze As GroupBox
     Friend WithEvents radSubject As CheckBox
+    Friend WithEvents bestStud As Button
 End Class

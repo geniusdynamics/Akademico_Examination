@@ -68,6 +68,22 @@ Module publicSubsNFunctions
     Public sortGradesBy As String = String.Empty
 
 
+    Public subjectGrading As New Dictionary(Of String, List(Of Tuple(Of String, Int16)))
+    Public subjectGrading2 As New Dictionary(Of String, List(Of Tuple(Of String, Int16)))
+    Public classGrading As New List(Of Tuple(Of String, Int16))
+    Public GradeToPoint As New Dictionary(Of String, Int16)
+    Public students As New List(Of Tuple(Of Int64, String, String, String, String))
+    Public classStream As New List(Of String)
+    Public overallAverage As New Dictionary(Of String, Integer)
+    Public averagePoints As New Dictionary(Of String, Double)
+    Public studentCount As New Dictionary(Of String, Integer)
+    Public classCount As Integer
+    Public resultsTotal As Integer
+    Public selectedExams As New List(Of Tuple(Of String, String, String, String))
+    Public filterType As String = String.Empty
+    Public schoolSubjects As New List(Of String)
+
+
 
     Public Structure ReportForm
         Dim student_photo, school_logo, color, head_teacher_name, class_teacher_name, class_teacher_comments, head_teacher_comments, class_teacher_signature, head_teacher_signature, house_master_comments, club_and_societies As Boolean
@@ -791,9 +807,12 @@ Module publicSubsNFunctions
 
     Public Sub get_SMS_Details()
         qread("SELECT * FROM sms")
-        dbreader.Read()
-        SMS_Center = dbreader("CenterNo")
-        SMS_COM = dbreader("Port")
+        If dbreader.RecordsAffected > 0 Then
+            While dbreader.Read
+                SMS_Center = dbreader("CenterNo")
+                SMS_COM = dbreader("Port")
+            End While
+        End If
     End Sub
 
     Public Function classes() As String()
@@ -857,7 +876,7 @@ Module publicSubsNFunctions
         Try
             Return "+254" & no.Substring(1)
         Catch ex As Exception
-            Return "+254726503228"
+            Return "+254733911638"
         End Try
     End Function
 
@@ -945,6 +964,35 @@ Module publicSubsNFunctions
             End If
         Else
             failure("Could Not Read From The School Database!")
+        End If
+    End Sub
+
+    Public Sub createTableTempTable()
+        Dim table As String = "CREATE TABLE `stud_balance_temp_table` (
+	`id` BIGINT(255) NOT NULL AUTO_INCREMENT,
+	`admin_no` BIGINT(255) NOT NULL DEFAULT '0',
+	`name` VARCHAR(255) NOT NULL DEFAULT '--',
+	`class` VARCHAR(255) NOT NULL DEFAULT '--',
+	`stream` VARCHAR(255) NOT NULL DEFAULT '--',
+	`fee_amount` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`fee_exemption` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`fee_penalty` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`amount_paid` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`balance` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`overpay` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	`refund` DECIMAL(10,2) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;"
+        Dim query As String = "SHOW TABLES LIKE 'stud_balance_temp_table';"
+        If qread(query) Then
+            If dbreader.RecordsAffected = 0 Then
+                If qwrite(table) Then
+
+                End If
+            End If
         End If
     End Sub
 End Module

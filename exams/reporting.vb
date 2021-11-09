@@ -63,6 +63,7 @@ Module reporting
                 myRow.Clear()
             Next
 
+
             reportDS.Tables.Add(myTable)
         End If
 
@@ -179,10 +180,23 @@ Module reporting
             Dim dbAdapter As New OdbcDataAdapter()
             dbAdapter.SelectCommand = cmd
             dbAdapter.Fill(reportDT)
+
+            addColumnNumbering(reportDT)
         Catch e As Exception
             MessageBox.Show(e.Message, "Error Sourcing Report Data", MessageBoxButtons.OK, MessageBoxIcon.Hand)
         End Try
         Return reportDT
+    End Function
+
+    Public Function addColumnNumbering(ByRef dt As DataTable)
+        dt.Columns.Add("Count", GetType(String)).SetOrdinal(0)
+
+        Dim counter As Integer = 1
+        For Each row As DataRow In dt.Rows
+            row(0) = counter.ToString()
+            counter += 1
+        Next
+
     End Function
 
 

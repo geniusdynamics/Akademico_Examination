@@ -147,7 +147,7 @@ Public Class frmGradesAttained
         Next
         dgvSubjects.Item("ENTRY", dgvSubjects.Rows.Count - 1).Value = tot
         dgvSubjects.Item("STP", dgvSubjects.Rows.Count - 1).Value = tp
-        dgvSubjects.Item("SMP", dgvSubjects.Rows.Count - 1).Value = tp / tot
+        dgvSubjects.Item("SMP", dgvSubjects.Rows.Count - 1).Value = Math.Round(tp / tot, 3, MidpointRounding.AwayFromZero)
         dgvSubjects.Item("MG", dgvSubjects.Rows.Count - 1).Value = get_points(tp / tot)
         pbar.Increment(-100)
         pbar.Visible = False

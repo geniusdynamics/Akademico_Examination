@@ -14,7 +14,7 @@ Option Explicit On
 
 
 <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
- Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0"),  _
+ Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0"),  _
  Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
 Partial Friend NotInheritable Class Settings
     Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -79,7 +79,7 @@ Partial Friend NotInheritable Class Settings
     
     <Global.System.Configuration.UserScopedSettingAttribute(),  _
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+     Global.System.Configuration.DefaultSettingValueAttribute("ADMIN1234")>  _
     Public Property passWord() As String
         Get
             Return CType(Me("passWord"),String)
@@ -170,6 +170,42 @@ Partial Friend NotInheritable Class Settings
         End Get
         Set
             Me("defaultDb") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property API() As String
+        Get
+            Return CType(Me("API"),String)
+        End Get
+        Set
+            Me("API") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property APIUserName() As String
+        Get
+            Return CType(Me("APIUserName"),String)
+        End Get
+        Set
+            Me("APIUserName") = value
+        End Set
+    End Property
+    
+    <Global.System.Configuration.UserScopedSettingAttribute(),  _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+    Public Property Sender() As String
+        Get
+            Return CType(Me("Sender"),String)
+        End Get
+        Set
+            Me("Sender") = value
         End Set
     End Property
 End Class

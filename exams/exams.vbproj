@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>exams</RootNamespace>
     <AssemblyName>exams</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <StartupObject>exams.Program</StartupObject>
     <FileAlignment>512</FileAlignment>
     <OptionExplicit>On</OptionExplicit>
@@ -56,47 +56,78 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="DevExpress.BonusSkins.v17.1" />
-    <Reference Include="DevExpress.Charts.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v17.1" />
-    <Reference Include="DevExpress.Docs.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Office.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Pdf.v17.1.Core" />
-    <Reference Include="DevExpress.RichEdit.v17.1.Export" />
-    <Reference Include="DevExpress.Printing.v17.1.Core" />
-    <Reference Include="DevExpress.RichEdit.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Spreadsheet.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v17.1" />
-    <Reference Include="DevExpress.Utils.v17.1.UI, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v17.1" />
-    <Reference Include="DevExpress.Sparkline.v17.1.Core" />
-    <Reference Include="DevExpress.XtraCharts.v17.1.Wizard, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v17.1" />
-    <Reference Include="DevExpress.XtraGauges.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraNavBar.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.CodeParser.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v17.1.Extensions, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraSpreadsheet.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="MySql.Data, Version=6.9.10.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\MySqlBackup.NET.2.0.11.1\lib\net45\MySql.Data.dll</HintPath>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="MySqlBackup">
-      <HintPath>packages\MySqlBackup.NET.2.0.11.1\lib\net45\MySqlBackup.dll</HintPath>
+    <Reference Include="DevExpress.BonusSkins.v20.2" />
+    <Reference Include="DevExpress.Charts.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v20.2" />
+    <Reference Include="DevExpress.DataVisualization.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Docs.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v20.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v20.2.Export" />
+    <Reference Include="DevExpress.Printing.v20.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v20.2" />
+    <Reference Include="DevExpress.Utils.v20.2" />
+    <Reference Include="DevExpress.Utils.v20.2.UI, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.2" />
+    <Reference Include="DevExpress.Sparkline.v20.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v20.2.Wizard, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2" />
+    <Reference Include="DevExpress.XtraGauges.v20.2.Core, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v20.2.Extensions, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v20.2, Version=20.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Google.Protobuf, Version=3.19.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.19.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.15.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.2.15\lib\net45\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.15.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.2.15\lib\net45\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.3.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MySqlBackup.NET.2.3.6.1\lib\net452\MySqlBackup.dll</HintPath>
     </Reference>
     <Reference Include="MySQLConnection">
       <HintPath>..\..\Academico_Final\lib\MySQLConnection.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
     <Reference Include="System.Security" />
@@ -109,6 +140,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\ZstdNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -122,6 +159,7 @@
     <Import Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExamFunctions.vb" />
     <Compile Include="frmAddSplitSubject.Designer.vb">
       <DependentUpon>frmAddSplitSubject.vb</DependentUpon>
     </Compile>
@@ -144,6 +182,12 @@
       <DependentUpon>frmAllStudentsPrompt.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAllStudentsPrompt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBestStudentSubject.Designer.vb">
+      <DependentUpon>frmBestStudentSubject.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBestStudentSubject.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmClassBasedGrading.Designer.vb">
@@ -446,6 +490,12 @@
     <Compile Include="frmSubjectRank.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmSubjectRankPrompt2.Designer.vb">
+      <DependentUpon>frmSubjectRankPrompt2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectRankPrompt2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSubjectsDone.Designer.vb">
       <DependentUpon>frmSubjectsDone.vb</DependentUpon>
     </Compile>
@@ -484,6 +534,7 @@
     <Compile Include="MySql\Data.vb" />
     <Compile Include="publicSubsNFunctions.vb" />
     <Compile Include="reporting.vb" />
+    <Compile Include="SendSMS.vb" />
     <Compile Include="sms.vb" />
     <Compile Include="test.Designer.vb">
       <DependentUpon>test.vb</DependentUpon>
@@ -515,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAllStudentsPrompt.resx">
       <DependentUpon>frmAllStudentsPrompt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBestStudentSubject.resx">
+      <DependentUpon>frmBestStudentSubject.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmClassBasedGrading.resx">
       <DependentUpon>frmClassBasedGrading.vb</DependentUpon>
@@ -666,6 +720,9 @@
     <EmbeddedResource Include="frmSubjectRank.resx">
       <DependentUpon>frmSubjectRank.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectRankPrompt2.resx">
+      <DependentUpon>frmSubjectRankPrompt2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSubjectsDone.resx">
       <DependentUpon>frmSubjectsDone.vb</DependentUpon>
     </EmbeddedResource>
@@ -721,18 +778,8 @@
     <None Include="Resources\users.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="docs\MySqlCommand.xml" />
-    <Content Include="docs\MySqlCommandBuilder.xml" />
-    <Content Include="docs\MySqlConnection.xml" />
-    <Content Include="docs\MySqlConnectionStringBuilder.xml" />
-    <Content Include="docs\MySqlDataAdapter.xml" />
-    <Content Include="docs\MySqlDataReader.xml" />
-    <Content Include="docs\MySqlException.xml" />
-    <Content Include="docs\MySqlHelper.xml" />
-    <Content Include="docs\MySqlParameter.xml" />
-    <Content Include="docs\MySqlParameterCollection.xml" />
-    <Content Include="docs\MySqlTransaction.xml" />
     <Content Include="exam.ico" />
+    <Content Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

@@ -69,6 +69,8 @@
                     rpt = "Student List For " + cboSubject.SelectedItem.ToString() + " Class " + cboClass.SelectedItem.ToString()
                 End If
 
+                addColumnNumbering(reportDT)
+
                 generateFromDataTable(rptTitle, "From DT", "", reportDT)
             Else
                 clearAdd()
@@ -95,6 +97,8 @@
                 Else
                     rpt = "Student List For " + cboSubject.SelectedItem.ToString() + " Class " + cboClass.SelectedItem.ToString()
                 End If
+
+                addColumnNumbering(reportDT)
 
                 generateFromDataTable(rptTitle, "From DT", "", reportDT)
             End If

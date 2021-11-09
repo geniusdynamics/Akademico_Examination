@@ -105,6 +105,8 @@ Partial Public Class frmMainForm
 
     Private Sub frmMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'frmDBConnection.ShowDialog()
+
         For Each pageGroup As RibbonPage In mainRibbon.Pages
             For Each group As RibbonPageGroup In pageGroup.Groups
                 group.AllowTextClipping = False
@@ -122,6 +124,7 @@ Partial Public Class frmMainForm
         get_school_details()
         get_subjects()
         get_grades()
+        createTableTempTable()
 
         SplashScreenManager.ShowForm(Me, GetType(WaitForm1), True, True, False)
 
@@ -255,7 +258,7 @@ Partial Public Class frmMainForm
         applicationFont.ShowEffects = False
         applicationFont.FontMustExist = True
         applicationFont.AllowScriptChange = False
-        If applicationFont.ShowDialog = Windows.Forms.DialogResult.OK Then
+        If applicationFont.ShowDialog = System.Windows.Forms.DialogResult.OK Then
             My.Settings.fontSize = applicationFont.Font.Size
             My.Settings.userFont = applicationFont.Font.ToString
             My.Settings.Save()

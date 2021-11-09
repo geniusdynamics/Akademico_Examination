@@ -63,9 +63,9 @@ Public Class frmSubjectPerformanceGeneral
                     tms(k) = lstExaminations.Items.Item(k).SubItems(3).Text
 
                     'todo I have set the total_mark to a constant 100 original code is below
-                    total_mark(k) = 100
+                    ' total_mark(k) = 100
 
-                    'total_mark(k) = get_total_mark(exam_names(k), tms(k), yrs(k))
+                    total_mark(k) = get_total_mark(exam_names(k), tms(k), yrs(k))
                 Next
             Else
                 yr = cboYear.SelectedItem
@@ -81,10 +81,10 @@ Public Class frmSubjectPerformanceGeneral
         yr = cboYear.SelectedItem
         exam_name = cboExamName.SelectedItem
 
-        ' marks = get_total_mark(cboExamName.SelectedItem, tm)
+        marks = get_total_mark(cboExamName.SelectedItem, tm)
         'todo modified marks set it to a constant 100 the original code is commented above
 
-        marks = 100
+        ' marks = 100
         table = "exam_results"
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -124,7 +124,7 @@ Public Class frmSubjectPerformanceGeneral
         Return print_document
     End Function
     Private Sub classes()
-        If qread("SELECT class FROM class_stream") Then
+        If qread("SELECT distinct(class) as class FROM class_stream") Then
             ReDim words(dbreader.RecordsAffected - 1)
             Dim i As Integer = 0
             While dbreader.Read()
@@ -164,7 +164,7 @@ Public Class frmSubjectPerformanceGeneral
     End Sub
     Dim sex() As String
     Private Sub print_class_list2(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs)
-        'e.Graphics.DrawRectangle(Pens.Black, e.MarginBounds)
+        e.Graphics.DrawRectangle(Pens.Black, e.MarginBounds)
         Dim line As Integer = 30
         Dim topline As Integer = line
         Dim left_margin As Integer = 20
@@ -175,7 +175,9 @@ Public Class frmSubjectPerformanceGeneral
             line += 15
         Catch ex As Exception
         End Try
-        'line += 20
+
+        'line + 20 uncommented
+        line += 20
         Dim CenterPage As Single
         If S_NAME <> "" Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
@@ -285,7 +287,7 @@ Public Class frmSubjectPerformanceGeneral
         End While
     End Sub
     Private Sub print_class_list3(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs)
-        'e.Graphics.DrawRectangle(Pens.Black, e.MarginBounds)
+        e.Graphics.DrawRectangle(Pens.Black, e.MarginBounds)
         Dim line As Integer = 30
         Dim topline As Integer = line
         Dim left_margin As Integer = 20

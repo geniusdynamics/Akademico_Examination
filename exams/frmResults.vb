@@ -678,7 +678,7 @@ Public Class frmResults
                                 Else
                                     total(k) += ((dbreader(subjname(k)) / out_of) * total_mark(i)) * contribution(i) / total_mark(i)
                                 End If
-                                'new code start
+                                'new code start for students thta have x and y
                             Else
                                 If dbreader(subjname(k)).ToString().ToUpper = "X" Then
                                     total(k) = "X"
@@ -1112,6 +1112,10 @@ Public Class frmResults
                 Try
                     If dgvEnterMarks.Item(subjname(m), k).Value = 0 Then
                         dgvEnterMarks.Item(subjname(m), k).Value = "-"
+
+                        '  *** New code starts here ***
+
+
                     End If
                 Catch ex As Exception
 
@@ -3102,15 +3106,16 @@ Public Class frmResults
     Dim amt As Double
     Private Function get_fee_bal(ByVal adm As String)
         Dim total As Double = 0
-        'If qread("SELECT amount FROM accounts_students WHERE ADMNo='" & adm & "'") Then
-        '    While dbreader.Read
-        '        total += dbreader("amount")
-        '    End While
-        '    dbreader.Close()
-        'End If
-        'todo get the fee balance 1
-        total_fees += total
-        Return total
+        If qread("SELECT COALESCE(balance, 0) as balance FROM stud_balance_temp_table WHERE admin_no ='" & adm & "'") Then
+            If dbreader.RecordsAffected > 0 Then
+                While dbreader.Read
+                    total += dbreader("balance")
+                End While
+            End If
+            dbreader.Close()
+        End If
+
+        Return total.ToString("n2")
     End Function
     Private Sub get_fees()
         Dim term As String = Nothing
@@ -3980,8 +3985,8 @@ Public Class frmResults
         End If
         e.Graphics.DrawString("SIGNATURE:", smallfont, Brushes.Black, left_margin + 450, line)
         If report.class_teacher_signature Then
-            If File.Exists(path & "\teacher_images\class_teacher_" & yr & "_" & tm & "_" & get_name(class_form) & "_" & get_name(dgvEnterMarks.Item("str_class", student).Value) & ".jpg") Then
-                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & yr & "_" & tm & "_" & get_name(class_form) & "_" & get_name(dgvEnterMarks.Item("str_class", student).Value) & ".jpg"), left_margin + 550, line - 10, 100, 30)
+            If File.Exists(getSignaturePath(get_class_teacher(dgvEnterMarks.Item("str_class", student).Value, False))) Then
+                e.Graphics.DrawImage(Image.FromFile(getSignaturePath(get_class_teacher(dgvEnterMarks.Item("str_class", student).Value, False))), left_margin + 550, line - 10, 100, 30)
             End If
         End If
         e.Graphics.DrawString(" ________________________________", smallfont, Brushes.Black, left_margin + 520, line + 5)
@@ -4005,8 +4010,8 @@ Public Class frmResults
         End If
         e.Graphics.DrawString("SIGNATURE:", smallfont, Brushes.Black, left_margin + 450, line)
         If report.head_teacher_signature Then
-            If File.Exists(path & "\photos_parent_guardians\" & yr & "_" & tm & ".jpg") Then
-                e.Graphics.DrawImage(Image.FromFile(path & "\photos_parent_guardians\" & yr & "_" & tm & ".jpg"), left_margin + 550, line - 10, 100, 30)
+            If File.Exists(getSignaturePath(get_head_teacher())) Then
+                e.Graphics.DrawImage(Image.FromFile(getSignaturePath(get_head_teacher())), left_margin + 550, line - 10, 100, 30)
             End If
         End If
         e.Graphics.DrawString("_______________________________", smallfont, Brushes.Black, left_margin + 520, line + 5)
@@ -4123,6 +4128,21 @@ Public Class frmResults
             Return ""
         End If
     End Function
+
+    Public Function getSignaturePath(ByVal name As String)
+
+        Dim path As String = String.Empty
+
+        qread("SELECT path FROM partners WHERE  partnername ='" & name & "'")
+        If dbreader.RecordsAffected > 0 Then
+            dbreader.Read()
+            path = dbreader("path")
+        End If
+
+        Return path
+
+    End Function
+
     Private Function get_class_teacher(ByVal str As String, ByVal initial As Boolean)
         qread("SELECT Teacher FROM class_teachers WHERE Class='" & ret_name(class_form) & "' AND Stream='" & escape_string(str) & "'")
         If initial Then
@@ -4591,9 +4611,13 @@ Public Class frmResults
             Next
             print_reports = True
         End If
-        If Not cont Then
+        'added the below code
+        If Not to_continue Then
             Exit Sub
         End If
+        'If Not cont Then
+        '    Exit Sub
+        'End If
         If from_row = -1 Or to_row = -1 Or from_row > to_row Then
             Exit Sub
         End If
@@ -4703,11 +4727,18 @@ Public Class frmResults
                     For s As Integer = 0 To subjabb.Length - 1
                         Message &= subjabb(s) & "=" & dgvEnterMarks.Item(subjname(s), k).Value & ","
                     Next
-                    If grade Then
-                        Message &= "M.G=" & dgvEnterMarks.Item("Total", k).Value
-                    Else
-                        Message &= "Total=" & dgvEnterMarks.Item("Total", k).Value & "/" & subjabb.Length * 100
-                    End If
+
+
+                    Message &= ",M.G=" & dgvEnterMarks.Item("MG", k).Value
+                    Message &= ",M.P=" & dgvEnterMarks.Item("MP", k).Value
+                    Message &= ",T.P=" & dgvEnterMarks.Item("TP", k).Value
+
+                    'If grade Then
+                    '    Message &= "M.G=" & dgvEnterMarks.Item("Total", k).Value
+                    'Else
+                    '    Message &= "Total=" & dgvEnterMarks.Item("Total", k).Value & "/" & subjabb.Length * 100
+                    'End If
+
                     Message &= ",C.Pos=" & dgvEnterMarks.Item("Overall", k).Value & ",S.Pos=" &
                     dgvEnterMarks.Item("Position", k).Value
                 Else
@@ -4719,11 +4750,17 @@ Public Class frmResults
                             Message &= subjabb(s) & "=" & dgvEnterMarks.Item(subjname(s), k).Value & ","
                         End Try
                     Next
-                    If grade Then
-                        Message &= "M.G=" & dgvEnterMarks.Item("Total", k).Value
-                    Else
-                        Message &= "Total=" & dgvEnterMarks.Item("Total", k).Value & "/" & subjabb.Length * mark
-                    End If
+
+                    Message &= ",M.G=" & dgvEnterMarks.Item("MG", k).Value
+                    Message &= ",M.P=" & dgvEnterMarks.Item("MP", k).Value
+                    Message &= ",T.P=" & dgvEnterMarks.Item("TP", k).Value
+
+                    'If grade Then
+                    '    Message &= "M.G=" & dgvEnterMarks.Item("Total", k).Value
+                    'Else
+                    '    Message &= "Total=" & dgvEnterMarks.Item("Total", k).Value & "/" & subjabb.Length * mark
+                    'End If
+
                     Message &= ",C.Pos=" & dgvEnterMarks.Item("Overall", k).Value & ",S.Pos=" &
                     dgvEnterMarks.Item("Position", k).Value
                 End If
@@ -4737,7 +4774,42 @@ Public Class frmResults
             Exit Sub
         End If
         Me.Enabled = False
+
+        If String.IsNullOrEmpty(My.Settings.API) Then
+            MsgBox("The API Key Is Missing")
+            Return
+        End If
+
+        If String.IsNullOrEmpty(My.Settings.APIUserName) Then
+            MsgBox("The SMS Username Is Missing")
+            Return
+        End If
+
+        Cursor.Current = Cursors.WaitCursor
+        For k As Integer = 0 To admnos.Length - 1
+            admnos(k) = dgvEnterMarks.Item("ADMNo", k).Value
+            SendSMS.sendMsg(guardian_no(admnos(k)), Examination_Message(admnos(k)))
+        Next
+        Cursor.Current = Cursors.Default
+        MsgBox("The Student Results Have Been Sent")
+
+        Return
+        'OLD CODE
         get_SMS_Details()
+
+        'If String.IsNullOrEmpty(SMS_COM) Then
+        '    failure("The modem por has not been set")
+        '    Return
+        'End If
+
+        Dim modemPort As String = InputBox("Enter Modem5 Port Number", "Enter Value", "Enter port number attached to the modem")
+        If String.IsNullOrEmpty(modemPort) Or Not IsNumeric(modemPort) Then
+            failure("The modem port number entered is either empty or the value it not a number")
+            Return
+        End If
+
+        SMS_COM = modemPort
+
         Dim SMSEngine As New sms(SMS_COM)
         If Not SMSEngine.IsOpen Then
             Dim frm As New frmConfigureModem
@@ -4774,13 +4846,33 @@ Public Class frmResults
     Private Function guardian_no(ByVal adm As String)
         dbreader.Close()
         Dim phone As String = ""
-        qread("SELECT Phone FROM parents_guardians WHERE admin_no ='" & adm & "' limit 1")
+        Dim result As String = String.Empty
+        qread("SELECT Phone FROM parents_guardians WHERE admin_no ='" & adm & "'")
         If dbreader.RecordsAffected > 0 Then
-            dbreader.Read()
-            phone = dbreader("Phone")
+            While dbreader.Read()
+
+                phone = dbreader("Phone")
+
+                If Not String.IsNullOrEmpty(phone) Then
+                    If phone.StartsWith("0") Then
+                        phone = phone.Remove(0, 1)
+                        phone = "+254" + phone
+                    ElseIf phone.StartsWith("7") Then
+                        phone = "+254" + phone
+                    End If
+                End If
+
+                If phone.Length <> 13 Then
+                    phone = String.Empty
+                End If
+
+                result += "-" + phone
+
+            End While
         End If
         dbreader.Close()
-        Return phone
+
+        Return result
     End Function
 
     Private Sub create_query_sms(ByVal no As String, ByVal message As String)
@@ -5555,7 +5647,7 @@ Public Class frmResults
     End Sub
 
     Private Sub Button3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        If SaveFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If SaveFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Dim filename As String = SaveFileDialog1.FileName
             If filename = Nothing Then
                 filename = Environment.GetEnvironmentVariable("HOMEDRIVE") & "\export_data"
@@ -5819,7 +5911,7 @@ Public Class frmResults
     End Sub
 
     Private Sub save_examination()
-        Dim inc As Integer = dgvEnterMarks.Rows.Count - 4 / 100
+        'Dim inc As Integer = dgvEnterMarks.Rows.Count - 4 / 100
         'qwrite("CREATE TABLE `examination_performance` (" &
         '        "`id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ," &
         '        "`ADMNo` BIGINT( 255 ) NOT NULL," &
@@ -5833,19 +5925,47 @@ Public Class frmResults
         Pbar.Increment(-100)
         Pbar.Visible = True
 
-        For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
-            Dim test As String = "SELECT * FROM examination_performance WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')"
+        'For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
 
-            qread("SELECT * FROM examination_performance WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')")
-            If dbreader.RecordsAffected > 0 Then
-                qwrite("UPDATE examination_performance SET pos='" & dgvEnterMarks.Item("Overall", k).Value & "/" & dgvEnterMarks.Rows.Count - 4 & "' WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')")
-            Else
-                qwrite("INSERT INTO examination_performance VALUES(NULL, '" & dgvEnterMarks.Item("ADMNo", k).Value & "', '" & exam_name & "', '" & tm & "','" & yr & "','" & dgvEnterMarks.Item("Overall", k).Value & "/" & dgvEnterMarks.Rows.Count - 4 & "')")
+        Dim inc As Integer = 100 / dgvEnterMarks.Rows.Count - 5
+        If issaved() Then
+            For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
+                Dim test As String = "SELECT * FROM examination_performance WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')"
+
+                qread("SELECT * FROM examination_performance WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')")
+                If dbreader.RecordsAffected > 0 Then
+                    qwrite("UPDATE examination_performance SET pos='" & dgvEnterMarks.Item("Overall", k).Value & "/" & dgvEnterMarks.Rows.Count - 4 & "' WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND exam='" & exam_name & "' AND term='" & tm & "' AND year='" & yr & "')")
+                Else
+                    qwrite("INSERT INTO examination_performance VALUES(NULL, '" & dgvEnterMarks.Item("ADMNo", k).Value & "', '" & exam_name & "', '" & tm & "','" & yr & "','" & dgvEnterMarks.Item("Overall", k).Value & "/" & dgvEnterMarks.Rows.Count - 4 & "')")
+                End If
+                Pbar.Increment(inc)
+            Next
+            '    Pbar.Visible = False
+            'success("Examination Performance Saved!")
+
+            'Pbar.Visible = True
+
+            'qwrite("DELETE FROM `class_performance_data` WHERE (ADMNo='" & dgvEnterMarks.Item("ADMNo", k).Value & "' AND term='" & tm & "' AND Year='" & yr & "' AND Class='" & ret_name(class_form) & "')")
+            'Pbar.Increment(inc)
+            'Next
+            qwrite("DELETE FROM term_results WHERE (class='" & ret_name(class_form) & "' AND term='" & tm & "' AND year='" & yr & "')")
+
+            'Pbar.Increment(-100)
+            query = "INSERT INTO `class_performance_data` VALUES"
+        End If
+        For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
+            query &= "('" & dgvEnterMarks.Item("ADMNo", k).Value & "','" & dgvEnterMarks.Item("Overall", k).Value & " / " & dgvEnterMarks.Rows.Count - 4 & "','" & dgvEnterMarks.Item("MG", k).Value &
+            "', '" & dgvEnterMarks.Item("MP", k).Value & "', '" & tm & "', '" & yr & "', '" & ret_name(class_form) & "')"
+            If k < dgvEnterMarks.Rows.Count - 5 Then
+                query &= ","
             End If
             Pbar.Increment(inc)
         Next
+        qwrite(query)
+        qwrite("INSERT INTO term_results VALUES(NULL, '" & tm & "','" & yr & "','" & ret_name(class_form) & "')")
+        success("End Of Term Results Successfully Saved!")
         Pbar.Visible = False
-        success("Examination Performance Saved!")
+        Pbar.Increment(-100)
     End Sub
     Private Function SchoolCode()
         qread("SELECT code FROM school_details")

@@ -9,7 +9,7 @@
       <Value Profile="(Default)">root</Value>
     </Setting>
     <Setting Name="passWord" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">ADMIN1234</Value>
     </Setting>
     <Setting Name="dbName" Type="System.String" Scope="User">
       <Value Profile="(Default)">schoolss</Value>
@@ -31,6 +31,15 @@
     </Setting>
     <Setting Name="defaultDb" Type="System.String" Scope="User">
       <Value Profile="(Default)">DemoDatabase</Value>
+    </Setting>
+    <Setting Name="API" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="APIUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Sender" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

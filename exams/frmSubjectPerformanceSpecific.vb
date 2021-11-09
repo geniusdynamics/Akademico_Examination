@@ -21,6 +21,7 @@ Public Class frmSubjectPerformanceSpecific
             load_class(cboClass)
             chkBestOf7.Visible = Not IsPrimary()
             radSubject.Visible = chkBestOf7.Visible
+            bestStud.Enabled = False
         End If
     End Sub
 
@@ -103,6 +104,7 @@ Public Class frmSubjectPerformanceSpecific
     Dim main_exam As String
     Private Sub btnAnalyze_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAnalyze.Click
         If isvalid() Then
+            bestStud.Enabled = True
             If chkMode.Checked Then
                 mode = True
                 ReDim yrs(lstExaminations.Items.Count - 1), tms(lstExaminations.Items.Count - 1), exam_names(lstExaminations.Items.Count - 1), contribution(lstExaminations.Items.Count - 1), total_mark(lstExaminations.Items.Count - 1)
@@ -203,6 +205,8 @@ Public Class frmSubjectPerformanceSpecific
         grading = radSubject.Checked
         best_of_7 = chkBestOf7.Checked
         exam_name = cboExamName.SelectedItem
+
+
 
         ' marks = get_total_mark(cboExamName.SelectedItem, tm)
         'todo modified marks set it to a constant 100 the original code is commented 
@@ -793,6 +797,40 @@ Public Class frmSubjectPerformanceSpecific
         End If
     End Function
     Dim g_entry, g_mp, totals() As Integer
+
+    Private Sub bestStud_Click(sender As Object, e As EventArgs) Handles bestStud.Click
+
+        selectedExams.Clear()
+
+        If radSubject.CheckState = CheckState.Checked Then
+            MsgBox("Please use class based grading")
+            Return
+            ' gradingType = "SubjectBased"
+        End If
+
+        selectedClass = cboClass.SelectedItem
+        selectedTerm = cboTerm.SelectedItem
+        selectedYear = cboYear.SelectedItem
+
+        If chkMode.Checked Then
+
+            For Each value As ListViewItem In lstExaminations.Items
+                selectedExams.Add(New Tuple(Of String, String, String, String)(value.Text, value.SubItems.Item(1).Text, value.SubItems.Item(2).Text, value.SubItems.Item(3).Text))
+            Next
+
+        Else
+            selectedExams.Add(New Tuple(Of String, String, String, String)(cboExamName.SelectedItem, 100, selectedTerm, selectedYear))
+        End If
+
+        If selectedExams.Count = 0 Then
+            MsgBox("The exam or term or year has not been selected")
+        End If
+
+        Dim prompt2 As New frmSubjectRankPrompt2
+        prompt2.ShowDialog()
+
+    End Sub
+
     Private Function gradeno(ByVal grade As String, ByVal gender As String, ByVal s As String)
         Dim all_grades() As String
         Dim admnos() As String

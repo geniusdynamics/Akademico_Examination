@@ -26,7 +26,15 @@
     End Sub
 
     Private Sub load_students()
-        qread("SELECT * FROM students WHERE Class='" & escape_string(cboClass.SelectedItem.ToString()) & "' AND IsStudent='True'")
+        Dim q As String = String.Empty
+
+        If cboStream.SelectedItem IsNot Nothing Then
+            q = "SELECT * FROM students WHERE Class='" & escape_string(cboClass.SelectedItem.ToString()) & "' AND IsStudent='True' and stream  = '" + cboStream.SelectedItem + "'"
+        Else
+            q = "SELECT * FROM students WHERE Class='" & escape_string(cboClass.SelectedItem.ToString()) & "' AND IsStudent='True'"
+        End If
+
+        qread(q)
         dgvIndexNo.Rows.Clear()
         If dbreader.RecordsAffected > 0 Then
             Dim row = New List(Of String)
@@ -135,6 +143,19 @@
         If cboClass.SelectedItem IsNot Nothing Then
             create_dataform()
             load_students()
+        End If
+    End Sub
+
+    Private Sub cboClass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboClass.SelectedIndexChanged
+        If cboClass.SelectedItem IsNot Nothing Then
+            If qread("select distinct stream from class_stream where class = '" + cboClass.SelectedItem + "'") Then
+                If dbreader.RecordsAffected > 0 Then
+                    cboStream.Items.Clear()
+                    While dbreader.Read
+                        cboStream.Items.Add(dbreader("stream"))
+                    End While
+                End If
+            End If
         End If
     End Sub
 End Class

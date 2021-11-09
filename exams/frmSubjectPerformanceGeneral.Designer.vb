@@ -120,104 +120,114 @@ Partial Class frmSubjectPerformanceGeneral
         Me.LayoutControl1.Controls.Add(Me.chkMode)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = New System.Drawing.Rectangle(474, 286, 250, 350)
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(669, 536)
+        Me.LayoutControl1.Size = New System.Drawing.Size(780, 660)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(335, 141)
+        Me.Label1.Location = New System.Drawing.Point(391, 181)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(149, 22)
+        Me.Label1.Size = New System.Drawing.Size(171, 27)
         Me.Label1.TabIndex = 20
         Me.Label1.Text = "Out Of 100 %"
         '
         'btnCancel
         '
-        Me.btnCancel.Image = CType(resources.GetObject("btnCancel.Image"), System.Drawing.Image)
-        Me.btnCancel.Location = New System.Drawing.Point(495, 502)
+        Me.btnCancel.ImageOptions.Image = CType(resources.GetObject("btnCancel.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnCancel.Location = New System.Drawing.Point(577, 617)
+        Me.btnCancel.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(79, 22)
+        Me.btnCancel.Size = New System.Drawing.Size(90, 27)
         Me.btnCancel.StyleController = Me.LayoutControl1
         Me.btnCancel.TabIndex = 19
         Me.btnCancel.Text = "Cancel"
         '
         'btnClear
         '
-        Me.btnClear.Image = CType(resources.GetObject("btnClear.Image"), System.Drawing.Image)
-        Me.btnClear.Location = New System.Drawing.Point(578, 502)
+        Me.btnClear.ImageOptions.Image = CType(resources.GetObject("btnClear.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnClear.Location = New System.Drawing.Point(673, 617)
+        Me.btnClear.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(79, 22)
+        Me.btnClear.Size = New System.Drawing.Size(91, 27)
         Me.btnClear.StyleController = Me.LayoutControl1
         Me.btnClear.TabIndex = 18
         Me.btnClear.Text = "Clear"
         '
         'btnMeanMarkAnalysis
         '
-        Me.btnMeanMarkAnalysis.Image = CType(resources.GetObject("btnMeanMarkAnalysis.Image"), System.Drawing.Image)
-        Me.btnMeanMarkAnalysis.Location = New System.Drawing.Point(219, 464)
+        Me.btnMeanMarkAnalysis.ImageOptions.Image = CType(resources.GetObject("btnMeanMarkAnalysis.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnMeanMarkAnalysis.Location = New System.Drawing.Point(257, 569)
+        Me.btnMeanMarkAnalysis.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnMeanMarkAnalysis.Name = "btnMeanMarkAnalysis"
-        Me.btnMeanMarkAnalysis.Size = New System.Drawing.Size(220, 22)
+        Me.btnMeanMarkAnalysis.Size = New System.Drawing.Size(253, 27)
         Me.btnMeanMarkAnalysis.StyleController = Me.LayoutControl1
         Me.btnMeanMarkAnalysis.TabIndex = 17
         Me.btnMeanMarkAnalysis.Text = "Departmental Subject Analysis"
         '
         'Button2
         '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(219, 438)
+        Me.Button2.ImageOptions.Image = CType(resources.GetObject("Button2.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button2.Location = New System.Drawing.Point(257, 536)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(220, 22)
+        Me.Button2.Size = New System.Drawing.Size(253, 27)
         Me.Button2.StyleController = Me.LayoutControl1
         Me.Button2.TabIndex = 16
         Me.Button2.Text = "Class Mean Grade Count Analysis"
         '
         'Button3
         '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.Location = New System.Drawing.Point(219, 412)
+        Me.Button3.ImageOptions.Image = CType(resources.GetObject("Button3.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button3.Location = New System.Drawing.Point(257, 503)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(220, 22)
+        Me.Button3.Size = New System.Drawing.Size(253, 27)
         Me.Button3.StyleController = Me.LayoutControl1
         Me.Button3.TabIndex = 15
         Me.Button3.Text = "Student Category Analysis"
         '
         'Button1
         '
-        Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
-        Me.Button1.Location = New System.Drawing.Point(219, 386)
+        Me.Button1.ImageOptions.Image = CType(resources.GetObject("Button1.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button1.Location = New System.Drawing.Point(257, 470)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(220, 22)
+        Me.Button1.Size = New System.Drawing.Size(253, 27)
         Me.Button1.StyleController = Me.LayoutControl1
         Me.Button1.TabIndex = 14
         Me.Button1.Text = "Gender Analysis"
         '
         'chkBestOf7
         '
-        Me.chkBestOf7.Location = New System.Drawing.Point(24, 362)
+        Me.chkBestOf7.Location = New System.Drawing.Point(31, 439)
+        Me.chkBestOf7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.chkBestOf7.Name = "chkBestOf7"
-        Me.chkBestOf7.Size = New System.Drawing.Size(308, 20)
+        Me.chkBestOf7.Size = New System.Drawing.Size(355, 25)
         Me.chkBestOf7.TabIndex = 13
         Me.chkBestOf7.Text = "Use Best Of 7"
         Me.chkBestOf7.UseVisualStyleBackColor = True
         '
         'radSubject
         '
-        Me.radSubject.Location = New System.Drawing.Point(336, 362)
+        Me.radSubject.Location = New System.Drawing.Point(392, 439)
+        Me.radSubject.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.radSubject.Name = "radSubject"
-        Me.radSubject.Size = New System.Drawing.Size(309, 20)
+        Me.radSubject.Size = New System.Drawing.Size(357, 25)
         Me.radSubject.TabIndex = 12
         Me.radSubject.Text = "Use Subject Based Grading"
         Me.radSubject.UseVisualStyleBackColor = True
         '
         'btnAnalyze
         '
-        Me.btnAnalyze.Location = New System.Drawing.Point(535, 294)
+        Me.btnAnalyze.Location = New System.Drawing.Point(621, 353)
+        Me.btnAnalyze.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAnalyze.Name = "btnAnalyze"
-        Me.btnAnalyze.Size = New System.Drawing.Size(110, 22)
+        Me.btnAnalyze.Size = New System.Drawing.Size(128, 27)
         Me.btnAnalyze.StyleController = Me.LayoutControl1
         Me.btnAnalyze.TabIndex = 11
         Me.btnAnalyze.Text = "Analyze Examination"
@@ -227,9 +237,10 @@ Partial Class frmSubjectPerformanceGeneral
         Me.lstExaminations.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lstExaminations.FullRowSelect = True
         Me.lstExaminations.GridLines = True
-        Me.lstExaminations.Location = New System.Drawing.Point(24, 219)
+        Me.lstExaminations.Location = New System.Drawing.Point(31, 277)
+        Me.lstExaminations.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.lstExaminations.Name = "lstExaminations"
-        Me.lstExaminations.Size = New System.Drawing.Size(621, 71)
+        Me.lstExaminations.Size = New System.Drawing.Size(718, 70)
         Me.lstExaminations.TabIndex = 10
         Me.lstExaminations.UseCompatibleStateImageBehavior = False
         Me.lstExaminations.View = System.Windows.Forms.View.Details
@@ -256,28 +267,31 @@ Partial Class frmSubjectPerformanceGeneral
         '
         'btnAddExam
         '
-        Me.btnAddExam.Image = CType(resources.GetObject("btnAddExam.Image"), System.Drawing.Image)
-        Me.btnAddExam.Location = New System.Drawing.Point(488, 141)
+        Me.btnAddExam.ImageOptions.Image = CType(resources.GetObject("btnAddExam.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnAddExam.Location = New System.Drawing.Point(568, 181)
+        Me.btnAddExam.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnAddExam.Name = "btnAddExam"
-        Me.btnAddExam.Size = New System.Drawing.Size(157, 22)
+        Me.btnAddExam.Size = New System.Drawing.Size(181, 27)
         Me.btnAddExam.StyleController = Me.LayoutControl1
         Me.btnAddExam.TabIndex = 9
         Me.btnAddExam.Text = "Add Exam"
         '
         'txtContribution
         '
-        Me.txtContribution.Location = New System.Drawing.Point(86, 141)
+        Me.txtContribution.Location = New System.Drawing.Point(103, 181)
+        Me.txtContribution.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtContribution.Name = "txtContribution"
-        Me.txtContribution.Size = New System.Drawing.Size(245, 20)
+        Me.txtContribution.Size = New System.Drawing.Size(282, 25)
         Me.txtContribution.TabIndex = 8
         '
         'cboExamName
         '
         Me.cboExamName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboExamName.FormattingEnabled = True
-        Me.cboExamName.Location = New System.Drawing.Point(86, 116)
+        Me.cboExamName.Location = New System.Drawing.Point(103, 149)
+        Me.cboExamName.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboExamName.Name = "cboExamName"
-        Me.cboExamName.Size = New System.Drawing.Size(559, 21)
+        Me.cboExamName.Size = New System.Drawing.Size(646, 24)
         Me.cboExamName.TabIndex = 7
         '
         'cboTerm
@@ -285,25 +299,28 @@ Partial Class frmSubjectPerformanceGeneral
         Me.cboTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTerm.FormattingEnabled = True
         Me.cboTerm.Items.AddRange(New Object() {"None", "I", "II", "III"})
-        Me.cboTerm.Location = New System.Drawing.Point(86, 91)
+        Me.cboTerm.Location = New System.Drawing.Point(103, 117)
+        Me.cboTerm.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboTerm.Name = "cboTerm"
-        Me.cboTerm.Size = New System.Drawing.Size(559, 21)
+        Me.cboTerm.Size = New System.Drawing.Size(646, 24)
         Me.cboTerm.TabIndex = 6
         '
         'cboYear
         '
         Me.cboYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboYear.FormattingEnabled = True
-        Me.cboYear.Location = New System.Drawing.Point(86, 66)
+        Me.cboYear.Location = New System.Drawing.Point(103, 85)
+        Me.cboYear.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.cboYear.Name = "cboYear"
-        Me.cboYear.Size = New System.Drawing.Size(559, 21)
+        Me.cboYear.Size = New System.Drawing.Size(646, 24)
         Me.cboYear.TabIndex = 5
         '
         'chkMode
         '
-        Me.chkMode.Location = New System.Drawing.Point(24, 42)
+        Me.chkMode.Location = New System.Drawing.Point(31, 54)
+        Me.chkMode.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.chkMode.Name = "chkMode"
-        Me.chkMode.Size = New System.Drawing.Size(621, 20)
+        Me.chkMode.Size = New System.Drawing.Size(718, 25)
         Me.chkMode.TabIndex = 4
         Me.chkMode.Text = "Analyze More Than One Examination"
         Me.chkMode.UseVisualStyleBackColor = True
@@ -315,7 +332,7 @@ Partial Class frmSubjectPerformanceGeneral
         Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.grpSelect, Me.grpMultiExaminations, Me.grpAnalyze, Me.EmptySpaceItem3, Me.LayoutControlItem15, Me.LayoutControlItem16})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "Root"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(669, 536)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(780, 660)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'grpSelect
@@ -323,7 +340,7 @@ Partial Class frmSubjectPerformanceGeneral
         Me.grpSelect.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.LayoutControlItem6, Me.EmptySpaceItem1, Me.LayoutControlItem17})
         Me.grpSelect.Location = New System.Drawing.Point(0, 0)
         Me.grpSelect.Name = "grpSelect"
-        Me.grpSelect.Size = New System.Drawing.Size(649, 177)
+        Me.grpSelect.Size = New System.Drawing.Size(754, 223)
         Me.grpSelect.Text = "Select Examination (s)"
         '
         'LayoutControlItem1
@@ -331,78 +348,78 @@ Partial Class frmSubjectPerformanceGeneral
         Me.LayoutControlItem1.Control = Me.chkMode
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(625, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(724, 31)
         Me.LayoutControlItem1.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem1.TextVisible = False
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.cboYear
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 31)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(625, 25)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(724, 32)
         Me.LayoutControlItem2.Text = "Year"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(59, 13)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(69, 16)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.cboTerm
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 49)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 63)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(625, 25)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(724, 32)
         Me.LayoutControlItem3.Text = "Term"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(59, 13)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(69, 16)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.cboExamName
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 74)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 95)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(625, 25)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(724, 32)
         Me.LayoutControlItem4.Text = "Examination"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(59, 13)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(69, 16)
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.txtContribution
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 99)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(0, 127)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(311, 26)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(360, 33)
         Me.LayoutControlItem5.Text = "Contribution"
-        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(59, 13)
+        Me.LayoutControlItem5.TextSize = New System.Drawing.Size(69, 16)
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.btnAddExam
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(464, 99)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(537, 127)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(161, 26)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(187, 33)
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 125)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(0, 160)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(625, 10)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(724, 10)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem17
         '
         Me.LayoutControlItem17.Control = Me.Label1
-        Me.LayoutControlItem17.Location = New System.Drawing.Point(311, 99)
+        Me.LayoutControlItem17.Location = New System.Drawing.Point(360, 127)
         Me.LayoutControlItem17.Name = "LayoutControlItem17"
-        Me.LayoutControlItem17.Size = New System.Drawing.Size(153, 26)
+        Me.LayoutControlItem17.Size = New System.Drawing.Size(177, 33)
         Me.LayoutControlItem17.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem17.TextVisible = False
         '
         'grpMultiExaminations
         '
         Me.grpMultiExaminations.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem7, Me.LayoutControlItem8, Me.EmptySpaceItem2})
-        Me.grpMultiExaminations.Location = New System.Drawing.Point(0, 177)
+        Me.grpMultiExaminations.Location = New System.Drawing.Point(0, 223)
         Me.grpMultiExaminations.Name = "grpMultiExaminations"
-        Me.grpMultiExaminations.Size = New System.Drawing.Size(649, 143)
+        Me.grpMultiExaminations.Size = New System.Drawing.Size(754, 162)
         Me.grpMultiExaminations.Text = "List Of Examinations and Their Respective Contribution"
         '
         'LayoutControlItem7
@@ -410,41 +427,41 @@ Partial Class frmSubjectPerformanceGeneral
         Me.LayoutControlItem7.Control = Me.lstExaminations
         Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(625, 75)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(724, 76)
         Me.LayoutControlItem7.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem7.TextVisible = False
         '
         'LayoutControlItem8
         '
         Me.LayoutControlItem8.Control = Me.btnAnalyze
-        Me.LayoutControlItem8.Location = New System.Drawing.Point(511, 75)
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(590, 76)
         Me.LayoutControlItem8.Name = "LayoutControlItem8"
-        Me.LayoutControlItem8.Size = New System.Drawing.Size(114, 26)
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(134, 33)
         Me.LayoutControlItem8.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem8.TextVisible = False
         '
         'EmptySpaceItem2
         '
         Me.EmptySpaceItem2.AllowHotTrack = False
-        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 75)
+        Me.EmptySpaceItem2.Location = New System.Drawing.Point(0, 76)
         Me.EmptySpaceItem2.Name = "EmptySpaceItem2"
-        Me.EmptySpaceItem2.Size = New System.Drawing.Size(511, 26)
+        Me.EmptySpaceItem2.Size = New System.Drawing.Size(590, 33)
         Me.EmptySpaceItem2.TextSize = New System.Drawing.Size(0, 0)
         '
         'grpAnalyze
         '
         Me.grpAnalyze.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem9, Me.LayoutControlItem10, Me.LayoutControlItem11, Me.LayoutControlItem12, Me.LayoutControlItem13, Me.LayoutControlItem14, Me.EmptySpaceItem4, Me.EmptySpaceItem5})
-        Me.grpAnalyze.Location = New System.Drawing.Point(0, 320)
+        Me.grpAnalyze.Location = New System.Drawing.Point(0, 385)
         Me.grpAnalyze.Name = "grpAnalyze"
-        Me.grpAnalyze.Size = New System.Drawing.Size(649, 170)
+        Me.grpAnalyze.Size = New System.Drawing.Size(754, 216)
         Me.grpAnalyze.Text = "General Analysis"
         '
         'LayoutControlItem9
         '
         Me.LayoutControlItem9.Control = Me.radSubject
-        Me.LayoutControlItem9.Location = New System.Drawing.Point(312, 0)
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(361, 0)
         Me.LayoutControlItem9.Name = "LayoutControlItem9"
-        Me.LayoutControlItem9.Size = New System.Drawing.Size(313, 24)
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(363, 31)
         Me.LayoutControlItem9.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem9.TextVisible = False
         '
@@ -453,85 +470,85 @@ Partial Class frmSubjectPerformanceGeneral
         Me.LayoutControlItem10.Control = Me.chkBestOf7
         Me.LayoutControlItem10.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem10.Name = "LayoutControlItem10"
-        Me.LayoutControlItem10.Size = New System.Drawing.Size(312, 24)
+        Me.LayoutControlItem10.Size = New System.Drawing.Size(361, 31)
         Me.LayoutControlItem10.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem10.TextVisible = False
         '
         'LayoutControlItem11
         '
         Me.LayoutControlItem11.Control = Me.Button1
-        Me.LayoutControlItem11.Location = New System.Drawing.Point(195, 24)
+        Me.LayoutControlItem11.Location = New System.Drawing.Point(226, 31)
         Me.LayoutControlItem11.Name = "LayoutControlItem11"
-        Me.LayoutControlItem11.Size = New System.Drawing.Size(224, 26)
+        Me.LayoutControlItem11.Size = New System.Drawing.Size(259, 33)
         Me.LayoutControlItem11.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem11.TextVisible = False
         '
         'LayoutControlItem12
         '
         Me.LayoutControlItem12.Control = Me.Button3
-        Me.LayoutControlItem12.Location = New System.Drawing.Point(195, 50)
+        Me.LayoutControlItem12.Location = New System.Drawing.Point(226, 64)
         Me.LayoutControlItem12.Name = "LayoutControlItem12"
-        Me.LayoutControlItem12.Size = New System.Drawing.Size(224, 26)
+        Me.LayoutControlItem12.Size = New System.Drawing.Size(259, 33)
         Me.LayoutControlItem12.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem12.TextVisible = False
         '
         'LayoutControlItem13
         '
         Me.LayoutControlItem13.Control = Me.Button2
-        Me.LayoutControlItem13.Location = New System.Drawing.Point(195, 76)
+        Me.LayoutControlItem13.Location = New System.Drawing.Point(226, 97)
         Me.LayoutControlItem13.Name = "LayoutControlItem13"
-        Me.LayoutControlItem13.Size = New System.Drawing.Size(224, 26)
+        Me.LayoutControlItem13.Size = New System.Drawing.Size(259, 33)
         Me.LayoutControlItem13.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem13.TextVisible = False
         '
         'LayoutControlItem14
         '
         Me.LayoutControlItem14.Control = Me.btnMeanMarkAnalysis
-        Me.LayoutControlItem14.Location = New System.Drawing.Point(195, 102)
+        Me.LayoutControlItem14.Location = New System.Drawing.Point(226, 130)
         Me.LayoutControlItem14.Name = "LayoutControlItem14"
-        Me.LayoutControlItem14.Size = New System.Drawing.Size(224, 26)
+        Me.LayoutControlItem14.Size = New System.Drawing.Size(259, 33)
         Me.LayoutControlItem14.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem14.TextVisible = False
         '
         'EmptySpaceItem4
         '
         Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(0, 24)
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(0, 31)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(195, 104)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(226, 132)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem5
         '
         Me.EmptySpaceItem5.AllowHotTrack = False
-        Me.EmptySpaceItem5.Location = New System.Drawing.Point(419, 24)
+        Me.EmptySpaceItem5.Location = New System.Drawing.Point(485, 31)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(206, 104)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(239, 132)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'EmptySpaceItem3
         '
         Me.EmptySpaceItem3.AllowHotTrack = False
-        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 490)
+        Me.EmptySpaceItem3.Location = New System.Drawing.Point(0, 601)
         Me.EmptySpaceItem3.Name = "EmptySpaceItem3"
-        Me.EmptySpaceItem3.Size = New System.Drawing.Size(483, 26)
+        Me.EmptySpaceItem3.Size = New System.Drawing.Size(561, 33)
         Me.EmptySpaceItem3.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem15
         '
         Me.LayoutControlItem15.Control = Me.btnClear
-        Me.LayoutControlItem15.Location = New System.Drawing.Point(566, 490)
+        Me.LayoutControlItem15.Location = New System.Drawing.Point(657, 601)
         Me.LayoutControlItem15.Name = "LayoutControlItem15"
-        Me.LayoutControlItem15.Size = New System.Drawing.Size(83, 26)
+        Me.LayoutControlItem15.Size = New System.Drawing.Size(97, 33)
         Me.LayoutControlItem15.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem15.TextVisible = False
         '
         'LayoutControlItem16
         '
         Me.LayoutControlItem16.Control = Me.btnCancel
-        Me.LayoutControlItem16.Location = New System.Drawing.Point(483, 490)
+        Me.LayoutControlItem16.Location = New System.Drawing.Point(561, 601)
         Me.LayoutControlItem16.Name = "LayoutControlItem16"
-        Me.LayoutControlItem16.Size = New System.Drawing.Size(83, 26)
+        Me.LayoutControlItem16.Size = New System.Drawing.Size(96, 33)
         Me.LayoutControlItem16.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem16.TextVisible = False
         '
@@ -547,10 +564,11 @@ Partial Class frmSubjectPerformanceGeneral
         '
         'frmSubjectPerformanceGeneral
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(669, 536)
+        Me.ClientSize = New System.Drawing.Size(780, 660)
         Me.Controls.Add(Me.LayoutControl1)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmSubjectPerformanceGeneral"

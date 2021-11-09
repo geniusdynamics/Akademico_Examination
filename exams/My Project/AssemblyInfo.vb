@@ -8,9 +8,9 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyTitle("Akademico Exams")>
 <Assembly: AssemblyDescription("Exams managements system for schools")>
 <Assembly: AssemblyConfiguration("")>
-<Assembly: AssemblyCompany("GENIUS DYNAMICS")>
+<Assembly: AssemblyCompany("GENIUS DYNAMICS LTD")>
 <Assembly: AssemblyProduct("Akademico Exams")>
-<Assembly: AssemblyCopyright("Copyright ©  2018")>
+<Assembly: AssemblyCopyright("Copyright ©  2021")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: AssemblyCulture("")>
 
@@ -32,5 +32,5 @@ Imports System.Runtime.InteropServices
 ' You can specify all the values or you can default the Build and Revision Numbers 
 ' by using the '*' as shown below:
 ' [assembly: AssemblyVersion("1.0.*")]
-<Assembly: AssemblyVersion("5.2.7.0")>
-<Assembly: AssemblyFileVersion("5.2.7.0")>
+<Assembly: AssemblyVersion("5.3.0.1")>
+<Assembly: AssemblyFileVersion("5.3.0.1")>

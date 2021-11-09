@@ -56,7 +56,7 @@ Partial Class frmComputeResults
         Me.dgvMeanMarks.Location = New System.Drawing.Point(3, 3)
         Me.dgvMeanMarks.Name = "dgvMeanMarks"
         Me.dgvMeanMarks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvMeanMarks.Size = New System.Drawing.Size(1142, 462)
+        Me.dgvMeanMarks.Size = New System.Drawing.Size(1142, 448)
         Me.dgvMeanMarks.TabIndex = 5
         '
         'ADMNo
@@ -69,7 +69,7 @@ Partial Class frmComputeResults
         '
         Me.StudentName.HeaderText = "Name Of Student"
         Me.StudentName.Name = "StudentName"
-        Me.StudentName.Width = 114
+        Me.StudentName.Width = 105
         '
         'Column1
         '
@@ -110,8 +110,8 @@ Partial Class frmComputeResults
         '
         'btnIndexing
         '
-        Me.btnIndexing.Image = CType(resources.GetObject("btnIndexing.Image"), System.Drawing.Image)
-        Me.btnIndexing.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnIndexing.ImageOptions.Image = CType(resources.GetObject("btnIndexing.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnIndexing.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
         Me.btnIndexing.Location = New System.Drawing.Point(146, 473)
         Me.btnIndexing.Name = "btnIndexing"
         Me.btnIndexing.Size = New System.Drawing.Size(135, 39)
@@ -120,8 +120,8 @@ Partial Class frmComputeResults
         '
         'Button3
         '
-        Me.Button3.Image = CType(resources.GetObject("Button3.Image"), System.Drawing.Image)
-        Me.Button3.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.Button3.ImageOptions.Image = CType(resources.GetObject("Button3.ImageOptions.Image"), System.Drawing.Image)
+        Me.Button3.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
         Me.Button3.Location = New System.Drawing.Point(300, 473)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(122, 39)
@@ -139,7 +139,7 @@ Partial Class frmComputeResults
         '
         'Button4
         '
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.ImageOptions.Image = CType(resources.GetObject("Button4.ImageOptions.Image"), System.Drawing.Image)
         Me.Button4.Location = New System.Drawing.Point(898, 471)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(179, 41)
@@ -159,8 +159,8 @@ Partial Class frmComputeResults
         '
         'btnClassPerformance
         '
-        Me.btnClassPerformance.Image = CType(resources.GetObject("btnClassPerformance.Image"), System.Drawing.Image)
-        Me.btnClassPerformance.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnClassPerformance.ImageOptions.Image = CType(resources.GetObject("btnClassPerformance.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnClassPerformance.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
         Me.btnClassPerformance.Location = New System.Drawing.Point(528, 473)
         Me.btnClassPerformance.Name = "btnClassPerformance"
         Me.btnClassPerformance.Size = New System.Drawing.Size(138, 39)
@@ -169,8 +169,8 @@ Partial Class frmComputeResults
         '
         'btnStreamPerformance
         '
-        Me.btnStreamPerformance.Image = CType(resources.GetObject("btnStreamPerformance.Image"), System.Drawing.Image)
-        Me.btnStreamPerformance.ImageLocation = DevExpress.XtraEditors.ImageLocation.TopCenter
+        Me.btnStreamPerformance.ImageOptions.Image = CType(resources.GetObject("btnStreamPerformance.ImageOptions.Image"), System.Drawing.Image)
+        Me.btnStreamPerformance.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
         Me.btnStreamPerformance.Location = New System.Drawing.Point(685, 473)
         Me.btnStreamPerformance.Name = "btnStreamPerformance"
         Me.btnStreamPerformance.Size = New System.Drawing.Size(128, 39)

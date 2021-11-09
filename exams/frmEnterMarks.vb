@@ -348,64 +348,68 @@ Public Class frmEnterMarks
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        If Not OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        removeColumnDelete()
+
+        If Not OpenFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Exit Sub
         End If
         import_data()
     End Sub
     Private Sub import_data()
-        Dim fields_list As String = ""
-        Dim col_count As Integer = 0
-        For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
-            If dgvEnterMarks.Columns(k).Visible Then
-                If col_count > 0 Then
-                    fields_list &= ","
-                End If
-                fields_list &= dgvEnterMarks.Columns(k).Name
-                col_count += 1
-            End If
-        Next
-        Dim excel As New Microsoft.Office.Interop.Excel.Application()
-        Dim wb As Microsoft.Office.Interop.Excel.Workbook = excel.Workbooks.Open(OpenFileDialog1.FileName)
-        Dim ws As Microsoft.Office.Interop.Excel.Worksheet = TryCast(excel.ActiveSheet, Microsoft.Office.Interop.Excel.Worksheet)
-        Dim i As Integer = 2
-
-
-
-
-        progress.Visible = True
-        progress.Increment(-100)
-
-        Dim counter As String = String.Empty
-
-
-        While ws.Cells(i, 1).Value2 <> Nothing
-
-            'If i = 70 Then
-            '    Debugger.Break()
-            '    Break()
-            'End If
-
-            counter = ws.Cells(i, 1).Value.ToString()
-
-            col_count = 1
-            Dim row_index As Integer = getRowIndex(ws.Cells(i, 1).Value2)
+        Using (New DevExpress.Utils.WaitDialogForm("Importing excel results , Please Wait .....", "Importing Results"))
+            Dim fields_list As String = ""
+            Dim col_count As Integer = 0
             For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
                 If dgvEnterMarks.Columns(k).Visible Then
-                    dgvEnterMarks.Rows.Add()
-                    dgvEnterMarks.Item(dgvEnterMarks.Columns(k).Name, row_index).Value = ws.Cells(i, col_count).Value2
+                    If col_count > 0 Then
+                        fields_list &= ","
+                    End If
+                    fields_list &= dgvEnterMarks.Columns(k).Name
                     col_count += 1
                 End If
             Next
-            progress.Increment(1)
-            i += 1
+            Dim excel As New Microsoft.Office.Interop.Excel.Application()
+            Dim wb As Microsoft.Office.Interop.Excel.Workbook = excel.Workbooks.Open(OpenFileDialog1.FileName)
+            Dim ws As Microsoft.Office.Interop.Excel.Worksheet = TryCast(excel.ActiveSheet, Microsoft.Office.Interop.Excel.Worksheet)
+            Dim i As Integer = 2
 
-            If Not IsNumeric(counter) Then
-                Exit While
-            End If
 
-        End While
-        progress.Visible = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+
+
+            progress.Visible = True
+            progress.Increment(-100)
+
+            Dim counter As String = String.Empty
+
+
+            While ws.Cells(i, 1).Value2 <> Nothing
+
+                'If i = 70 Then
+                '    Debugger.Break()
+                '    Break()
+                'End If
+
+                counter = ws.Cells(i, 1).Value.ToString()
+
+                col_count = 1
+                Dim row_index As Integer = getRowIndex(ws.Cells(i, 1).Value2)
+                For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
+                    If dgvEnterMarks.Columns(k).Visible Then
+                        dgvEnterMarks.Rows.Add()
+                        dgvEnterMarks.Item(dgvEnterMarks.Columns(k).Name, row_index).Value = ws.Cells(i, col_count).Value2
+                        col_count += 1
+                    End If
+                Next
+                progress.Increment(1)
+                i += 1
+
+                If Not IsNumeric(counter) Then
+                    Exit While
+                End If
+
+            End While
+            progress.Visible = DevExpress.XtraLayout.Utils.LayoutVisibility.Never
+        End Using
         MessageBox.Show("The Operation Was Successful")
 
     End Sub
@@ -464,7 +468,14 @@ Public Class frmEnterMarks
             failure(msg)
         End If
     End Sub
+
+    Private Sub removeColumnDelete()
+        If deleteChk.CheckState = CheckState.Checked Then
+            dgvEnterMarks.Columns.Remove("Delete")
+        End If
+    End Sub
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        removeColumnDelete()
         progress.Visible = DevExpress.XtraLayout.Utils.LayoutVisibility.Always
         save_now()
     End Sub
@@ -1553,6 +1564,7 @@ Public Class frmEnterMarks
         start_from = 0
     End Sub
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        removeColumnDelete()
         'Dim Print_Preview As New PrintPreviewDialog
         'Dim print_dialog As New PrintDialog
         'Dim print_document As System.Drawing.Printing.PrintDocument = print_student_report2()
@@ -1560,14 +1572,36 @@ Public Class frmEnterMarks
         'Print_Preview.Document = print_document
         'Print_Preview.ShowDialog()
 
+        addNumberingToGrid(dgvEnterMarks)
         Dim title As String = ret_name(class_form) & " " & stream & " " & exam_name & " MARKS FOR TERM " & tm & " " & yr
         generateFromDataTable(title, "From Grid", "", Nothing, dgvEnterMarks)
+        dgvEnterMarks.Columns.Remove("count")
+    End Sub
+
+    Private Sub addNumberingToGrid(ByRef dgv As DataGridView)
+        Dim AddColumn As New DataGridViewTextBoxColumn
+
+        With AddColumn
+            .HeaderText = "Count"
+            .Name = "Count"
+            .Width = 80
+            .Visible = True
+        End With
+
+        dgv.Columns.Insert(0, AddColumn)
+
+        Dim counter As Int16 = 1
+        For i As Int16 = 0 To dgv.Rows.Count - 1
+            dgv.Rows(i).Cells(0).Value = counter.ToString()
+            counter += 1
+        Next
     End Sub
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
         'exportToExcel(dgvEnterMarks)
+        removeColumnDelete()
 
-        If SaveFileDialog1.ShowDialog() <> Windows.Forms.DialogResult.OK Then
+        If SaveFileDialog1.ShowDialog() <> System.Windows.Forms.DialogResult.OK Then
             Exit Sub
         End If
         Dim filename As String = SaveFileDialog1.FileName
@@ -1770,41 +1804,42 @@ Public Class frmEnterMarks
             dgvEnterMarks.Rows(k).Cells(abbr).Value = "-"
         Next
 
-        If Not OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If Not OpenFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Exit Sub
         End If
+        Using (New DevExpress.Utils.WaitDialogForm("Importing Exam records, Please Wait .....", "Importing"))
+            Dim xlApp As Excel.Application
+            Dim xlWorkBook As Excel.Workbook
+            Dim xlWorkSheet As Excel.Worksheet
+            Dim range As Excel.Range
+            Dim rCnt As Integer
+            Dim cCnt As Integer
+            Dim Obj As Object
+            Dim Obj2 As Object
 
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
-        Dim range As Excel.Range
-        Dim rCnt As Integer
-        Dim cCnt As Integer
-        Dim Obj As Object
-        Dim Obj2 As Object
+            xlApp = New Excel.Application
+            xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
+            xlWorkSheet = xlWorkBook.Worksheets("sheet1")
 
-        xlApp = New Excel.Application
-        xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
-        xlWorkSheet = xlWorkBook.Worksheets("sheet1")
+            range = xlWorkSheet.UsedRange
 
-        range = xlWorkSheet.UsedRange
-
-        For rCnt = 1 To range.Rows.Count
-            Obj = CType(range.Cells(rCnt, 1), Excel.Range)
-            Obj2 = CType(range.Cells(rCnt, 3), Excel.Range)
-            For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
-                If dgvEnterMarks.Rows(k).Cells("admin_no").Value.ToString() = Obj.value.ToString() Then
-                    dgvEnterMarks.Rows(k).Cells(abbr).Value = Obj2.value.ToString()
-                End If
+            For rCnt = 1 To range.Rows.Count
+                Obj = CType(range.Cells(rCnt, 1), Excel.Range)
+                Obj2 = CType(range.Cells(rCnt, 3), Excel.Range)
+                For k As Integer = 0 To dgvEnterMarks.Rows.Count - 1
+                    If dgvEnterMarks.Rows(k).Cells("admin_no").Value.ToString() = Obj.value.ToString() Then
+                        dgvEnterMarks.Rows(k).Cells(abbr).Value = Obj2.value.ToString()
+                    End If
+                Next
             Next
-        Next
 
-        xlWorkBook.Close()
-        xlApp.Quit()
+            xlWorkBook.Close()
+            xlApp.Quit()
 
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+        End Using
     End Sub
 
     Private Sub releaseObject(ByVal obj As Object)
@@ -1820,119 +1855,160 @@ Public Class frmEnterMarks
 
     Private Sub Editor_Click(sender As Object, e As EventArgs) Handles Editor.Click
 
-        If Not OpenFileDialog1.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If Not OpenFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
             Exit Sub
         End If
+        Using (New DevExpress.Utils.WaitDialogForm("Updating students details, Please Wait .....", "Updating Records"))
 
-        Dim xlApp As Excel.Application
-        Dim xlWorkBook As Excel.Workbook
-        Dim xlWorkSheet As Excel.Worksheet
-        Dim range As Excel.Range
-        Dim rCnt As Integer
-        Dim cCnt As Integer
-        Dim Obj As Object
-        Dim Obj2 As Object
 
-        xlApp = New Excel.Application
-        xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
-        xlWorkSheet = xlWorkBook.Worksheets("sheet1")
+            Dim xlApp As Excel.Application
+            Dim xlWorkBook As Excel.Workbook
+            Dim xlWorkSheet As Excel.Worksheet
+            Dim range As Excel.Range
+            Dim rCnt As Integer
+            Dim cCnt As Integer
+            Dim Obj As Object
+            Dim Obj2 As Object
 
-        range = xlWorkSheet.UsedRange
-        Dim rowValues As New Dictionary(Of String, String)
-        Dim col As String
-        Dim query As String
-        Dim values As String
-        Dim admNumber As String
-        Dim parentQuery As String
-        Dim parentsColums As New List(Of String)(New String() {"father", "mother", "phone", "address", "admin_no"})
-        Dim pCol As String
-        Dim pVal As String
+            xlApp = New Excel.Application
+            xlWorkBook = xlApp.Workbooks.Open(OpenFileDialog1.FileName)
+            xlWorkSheet = xlWorkBook.Worksheets("sheet1")
 
-        For rCnt = 2 To range.Rows.Count
-            rowValues.Clear()
-            query = String.Empty
-            values = String.Empty
-            admNumber = String.Empty
-            pCol = String.Empty
-            pVal = String.Empty
+            range = xlWorkSheet.UsedRange
+            Dim rowValues As New Dictionary(Of String, String)
+            Dim col As String
+            Dim query As String
+            Dim values As String
+            Dim admNumber As String
+            Dim parentQuery As String
+            Dim parentsColums As New List(Of String)(New String() {"father", "mother", "phone", "address", "admin_no"})
+            Dim pCol As String
+            Dim pVal As String
 
-            For cCnt = 1 To range.Columns.Count
+            For rCnt = 2 To range.Rows.Count
 
-                Obj = CType(range.Cells(rCnt, cCnt), Excel.Range)
-                If (Not String.IsNullOrEmpty(Obj.value)) Then
-                    Obj2 = CType(range.Cells(1, cCnt), Excel.Range)
-                    col = Obj2.value
+                rowValues.Clear()
+                query = String.Empty
+                values = String.Empty
+                admNumber = String.Empty
+                pCol = String.Empty
+                pVal = String.Empty
 
-                    rowValues.Add(col, Obj.value)
-                End If
-            Next
+                For cCnt = 1 To range.Columns.Count
 
-            If rowValues.Count > 0 Then
-                For j As Integer = 0 To rowValues.Count - 1
-                    If Not parentsColums.Contains(rowValues.Keys(j).ToLower()) Then
-                        values += rowValues.Keys(j) + "= '" + rowValues(rowValues.Keys(j)) + "', "
+                    Obj = CType(range.Cells(rCnt, cCnt), Excel.Range)
+                    If (Not String.IsNullOrEmpty(Obj.value)) Then
+                        Obj2 = CType(range.Cells(1, cCnt), Excel.Range)
+                        col = Obj2.value
+
+                        rowValues.Add(col, Obj.value)
                     End If
                 Next
 
-                values = values.Remove(values.Length - 2, 2)
-                Obj2 = CType(range.Cells(rCnt, 1), Excel.Range)
-                admNumber = Obj2.value
-                query = "UPDATE students SET " + values + " WHERE  admin_no=" + admNumber + ""
-
-                If qwrite(query) Then
-                    Dim parents As New List(Of String)(New String() {"father", "mother"})
-                    For z As Integer = 0 To parents.Count - 1
-
-                        pCol = String.Empty
-                        pVal = String.Empty
-
-                        If rowValues.ContainsKey(parents(z)) Then
-                            pCol += "type, "
-                            If parents(z) = "father" Then
-                                pVal += "'Father', "
-                            Else
-                                pVal += "'Mother', "
-                            End If
-                            For i = 0 To parentsColums.Count - 1
-                                If rowValues.ContainsKey(parentsColums(i)) Then
-                                    If z = 0 Then
-                                        If Not parentsColums(i) = "mother" Then
-                                            pCol += parentsColums(i) + ", "
-                                            pVal += "'" + rowValues(parentsColums(i)) + "', "
-                                        End If
-                                    Else
-                                        If Not parentsColums(i) = "father" Then
-                                            pCol += parentsColums(i) + ", "
-                                            pVal += "'" + rowValues(parentsColums(i)) + "', "
-                                        End If
-                                    End If
-                                End If
-
-                            Next
-
-
-                            pCol = pCol.Remove(pCol.Count - 2, 2).Replace("father", "name").Replace("mother", "name")
-                            pVal = pVal.Remove(pVal.Count - 2, 2)
-
-                            parentQuery = "INSERT INTO parents_guardians (" + pCol + ") VALUES (" + pVal + ");"
-                            If qwrite(parentQuery) Then
-                            End If
-
-
+                If rowValues.Count > 0 Then
+                    For j As Integer = 0 To rowValues.Count - 1
+                        If Not parentsColums.Contains(rowValues.Keys(j).ToLower()) Then
+                            values += rowValues.Keys(j) + "= '" + rowValues(rowValues.Keys(j)) + "', "
                         End If
                     Next
+
+                    values = values.Remove(values.Length - 2, 2)
+                    Obj2 = CType(range.Cells(rCnt, 1), Excel.Range)
+                    admNumber = Obj2.value
+                    query = "UPDATE students SET " + values + " WHERE  admin_no=" + admNumber + ""
+
+                    If qwrite(query) Then
+                        Dim parents As New List(Of String)(New String() {"father", "mother"})
+                        For z As Integer = 0 To parents.Count - 1
+
+                            pCol = String.Empty
+                            pVal = String.Empty
+
+                            If rowValues.ContainsKey(parents(z)) Then
+                                pCol += "type, "
+                                If parents(z) = "father" Then
+                                    pVal += "'Father', "
+                                Else
+                                    pVal += "'Mother', "
+                                End If
+                                For i = 0 To parentsColums.Count - 1
+                                    If rowValues.ContainsKey(parentsColums(i)) Then
+                                        If z = 0 Then
+                                            If Not parentsColums(i) = "mother" Then
+                                                pCol += parentsColums(i) + ", "
+                                                pVal += "'" + rowValues(parentsColums(i)) + "', "
+                                            End If
+                                        Else
+                                            If Not parentsColums(i) = "father" Then
+                                                pCol += parentsColums(i) + ", "
+                                                pVal += "'" + rowValues(parentsColums(i)) + "', "
+                                            End If
+                                        End If
+                                    End If
+
+                                Next
+
+
+                                pCol = pCol.Remove(pCol.Count - 2, 2).Replace("father", "name").Replace("mother", "name")
+                                pVal = pVal.Remove(pVal.Count - 2, 2)
+
+                                parentQuery = "INSERT INTO parents_guardians (" + pCol + ") VALUES (" + pVal + ");"
+                                If qwrite(parentQuery) Then
+                                End If
+
+
+                            End If
+                        Next
+                    End If
                 End If
+
+            Next
+
+
+            xlWorkBook.Close()
+            xlApp.Quit()
+
+            releaseObject(xlApp)
+            releaseObject(xlWorkBook)
+            releaseObject(xlWorkSheet)
+        End Using
+    End Sub
+
+    Private Sub deleteChk_CheckStateChanged(sender As Object, e As EventArgs) Handles deleteChk.CheckStateChanged
+        If deleteChk.CheckState = CheckState.Checked Then
+            Dim AddColumn As New DataGridViewCheckBoxColumn
+
+            With AddColumn
+                .HeaderText = "Delete"
+                .Name = "Delete"
+                .Width = 80
+            End With
+
+            dgvEnterMarks.Columns.Insert(0, AddColumn)
+        Else
+            dgvEnterMarks.Columns.Remove("Delete")
+        End If
+    End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+        If dgvEnterMarks.Rows.Count = 0 Then
+            MsgBox("There are no selected rows to delete")
+        ElseIf deleteChk.CheckState = CheckState.Unchecked Then
+            MsgBox("Please select the delete checkbox before proceding")
+        Else
+            Dim query As String = String.Empty
+            If displayConfirmationMessage("Are you sure you want to delete the selected records") Then
+                For Each row As DataGridViewRow In dgvEnterMarks.Rows
+                    If Convert.ToBoolean(row.Cells(0).Value) Then
+                        query = "delete from exam_results where year = '" + cboYear.SelectedItem.ToString() + "' and term = '" + cboTerm.SelectedItem.ToString() + "' and examination = '" + cboExamName.SelectedItem.ToString() + "' and admno = '" + row.Cells("admin_no").Value.ToString() + "'"
+                        If qwrite(query) Then
+
+                        End If
+                    End If
+                Next
             End If
 
-        Next
-
-
-        xlWorkBook.Close()
-        xlApp.Quit()
-
-        releaseObject(xlApp)
-        releaseObject(xlWorkBook)
-        releaseObject(xlWorkSheet)
+        End If
     End Sub
 
     Private Sub cboExamName_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboExamName.SelectedIndexChanged

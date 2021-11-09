@@ -41,6 +41,12 @@ Partial Class frmDBConnection
         Me.LayoutControlItem6 = New DevExpress.XtraLayout.LayoutControlItem()
         Me.EmptySpaceItem5 = New DevExpress.XtraLayout.EmptySpaceItem()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.txtAPIUserName = New System.Windows.Forms.TextBox()
+        Me.LayoutControlItem8 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.txtAPI = New System.Windows.Forms.TextBox()
+        Me.LayoutControlItem9 = New DevExpress.XtraLayout.LayoutControlItem()
+        Me.txtSender = New System.Windows.Forms.TextBox()
+        Me.Sender = New DevExpress.XtraLayout.LayoutControlItem()
         CType(Me.LayoutControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LayoutControl1.SuspendLayout()
         CType(Me.txtDbPort.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,10 +62,16 @@ Partial Class frmDBConnection
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Sender, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LayoutControl1
         '
+        Me.LayoutControl1.Controls.Add(Me.txtSender)
+        Me.LayoutControl1.Controls.Add(Me.txtAPI)
+        Me.LayoutControl1.Controls.Add(Me.txtAPIUserName)
         Me.LayoutControl1.Controls.Add(Me.btnSave)
         Me.LayoutControl1.Controls.Add(Me.txtPassword)
         Me.LayoutControl1.Controls.Add(Me.txtUserName)
@@ -69,9 +81,10 @@ Partial Class frmDBConnection
         Me.LayoutControl1.Controls.Add(Me.txtDbPort)
         Me.LayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.LayoutControl1.Location = New System.Drawing.Point(0, 0)
+        Me.LayoutControl1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.LayoutControl1.Name = "LayoutControl1"
         Me.LayoutControl1.Root = Me.LayoutControlGroup1
-        Me.LayoutControl1.Size = New System.Drawing.Size(504, 226)
+        Me.LayoutControl1.Size = New System.Drawing.Size(588, 320)
         Me.LayoutControl1.TabIndex = 0
         Me.LayoutControl1.Text = "LayoutControl1"
         '
@@ -79,55 +92,62 @@ Partial Class frmDBConnection
         '
         Me.btnSave.ImageOptions.Image = CType(resources.GetObject("btnSave.ImageOptions.Image"), System.Drawing.Image)
         Me.btnSave.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter
-        Me.btnSave.Location = New System.Drawing.Point(375, 132)
+        Me.btnSave.Location = New System.Drawing.Point(422, 261)
+        Me.btnSave.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(117, 39)
+        Me.btnSave.Size = New System.Drawing.Size(129, 44)
         Me.btnSave.StyleController = Me.LayoutControl1
         Me.btnSave.TabIndex = 9
         Me.btnSave.Text = "Save"
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(70, 84)
+        Me.txtPassword.Location = New System.Drawing.Point(112, 109)
+        Me.txtPassword.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(422, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(439, 25)
         Me.txtPassword.TabIndex = 7
         '
         'txtUserName
         '
-        Me.txtUserName.Location = New System.Drawing.Point(70, 60)
+        Me.txtUserName.Location = New System.Drawing.Point(112, 78)
+        Me.txtUserName.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtUserName.Name = "txtUserName"
-        Me.txtUserName.Size = New System.Drawing.Size(422, 20)
+        Me.txtUserName.Size = New System.Drawing.Size(439, 25)
         Me.txtUserName.TabIndex = 6
         '
         'txtDbHost
         '
-        Me.txtDbHost.Location = New System.Drawing.Point(70, 36)
+        Me.txtDbHost.Location = New System.Drawing.Point(112, 47)
+        Me.txtDbHost.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtDbHost.Name = "txtDbHost"
-        Me.txtDbHost.Size = New System.Drawing.Size(422, 20)
+        Me.txtDbHost.Size = New System.Drawing.Size(439, 25)
         Me.txtDbHost.TabIndex = 5
         '
         'txtDBName
         '
-        Me.txtDBName.Location = New System.Drawing.Point(70, 12)
+        Me.txtDBName.Location = New System.Drawing.Point(112, 16)
+        Me.txtDBName.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtDBName.Name = "txtDBName"
-        Me.txtDBName.Size = New System.Drawing.Size(422, 20)
+        Me.txtDBName.Size = New System.Drawing.Size(439, 25)
         Me.txtDBName.TabIndex = 4
         '
         'defaultConnString
         '
-        Me.defaultConnString.Location = New System.Drawing.Point(12, 132)
+        Me.defaultConnString.Location = New System.Drawing.Point(16, 261)
+        Me.defaultConnString.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.defaultConnString.Name = "defaultConnString"
-        Me.defaultConnString.Size = New System.Drawing.Size(117, 39)
+        Me.defaultConnString.Size = New System.Drawing.Size(129, 44)
         Me.defaultConnString.StyleController = Me.LayoutControl1
         Me.defaultConnString.TabIndex = 10
         Me.defaultConnString.Text = "Load Defaults"
         '
         'txtDbPort
         '
-        Me.txtDbPort.Location = New System.Drawing.Point(70, 108)
+        Me.txtDbPort.Location = New System.Drawing.Point(112, 140)
+        Me.txtDbPort.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txtDbPort.Name = "txtDbPort"
-        Me.txtDbPort.Size = New System.Drawing.Size(422, 20)
+        Me.txtDbPort.Size = New System.Drawing.Size(439, 22)
         Me.txtDbPort.StyleController = Me.LayoutControl1
         Me.txtDbPort.TabIndex = 11
         '
@@ -135,10 +155,10 @@ Partial Class frmDBConnection
         '
         Me.LayoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.[True]
         Me.LayoutControlGroup1.GroupBordersVisible = False
-        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem4, Me.LayoutControlItem7, Me.EmptySpaceItem1, Me.LayoutControlItem6, Me.EmptySpaceItem5})
+        Me.LayoutControlGroup1.Items.AddRange(New DevExpress.XtraLayout.BaseLayoutItem() {Me.LayoutControlItem1, Me.LayoutControlItem2, Me.LayoutControlItem3, Me.LayoutControlItem4, Me.LayoutControlItem5, Me.EmptySpaceItem4, Me.LayoutControlItem7, Me.EmptySpaceItem1, Me.LayoutControlItem6, Me.EmptySpaceItem5, Me.LayoutControlItem8, Me.LayoutControlItem9, Me.Sender})
         Me.LayoutControlGroup1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlGroup1.Name = "LayoutControlGroup1"
-        Me.LayoutControlGroup1.Size = New System.Drawing.Size(504, 226)
+        Me.LayoutControlGroup1.Size = New System.Drawing.Size(567, 331)
         Me.LayoutControlGroup1.TextVisible = False
         '
         'LayoutControlItem1
@@ -146,78 +166,78 @@ Partial Class frmDBConnection
         Me.LayoutControlItem1.Control = Me.txtDBName
         Me.LayoutControlItem1.Location = New System.Drawing.Point(0, 0)
         Me.LayoutControlItem1.Name = "LayoutControlItem1"
-        Me.LayoutControlItem1.Size = New System.Drawing.Size(484, 24)
+        Me.LayoutControlItem1.Size = New System.Drawing.Size(541, 31)
         Me.LayoutControlItem1.Text = "DB Name"
-        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(55, 13)
+        Me.LayoutControlItem1.TextSize = New System.Drawing.Size(93, 16)
         '
         'LayoutControlItem2
         '
         Me.LayoutControlItem2.Control = Me.txtDbHost
-        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 24)
+        Me.LayoutControlItem2.Location = New System.Drawing.Point(0, 31)
         Me.LayoutControlItem2.Name = "LayoutControlItem2"
-        Me.LayoutControlItem2.Size = New System.Drawing.Size(484, 24)
+        Me.LayoutControlItem2.Size = New System.Drawing.Size(541, 31)
         Me.LayoutControlItem2.Text = "Db Host"
-        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(55, 13)
+        Me.LayoutControlItem2.TextSize = New System.Drawing.Size(93, 16)
         '
         'LayoutControlItem3
         '
         Me.LayoutControlItem3.Control = Me.txtUserName
-        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 48)
+        Me.LayoutControlItem3.Location = New System.Drawing.Point(0, 62)
         Me.LayoutControlItem3.Name = "LayoutControlItem3"
-        Me.LayoutControlItem3.Size = New System.Drawing.Size(484, 24)
+        Me.LayoutControlItem3.Size = New System.Drawing.Size(541, 31)
         Me.LayoutControlItem3.Text = "User Name"
-        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(55, 13)
+        Me.LayoutControlItem3.TextSize = New System.Drawing.Size(93, 16)
         '
         'LayoutControlItem4
         '
         Me.LayoutControlItem4.Control = Me.txtPassword
-        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 72)
+        Me.LayoutControlItem4.Location = New System.Drawing.Point(0, 93)
         Me.LayoutControlItem4.Name = "LayoutControlItem4"
-        Me.LayoutControlItem4.Size = New System.Drawing.Size(484, 24)
+        Me.LayoutControlItem4.Size = New System.Drawing.Size(541, 31)
         Me.LayoutControlItem4.Text = "Password"
-        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(55, 13)
+        Me.LayoutControlItem4.TextSize = New System.Drawing.Size(93, 16)
         '
         'LayoutControlItem5
         '
         Me.LayoutControlItem5.Control = Me.btnSave
-        Me.LayoutControlItem5.Location = New System.Drawing.Point(363, 120)
+        Me.LayoutControlItem5.Location = New System.Drawing.Point(406, 245)
         Me.LayoutControlItem5.Name = "LayoutControlItem5"
-        Me.LayoutControlItem5.Size = New System.Drawing.Size(121, 43)
+        Me.LayoutControlItem5.Size = New System.Drawing.Size(135, 50)
         Me.LayoutControlItem5.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem5.TextVisible = False
         '
         'EmptySpaceItem4
         '
         Me.EmptySpaceItem4.AllowHotTrack = False
-        Me.EmptySpaceItem4.Location = New System.Drawing.Point(242, 120)
+        Me.EmptySpaceItem4.Location = New System.Drawing.Point(271, 245)
         Me.EmptySpaceItem4.Name = "EmptySpaceItem4"
-        Me.EmptySpaceItem4.Size = New System.Drawing.Size(121, 43)
+        Me.EmptySpaceItem4.Size = New System.Drawing.Size(135, 50)
         Me.EmptySpaceItem4.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem7
         '
         Me.LayoutControlItem7.Control = Me.txtDbPort
-        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 96)
+        Me.LayoutControlItem7.Location = New System.Drawing.Point(0, 124)
         Me.LayoutControlItem7.Name = "LayoutControlItem7"
-        Me.LayoutControlItem7.Size = New System.Drawing.Size(484, 24)
+        Me.LayoutControlItem7.Size = New System.Drawing.Size(541, 28)
         Me.LayoutControlItem7.Text = "Server Port"
-        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(55, 13)
+        Me.LayoutControlItem7.TextSize = New System.Drawing.Size(93, 16)
         '
         'EmptySpaceItem1
         '
         Me.EmptySpaceItem1.AllowHotTrack = False
-        Me.EmptySpaceItem1.Location = New System.Drawing.Point(121, 120)
+        Me.EmptySpaceItem1.Location = New System.Drawing.Point(135, 245)
         Me.EmptySpaceItem1.Name = "EmptySpaceItem1"
-        Me.EmptySpaceItem1.Size = New System.Drawing.Size(121, 43)
+        Me.EmptySpaceItem1.Size = New System.Drawing.Size(136, 50)
         Me.EmptySpaceItem1.TextSize = New System.Drawing.Size(0, 0)
         '
         'LayoutControlItem6
         '
         Me.LayoutControlItem6.Control = Me.defaultConnString
-        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 120)
+        Me.LayoutControlItem6.Location = New System.Drawing.Point(0, 245)
         Me.LayoutControlItem6.MinSize = New System.Drawing.Size(79, 26)
         Me.LayoutControlItem6.Name = "LayoutControlItem6"
-        Me.LayoutControlItem6.Size = New System.Drawing.Size(121, 43)
+        Me.LayoutControlItem6.Size = New System.Drawing.Size(135, 50)
         Me.LayoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom
         Me.LayoutControlItem6.TextSize = New System.Drawing.Size(0, 0)
         Me.LayoutControlItem6.TextVisible = False
@@ -225,9 +245,9 @@ Partial Class frmDBConnection
         'EmptySpaceItem5
         '
         Me.EmptySpaceItem5.AllowHotTrack = False
-        Me.EmptySpaceItem5.Location = New System.Drawing.Point(0, 163)
+        Me.EmptySpaceItem5.Location = New System.Drawing.Point(0, 295)
         Me.EmptySpaceItem5.Name = "EmptySpaceItem5"
-        Me.EmptySpaceItem5.Size = New System.Drawing.Size(484, 43)
+        Me.EmptySpaceItem5.Size = New System.Drawing.Size(541, 10)
         Me.EmptySpaceItem5.TextSize = New System.Drawing.Size(0, 0)
         '
         'ErrorProvider1
@@ -235,12 +255,60 @@ Partial Class frmDBConnection
         Me.ErrorProvider1.ContainerControl = Me
         Me.ErrorProvider1.RightToLeft = True
         '
+        'txtAPIUserName
+        '
+        Me.txtAPIUserName.Location = New System.Drawing.Point(112, 199)
+        Me.txtAPIUserName.Name = "txtAPIUserName"
+        Me.txtAPIUserName.Size = New System.Drawing.Size(439, 25)
+        Me.txtAPIUserName.TabIndex = 12
+        '
+        'LayoutControlItem8
+        '
+        Me.LayoutControlItem8.Control = Me.txtAPIUserName
+        Me.LayoutControlItem8.Location = New System.Drawing.Point(0, 183)
+        Me.LayoutControlItem8.Name = "LayoutControlItem8"
+        Me.LayoutControlItem8.Size = New System.Drawing.Size(541, 31)
+        Me.LayoutControlItem8.Text = "SMS User Name"
+        Me.LayoutControlItem8.TextSize = New System.Drawing.Size(93, 16)
+        '
+        'txtAPI
+        '
+        Me.txtAPI.Location = New System.Drawing.Point(112, 230)
+        Me.txtAPI.Name = "txtAPI"
+        Me.txtAPI.Size = New System.Drawing.Size(439, 25)
+        Me.txtAPI.TabIndex = 13
+        '
+        'LayoutControlItem9
+        '
+        Me.LayoutControlItem9.Control = Me.txtAPI
+        Me.LayoutControlItem9.Location = New System.Drawing.Point(0, 214)
+        Me.LayoutControlItem9.Name = "LayoutControlItem9"
+        Me.LayoutControlItem9.Size = New System.Drawing.Size(541, 31)
+        Me.LayoutControlItem9.Text = "SMS API"
+        Me.LayoutControlItem9.TextSize = New System.Drawing.Size(93, 16)
+        '
+        'txtSender
+        '
+        Me.txtSender.Location = New System.Drawing.Point(112, 168)
+        Me.txtSender.Name = "txtSender"
+        Me.txtSender.Size = New System.Drawing.Size(439, 25)
+        Me.txtSender.TabIndex = 14
+        '
+        'Sender
+        '
+        Me.Sender.Control = Me.txtSender
+        Me.Sender.Location = New System.Drawing.Point(0, 152)
+        Me.Sender.Name = "Sender"
+        Me.Sender.Size = New System.Drawing.Size(541, 31)
+        Me.Sender.TextSize = New System.Drawing.Size(93, 16)
+        '
         'frmDBConnection
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(504, 226)
+        Me.ClientSize = New System.Drawing.Size(588, 320)
         Me.Controls.Add(Me.LayoutControl1)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmDBConnection"
@@ -261,6 +329,9 @@ Partial Class frmDBConnection
         CType(Me.LayoutControlItem6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmptySpaceItem5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem8, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LayoutControlItem9, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Sender, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -285,4 +356,10 @@ Partial Class frmDBConnection
     Friend WithEvents LayoutControlItem7 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents LayoutControlItem6 As DevExpress.XtraLayout.LayoutControlItem
     Friend WithEvents EmptySpaceItem5 As DevExpress.XtraLayout.EmptySpaceItem
+    Friend WithEvents txtAPI As TextBox
+    Friend WithEvents txtAPIUserName As TextBox
+    Friend WithEvents LayoutControlItem8 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents LayoutControlItem9 As DevExpress.XtraLayout.LayoutControlItem
+    Friend WithEvents txtSender As TextBox
+    Friend WithEvents Sender As DevExpress.XtraLayout.LayoutControlItem
 End Class

@@ -5,6 +5,9 @@
         My.Settings.userName = txtUserName.Text
         My.Settings.passWord = txtPassword.Text
         My.Settings.dPport = txtDbPort.Text
+        My.Settings.API = txtAPI.Text
+        My.Settings.APIUserName = txtAPIUserName.Text
+        My.Settings.Sender = txtSender.Text
         My.Settings.Save()
         success("The Connection Was Succesfuly Saved")
         Me.Close()
@@ -16,6 +19,9 @@
         txtUserName.Text = My.Settings.userName
         txtPassword.Text = My.Settings.passWord
         txtDbPort.Text = My.Settings.dPport
+        txtAPI.Text = My.Settings.API
+        txtSender.Text = My.Settings.Sender
+        txtAPIUserName.Text = My.Settings.APIUserName
     End Sub
 
     Private Sub defaultConnString_Click(sender As Object, e As EventArgs) Handles defaultConnString.Click
