@@ -1,6 +1,6 @@
 ﻿Public Class frmAllStudentsPrompt
     Private Function isvalid()
-        If Trim(txtName.Text) = "" Then
+        If Trim(txtName.Text) = String.Empty Then
             msg = "Admission Number Cannot Be Empty!"
             Return False
         Else

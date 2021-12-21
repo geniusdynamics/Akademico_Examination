@@ -123,51 +123,51 @@
             msg = "Invalid Value For Grade E!"
             Return False
         End If
-        If Trim(txtAComment.Text) = "" Then
+        If Trim(txtAComment.Text) = String.Empty Then
             msg = "No Comment For Grade A!"
             Return False
-        ElseIf Trim(txtAMinusComment.Text) = "" Then
+        ElseIf Trim(txtAMinusComment.Text) = String.Empty Then
             msg = "No Comment For Grade A-!"
             Return False
-        ElseIf Trim(txtBPlusComment.Text) = "" Then
+        ElseIf Trim(txtBPlusComment.Text) = String.Empty Then
             msg = "No Comment For Grade B+!"
             Return False
-        ElseIf Trim(txtBComment.Text) = "" Then
+        ElseIf Trim(txtBComment.Text) = String.Empty Then
             msg = "No Comment For Grade B!"
             Return False
-        ElseIf Trim(txtBMinusComment.Text) = "" Then
+        ElseIf Trim(txtBMinusComment.Text) = String.Empty Then
             msg = "No Comment For Grade B-!"
             Return False
-        ElseIf Trim(txtCPlusComment.Text) = "" Then
+        ElseIf Trim(txtCPlusComment.Text) = String.Empty Then
             msg = "No Comment For Grade C+!"
             Return False
-        ElseIf Trim(txtCComment.Text) = "" Then
+        ElseIf Trim(txtCComment.Text) = String.Empty Then
             msg = "No Comment For Grade C!"
             Return False
-        ElseIf Trim(txtCMinusComment.Text) = "" Then
+        ElseIf Trim(txtCMinusComment.Text) = String.Empty Then
             msg = "No Comment For Grade C-!"
             Return False
-        ElseIf Trim(txtDPlusComment.Text) = "" Then
+        ElseIf Trim(txtDPlusComment.Text) = String.Empty Then
             msg = "No Comment For Grade D+!"
             Return False
-        ElseIf Trim(txtDComment.Text) = "" Then
+        ElseIf Trim(txtDComment.Text) = String.Empty Then
             msg = "No Comment For Grade D!"
             Return False
-        ElseIf Trim(txtDMinusComment.Text) = "" Then
+        ElseIf Trim(txtDMinusComment.Text) = String.Empty Then
             msg = "No Comment For Grade D-!"
             Return False
-        ElseIf Trim(txtEComment.Text) = "" Then
+        ElseIf Trim(txtEComment.Text) = String.Empty Then
             msg = "No Comment For Grade E!"
             Return False
         End If
         Return True
     End Function
 
-    Dim msg As String = ""
+    Dim msg As String = String.Empty
     Dim test As String = String.Empty
 
     Private Sub load_grade()
-       
+
         If qread("SELECT * FROM s_grading WHERE (Class='" & cboClass.SelectedItem & "' AND Subject='" & cboSubject.SelectedItem & "' AND term='" & cboTerm.SelectedItem & "' AND year='" & cboYear.SelectedItem & "')") Then
             If dbreader.RecordsAffected > 0 Then
                 dbreader.Read()

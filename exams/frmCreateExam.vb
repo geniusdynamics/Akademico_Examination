@@ -29,7 +29,7 @@
         txtTotal.Clear()
     End Sub
 
-    Dim msg As String = ""
+    Dim msg As String = String.Empty
 
     Private Function isvalid()
         If cboTerm.SelectedItem Is Nothing Then
@@ -41,10 +41,10 @@
         ElseIf (cboExamName.SelectedItem Is Nothing) And Not chkOtherName.Checked Then
             msg = "Exam Name is invalid!"
             Return False
-        ElseIf chkOtherName.Checked And txtExamName.Text = "" Then
+        ElseIf chkOtherName.Checked And txtExamName.Text = String.Empty Then
             msg = "Exam Name is invalid!"
             Return False
-        ElseIf txtTotal.Text = "" Or Not IsNumeric(txtTotal.Text) Then
+        ElseIf txtTotal.Text = String.Empty Or Not IsNumeric(txtTotal.Text) Then
             msg = "Total Marks is invalid!"
             Return False
         ElseIf exists() Then
@@ -58,7 +58,7 @@
         End If
     End Function
 
-    Dim exam_name As String = ""
+    Dim exam_name As String = String.Empty
 
     Private Function exists()
         If chkOtherName.Checked Then

@@ -16,7 +16,7 @@ Public Class frmNationalExaminationsEntry
                 ComboBox1.SelectedItem = "All"
                 load_data()
             Else
-               ' Me.Close()
+                ' Me.Close()
             End If
         End If
     End Sub
@@ -230,15 +230,15 @@ Public Class frmNationalExaminationsEntry
                 line += 15
             Catch ex As Exception
             End Try
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, left_margin + 180, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, left_margin + 220, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, left_margin + 220, line)
                 line += other_font.Height + 5
             End If

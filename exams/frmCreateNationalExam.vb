@@ -24,7 +24,7 @@
         End If
     End Function
     Private Sub btnCreateExam_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCreateExam.Click
-        If Trim(txtExamName.Text) <> "" And Not exists() Then
+        If Trim(txtExamName.Text) <> String.Empty And Not exists() Then
             create_examination()
         Else
             failure("Invalid Value For Examination Name!")

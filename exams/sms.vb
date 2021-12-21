@@ -1,8 +1,7 @@
 ﻿Option Explicit On
 Imports System
-Imports System.Threading
-Imports System.ComponentModel
 Imports System.IO.Ports
+Imports System.Threading
 Public Class sms
     Private WithEvents SMSPort As SerialPort
     Private SMSThread As Thread

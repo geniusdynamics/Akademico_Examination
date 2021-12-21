@@ -54,7 +54,7 @@ Module publicSubsNFunctions
     Public startyear As Integer = 2010
     Public endyear As Integer = Today.Year
     Public changedByUser As Boolean
-    Public loggedInUser As String = ""
+    Public loggedInUser As String = String.Empty
     Public myFormVariable As Boolean = False
 
 
@@ -137,7 +137,7 @@ Module publicSubsNFunctions
 
     Public Function getMenus(ByVal user As String)
 
-        Dim menus = ""
+        Dim menus = String.Empty
         If qread("select rights from priviledges where user = '" + user + "' and domain = 'Exam'") Then
             If dbreader.RecordsAffected > 0 Then
 
@@ -262,10 +262,10 @@ Module publicSubsNFunctions
         Try
             val.ToCharArray()
         Catch ex As Exception
-            Return ""
+            Return String.Empty
         End Try
 
-        Dim temp As String = ""
+        Dim temp As String = String.Empty
         For k As Integer = 0 To val.Length - 1
             If val(k) = "'" Then
                 If k = 0 Or val(k - 1) <> "\" Then
@@ -334,9 +334,9 @@ Module publicSubsNFunctions
         Try
             value.ToCharArray()
         Catch ex As Exception
-            Return ""
+            Return String.Empty
         End Try
-        Dim ret As String = ""
+        Dim ret As String = String.Empty
         Dim state As Boolean = False
         Dim wild(28) As String
         wild(0) = "~"
@@ -392,7 +392,7 @@ Module publicSubsNFunctions
     End Function
 
     Public Function ret_name(ByVal str As String)
-        Dim ret As String = ""
+        Dim ret As String = String.Empty
         Dim state As Boolean = False
         str = Trim(str)
         Try
@@ -456,7 +456,7 @@ Module publicSubsNFunctions
             Try
                 Return subjabb(i)
             Catch ex As Exception
-                Return ""
+                Return String.Empty
             End Try
         Else
             Dim i As Integer
@@ -468,7 +468,7 @@ Module publicSubsNFunctions
             Try
                 Return subjects(i)
             Catch ex As Exception
-                Return ""
+                Return String.Empty
             End Try
         End If
     End Function
@@ -625,7 +625,7 @@ Module publicSubsNFunctions
 
     Public Function get_name(ByVal str As String)
         str = remove_wild(str)
-        Dim ret As String = ""
+        Dim ret As String = String.Empty
         Dim state As Boolean = False
         str = Trim(str)
         Try
@@ -731,7 +731,7 @@ Module publicSubsNFunctions
         Try
             Return subjabb(i)
         Catch ex As Exception
-            Return ""
+            Return String.Empty
         End Try
     End Function
 
@@ -763,7 +763,7 @@ Module publicSubsNFunctions
     End Function
 
     Public Function subject_teacher(ByVal str As String, ByVal c_form As String, ByVal term As String, ByVal year As Integer, ByVal subj As String)
-        Dim tname As String = ""
+        Dim tname As String = String.Empty
         Dim tInitials As String()
         Dim initials As String = String.Empty
         Dim tid As Integer

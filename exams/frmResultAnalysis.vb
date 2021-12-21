@@ -1,7 +1,7 @@
 ﻿Public Class frmResultAnalysis
 
     Dim total_percentage As Double = 0
-    Dim msg As String = ""
+    Dim msg As String = String.Empty
     Private Sub frmExamEntry_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If Not connect() Then
             Me.Close()
@@ -90,7 +90,7 @@
         ElseIf lstExaminations.Items.Count < 1 And chkMode.Checked Then
             msg = "Only 1 Examination? You didn't tell me so!"
             Return False
-        ElseIf cboSortBy.SelectedItem = "" And cboSortBy.Visible Then
+        ElseIf cboSortBy.SelectedItem = String.Empty And cboSortBy.Visible Then
             msg = "Please Choose The Mode To Sort The Result Analysis!"
             Return False
         Else
@@ -203,7 +203,7 @@
         Return False
     End Function
     Private Sub add_exam()
-        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> "" Then
+        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> String.Empty Then
             If Not exists(cboExamName.SelectedItem) Then
                 Dim li As New ListViewItem
                 li = lstExaminations.Items.Add(cboExamName.SelectedItem)

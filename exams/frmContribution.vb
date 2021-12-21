@@ -1,7 +1,7 @@
 ﻿Public Class frmContribution
 
     Private Sub frmContribution_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        
+
         If Not connect() Then
             Me.Close()
         Else
@@ -47,7 +47,7 @@
     End Function
 
     Dim total_percentage As Double = 0
-    Dim msg As String = ""
+    Dim msg As String = String.Empty
     Private Function isvalid()
 
         Dim buffer As Double = 0
@@ -82,7 +82,7 @@
         If cboClass.SelectedItem = Nothing Or cboClass.SelectedItem = None Then
             msg = "Invalid Selection For Class!"
             Return False
-        ElseIf cboSortBy.SelectedItem = "" And cboSortBy.Visible Then
+        ElseIf cboSortBy.SelectedItem = String.Empty And cboSortBy.Visible Then
             msg = "Please Choose The Mode To Sort The Result Analysis!"
             Return False
         Else
@@ -92,7 +92,7 @@
 
     Private Sub add_exam()
         'todo add method to get the exam out of
-        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> "" Then
+        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> String.Empty Then
             If Not exists(cboExamName.SelectedItem) Then
                 Dim li As New ListViewItem
                 li = lstExaminations.Items.Add(cboExamName.SelectedItem)
@@ -154,7 +154,7 @@
             MsgBox("There Are No Exams To Analyze")
         ElseIf cboClass.SelectedItem = Nothing Then
             MsgBox("Please Select The Class")
-        ElseIf cboSortBy.SelectedItem = "" And cboSortBy.Visible Then
+        ElseIf cboSortBy.SelectedItem = String.Empty And cboSortBy.Visible Then
             MsgBox("Please Choose The Mode To Sort The Result Analysis!")
         Else
 
@@ -229,5 +229,5 @@
         txtContribution.Text = 0
     End Sub
 
-    
+
 End Class

@@ -5,7 +5,7 @@
         End If
     End Sub
 
-    Dim recordID As String = ""
+    Dim recordID As String = String.Empty
 
     Private Sub check()
         If cboTrend.SelectedItem IsNot Nothing Then

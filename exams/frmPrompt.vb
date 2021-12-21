@@ -27,7 +27,7 @@
         ReDim words(j - 1)
         j = 0
         in_word = False
-        Dim temp As String = ""
+        Dim temp As String = String.Empty
         For i = 0 To str.Length - 1
             If str(i) <> "=" Then
                 If Not in_word Then
@@ -38,7 +38,7 @@
                 If in_word Then
                     in_word = False
                     words(j) = temp
-                    temp = ""
+                    temp = String.Empty
                     j += 1
                 End If
             ElseIf i = str.Length - 1 Then
@@ -58,7 +58,7 @@
     End Sub
 
     Private Sub btnEnter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnter.Click
-        If cboStream.SelectedItem <> None And cboStream.SelectedItem <> "" Then
+        If cboStream.SelectedItem <> None And cboStream.SelectedItem <> String.Empty Then
             class_stream = cboStream.SelectedItem
             to_continue = True
             Me.Close()

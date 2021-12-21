@@ -10,7 +10,7 @@ Public Class frmPriviledges
         usersDGV.DataSource = myTable
         loadTreeView()
     End Sub
-    Dim menus = ""
+    Dim menus = String.Empty
     Dim treeView = New Dictionary(Of String, List(Of String))
 
     Private Sub loadTreeView()
@@ -75,7 +75,7 @@ Public Class frmPriviledges
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        Dim s = ""
+        Dim s = String.Empty
         Dim selectedItems = CheckedNames(myTreeView.Nodes)
         Dim items = New StringBuilder()
 

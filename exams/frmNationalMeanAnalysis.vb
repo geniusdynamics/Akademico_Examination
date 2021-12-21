@@ -29,7 +29,7 @@ Public Class frmNationalMeanAnalysis
                 total = 0
                 count = 0
                 While dbreader.Read
-                    If dbreader(subjabb(k)) <> "-" And dbreader(subjabb(k)) <> "" And dbreader(subjabb(k)) <> "X" Then
+                    If dbreader(subjabb(k)) <> "-" And dbreader(subjabb(k)) <> String.Empty And dbreader(subjabb(k)) <> "X" Then
                         If prime Then
                             Dim values() As String = dbreader(subjabb(k)).ToString.Split(" ")
                             total += fix_point(values(values.Length - 1))

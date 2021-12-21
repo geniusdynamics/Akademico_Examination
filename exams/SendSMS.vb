@@ -1,9 +1,9 @@
 ﻿Imports System
-Imports System.Text
+Imports System.Collections.Specialized
 Imports System.Net
 Imports System.Net.Security
-Imports System.Collections.Specialized
 Imports System.Security.Cryptography.X509Certificates
+Imports System.Text
 Module SendSMS
 
     Public Function AcceptAllCertifications(

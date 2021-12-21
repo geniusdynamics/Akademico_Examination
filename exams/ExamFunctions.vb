@@ -98,18 +98,18 @@
 
 
             If marks < subjGrade(subjGrade.Count - 1).Item2 Then
-                    studGrade = "E"
-                Else
-                    For i = 0 To subjGrade.Count - 1
-                        If marks >= subjGrade(i).Item2 Then
-                            studGrade = subjGrade(i).Item1
-                            Exit For
-                        End If
-                    Next
-                End If
+                studGrade = "E"
             Else
-                ' Dim classGrading As New List(Of Tuple(Of String, Int16))
-                If marks < classGrading(classGrading.Count - 1).Item2 Then
+                For i = 0 To subjGrade.Count - 1
+                    If marks >= subjGrade(i).Item2 Then
+                        studGrade = subjGrade(i).Item1
+                        Exit For
+                    End If
+                Next
+            End If
+        Else
+            ' Dim classGrading As New List(Of Tuple(Of String, Int16))
+            If marks < classGrading(classGrading.Count - 1).Item2 Then
                 studGrade = "E"
             Else
                 For i = 0 To classGrading.Count - 1

@@ -1,5 +1,4 @@
 ﻿Imports System.Drawing.Printing
-Imports System.IO
 
 Public Class frmComputeResults
 
@@ -180,8 +179,8 @@ Public Class frmComputeResults
         Next
 
         Dim test = (From m In subjectMarkss
-                   Order By m.Item2 Descending
-                   Select m).FirstOrDefault()
+                    Order By m.Item2 Descending
+                    Select m).FirstOrDefault()
 
         highestMarks.Add(test)
 
@@ -299,8 +298,8 @@ Public Class frmComputeResults
             'Compute Overall Position
             Dim overAllPos As New List(Of Double)
             overAllPos = (From all In allResults
-                         Order By all.Item2 Descending
-                         Select all.Item2).ToList()
+                          Order By all.Item2 Descending
+                          Select all.Item2).ToList()
 
 
 
@@ -316,9 +315,9 @@ Public Class frmComputeResults
                 'get the results for one stream only
                 j = s
                 streamList = (From all In allResults
-                             Where all.Item1 = classStream(j)
-                             Order By all.Item2 Descending
-                             Select all.Item2).ToList()
+                              Where all.Item1 = classStream(j)
+                              Order By all.Item2 Descending
+                              Select all.Item2).ToList()
 
                 For i = 0 To dgvMeanMarks.RowCount - 4
 
@@ -608,8 +607,8 @@ Public Class frmComputeResults
                 'Compute Overall Position
                 Dim overAllPos As New List(Of Double)
                 overAllPos = (From all In allResults
-                             Order By all.Item2 Descending
-                             Select all.Item2).ToList()
+                              Order By all.Item2 Descending
+                              Select all.Item2).ToList()
 
 
                 resultsTotal = 0
@@ -643,9 +642,9 @@ Public Class frmComputeResults
                     'get the results for one stream only
                     j = s
                     streamList = (From all In allResults
-                                 Where all.Item1 = classStream(j)
-                                 Order By all.Item2 Descending
-                                 Select all.Item2).ToList()
+                                  Where all.Item1 = classStream(j)
+                                  Order By all.Item2 Descending
+                                  Select all.Item2).ToList()
 
                     For i = 0 To dgvMeanMarks.RowCount - 1
 
@@ -700,7 +699,7 @@ Public Class frmComputeResults
 
     End Sub
 
-   Private Sub fillMeanScore()
+    Private Sub fillMeanScore()
         Dim averageScore As New Dictionary(Of String, String)
         Dim scoreCount, gradeCount, pointsCount, markCount, previous As Integer
         Dim ans As Double
@@ -791,22 +790,22 @@ Public Class frmComputeResults
                     Timer1.Enabled = True
                 End If
             End Try
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_EMAIL <> "" Then
+            If S_EMAIL <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
                 e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
@@ -1133,22 +1132,22 @@ Public Class frmComputeResults
                     Timer1.Enabled = True
                 End If
             End Try
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_EMAIL <> "" Then
+            If S_EMAIL <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
                 e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5

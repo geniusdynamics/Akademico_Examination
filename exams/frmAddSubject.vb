@@ -2,13 +2,13 @@
     Dim msg As String
     Dim opt As String
     Private Function isvalid()
-        If Trim(txtName.Text) = "" Or IsNumeric(txtName.Text) Then
+        If Trim(txtName.Text) = String.Empty Or IsNumeric(txtName.Text) Then
             msg = "Subject Name is invalid!"
             Return False
-        ElseIf Trim(txtAbbreviation.Text) = "" Then
+        ElseIf Trim(txtAbbreviation.Text) = String.Empty Then
             msg = "Subject Abbreviation is invalid!"
             Return False
-        ElseIf Trim(txtCode.Text) = "" Or Not IsNumeric(txtCode.Text) Then
+        ElseIf Trim(txtCode.Text) = String.Empty Or Not IsNumeric(txtCode.Text) Then
             msg = "Subject Code Is Invalid!"
             Return False
         ElseIf cboDepartment.SelectedItem = None Then

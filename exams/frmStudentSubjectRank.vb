@@ -164,22 +164,22 @@ Public Class frmStudentSubjectRank
         Dim right_margin As Integer = 800
         Dim topline As Integer
         Dim CenterPage As Single
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
             line += header_font.Height + 2
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_EMAIL <> "" Then
+        If S_EMAIL <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
             e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
@@ -202,7 +202,7 @@ Public Class frmStudentSubjectRank
         e.Graphics.DrawLine(Pens.Black, left_margin - 2, line, left_margin + 600, line)
         Dim in_tie As Boolean = False
         For k As Integer = start_from To dgvSubjects.Rows.Count - 1
-            If dgvSubjects.Item("MarkAttained", k).Value <> "" And dgvSubjects.Item("MarkAttained", k).Value <> "-" Then
+            If dgvSubjects.Item("MarkAttained", k).Value <> String.Empty And dgvSubjects.Item("MarkAttained", k).Value <> "-" Then
                 count += 1
                 total += dgvSubjects.Item("MarkAttained", k).Value
                 total_points += dgvSubjects.Item("Points", k).Value
@@ -236,7 +236,7 @@ Public Class frmStudentSubjectRank
                 Exit For
             End If
         Next
-        e.Graphics.DrawString("", smallfont, Brushes.Black, left_margin + 50, line + 3)
+        e.Graphics.DrawString(String.Empty, smallfont, Brushes.Black, left_margin + 50, line + 3)
         e.Graphics.DrawString("MEAN SCORE", smallfont, Brushes.Black, left_margin + 100, line + 3)
         e.Graphics.DrawString(Format(total / count, "0.00"), smallfont, Brushes.Black, left_margin + 350, line + 3)
         e.Graphics.DrawString(get_points(total_points / count), smallfont, Brushes.Black, left_margin + 420, line + 3)

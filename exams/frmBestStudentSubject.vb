@@ -169,7 +169,7 @@
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
         If resultDGV.Rows.Count > 0 Then
-            generateFromDataTable("Subject Wise Ranking", "From Grid", "", Nothing, resultDGV)
+            generateFromDataTable("Subject Wise Ranking", "From Grid", String.Empty, Nothing, resultDGV)
         Else
             MsgBox("There are no row to print")
         End If

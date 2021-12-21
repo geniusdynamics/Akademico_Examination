@@ -27,7 +27,7 @@
     Private Sub defaultConnString_Click(sender As Object, e As EventArgs) Handles defaultConnString.Click
         Me.txtDBName.Text = "schoolss"
         Me.txtDbHost.Text = "localhost"
-        Me.txtPassword.Text = ""
+        Me.txtPassword.Text = String.Empty
         Me.txtUserName.Text = "root"
         Me.txtDbPort.Text = "7474"
     End Sub

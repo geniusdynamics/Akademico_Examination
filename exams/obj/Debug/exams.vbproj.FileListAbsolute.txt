@@ -573,3 +573,4 @@ D:\DevCenter\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.vbproj.Cor
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.vbproj.CopyComplete
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.exe
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\obj\Debug\exams.pdb
+D:\Workspaces\akademico\Akademico_Examination\exams\obj\Debug\exams.vbprojAssemblyReference.cache

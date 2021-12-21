@@ -1,12 +1,11 @@
 ﻿Imports DevExpress.LookAndFeel
+Imports DevExpress.XtraBars
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.XtraNavBar
-Imports DevExpress.XtraBars
 Imports DevExpress.XtraSplashScreen
-Imports System.Threading
-Imports System.IO
-Imports exams.MySql.Data.MySqlClient
 Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Threading
 
 Partial Public Class frmMainForm
     Inherits DevExpress.XtraBars.Ribbon.RibbonForm
@@ -101,7 +100,7 @@ Partial Public Class frmMainForm
     End Sub
 
 
-    Dim accesibleMenu = ""
+    Dim accesibleMenu = String.Empty
 
     Private Sub frmMainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 

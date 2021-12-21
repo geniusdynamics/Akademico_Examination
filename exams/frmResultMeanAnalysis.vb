@@ -88,7 +88,7 @@
         ElseIf cboClass.SelectedItem = Nothing Then
             MsgBox("Please Select The Class")
             'todo add condition to check whether grading scheme exists
-        ElseIf cboSortBy.SelectedItem = "" And cboSortBy.Visible Then
+        ElseIf cboSortBy.SelectedItem = String.Empty And cboSortBy.Visible Then
             MsgBox("Please Choose The Mode To Sort The Result Analysis!")
         Else
 

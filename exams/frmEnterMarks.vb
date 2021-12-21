@@ -1,8 +1,7 @@
 ﻿Imports System
-Imports System.Drawing.Printing
-Imports System.IO
-Imports Excel = Microsoft.Office.Interop.Excel
 Imports System.Diagnostics.Debugger
+Imports System.Drawing.Printing
+Imports Excel = Microsoft.Office.Interop.Excel
 Public Class frmEnterMarks
     Dim results_entered As Boolean
     Dim msg As String
@@ -228,7 +227,7 @@ Public Class frmEnterMarks
                             dgvEnterMarks.Item("Term", k).Value = dbreader("Term")
                             dgvEnterMarks.Item("Year", k).Value = dbreader("Year")
                             For j As Integer = 0 To subjabb.Length - 1
-                                If dbreader(subjabb(j)) = "" Then
+                                If dbreader(subjabb(j)) = String.Empty Then
                                     dgvEnterMarks.Item(subjname(j), k).Value = "-"
                                 Else
                                     dgvEnterMarks.Item(subjname(j), k).Value = dbreader(subjabb(j))
@@ -357,7 +356,7 @@ Public Class frmEnterMarks
     End Sub
     Private Sub import_data()
         Using (New DevExpress.Utils.WaitDialogForm("Importing excel results , Please Wait .....", "Importing Results"))
-            Dim fields_list As String = ""
+            Dim fields_list As String = String.Empty
             Dim col_count As Integer = 0
             For k As Integer = 0 To dgvEnterMarks.Columns.Count - 1
                 If dgvEnterMarks.Columns(k).Visible Then
@@ -960,7 +959,7 @@ Public Class frmEnterMarks
                                     query &= ", "
                                 End If
                                 query = query & "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`='" & dgvEnterMarks.Item(dgvEnterMarks.Columns(k).Name, i).Value & "'"
-                                availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                                availableColumns.Add(String.Empty & class_form & "_" & dgvEnterMarks.Columns(k).Name & String.Empty)
                                 count_ += 1
                             End If
                         Next
@@ -971,7 +970,7 @@ Public Class frmEnterMarks
                         For k As Integer = 6 To dgvEnterMarks.Columns.Count - 1
                             If dgvEnterMarks.Columns(dgvEnterMarks.Columns(k).Name).Visible And is_split_subject(dgvEnterMarks.Columns(k).Name) Then
                                 query &= "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`"
-                                availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                                availableColumns.Add(String.Empty & class_form & "_" & dgvEnterMarks.Columns(k).Name & String.Empty)
                                 If k < dgvEnterMarks.Columns.Count - 4 Then
                                     query &= ","
                                 End If
@@ -1050,7 +1049,7 @@ Public Class frmEnterMarks
                                 End If
 
                                 query = query & "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`='" & dgvEnterMarks.Item(dgvEnterMarks.Columns(k).Name, i).Value & "'"
-                                availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                                availableColumns.Add(String.Empty & class_form & "_" & dgvEnterMarks.Columns(k).Name & String.Empty)
                                 count_ += 1
 
                             End If
@@ -1062,7 +1061,7 @@ Public Class frmEnterMarks
                         For k As Integer = 6 To dgvEnterMarks.Columns.Count - 1
                             If dgvEnterMarks.Columns(dgvEnterMarks.Columns(k).Name).Visible And is_split_subject(dgvEnterMarks.Columns(k).Name) Then
                                 query &= "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`"
-                                availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                                availableColumns.Add(String.Empty & class_form & "_" & dgvEnterMarks.Columns(k).Name & String.Empty)
                                 If k < dgvEnterMarks.Columns.Count - 4 Then
                                     query &= ","
                                 End If
@@ -1350,7 +1349,7 @@ Public Class frmEnterMarks
                     For k As Integer = 6 To dgvEnterMarks.Columns.Count - 1
                         If dgvEnterMarks.Columns(dgvEnterMarks.Columns(k).Name).Visible And is_split_subject(dgvEnterMarks.Columns(k).Name) Then
                             query &= "`" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "`"
-                            availableColumns.Add("" & class_form & "_" & dgvEnterMarks.Columns(k).Name & "")
+                            availableColumns.Add(String.Empty & class_form & "_" & dgvEnterMarks.Columns(k).Name & String.Empty)
                             If k <= dgvEnterMarks.Columns.Count - 5 Then
                                 query &= ","
                             End If
@@ -1459,17 +1458,17 @@ Public Class frmEnterMarks
         Dim left_margin As Integer = 50
         Dim count As Integer = 0
         If start_from = 0 Then
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
@@ -1574,7 +1573,7 @@ Public Class frmEnterMarks
 
         addNumberingToGrid(dgvEnterMarks)
         Dim title As String = ret_name(class_form) & " " & stream & " " & exam_name & " MARKS FOR TERM " & tm & " " & yr
-        generateFromDataTable(title, "From Grid", "", Nothing, dgvEnterMarks)
+        generateFromDataTable(title, "From Grid", String.Empty, Nothing, dgvEnterMarks)
         dgvEnterMarks.Columns.Remove("count")
     End Sub
 
@@ -1915,7 +1914,7 @@ Public Class frmEnterMarks
                     values = values.Remove(values.Length - 2, 2)
                     Obj2 = CType(range.Cells(rCnt, 1), Excel.Range)
                     admNumber = Obj2.value
-                    query = "UPDATE students SET " + values + " WHERE  admin_no=" + admNumber + ""
+                    query = "UPDATE students SET " + values + " WHERE  admin_no=" + admNumber + String.Empty
 
                     If qwrite(query) Then
                         Dim parents As New List(Of String)(New String() {"father", "mother"})

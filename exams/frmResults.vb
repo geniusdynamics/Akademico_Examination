@@ -1,8 +1,5 @@
 ﻿Imports System.Drawing.Printing
 Imports System.IO
-Imports System.Threading
-Imports Excel = Microsoft.Office.Interop.Excel
-Imports System.Threading.Tasks
 
 Public Class frmResults
     Dim subjects_7(500)(), counter
@@ -79,22 +76,22 @@ Public Class frmResults
         Dim left_margin, right_margin As Integer
         left_margin = 50
         right_margin = 1000
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, left_margin + 180, 50)
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, left_margin + 250, 80)
         End If
-        If S_FAX <> "" Then
+        If S_FAX <> String.Empty Then
             e.Graphics.DrawString("FAX: " & S_FAX, other_font, Brushes.Black, left_margin + 270, 100)
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, left_margin + 260, 120)
         End If
         Try
             e.Graphics.DrawString(ret_name(class_form).ToString.ToUpper & " " & exam_name.ToUpper & " EXAMINATION PERFORMANCE MARKLIST", other_font, Brushes.Black, left_margin + 200, line)
         Catch ex As Exception
-            Dim exam As String = ""
+            Dim exam As String = String.Empty
             For k As Integer = 0 To exam_names.Length - 1
                 exam += exam_names(k)
                 If k < exam_names.Length - 1 Then
@@ -157,22 +154,22 @@ Public Class frmResults
         Dim left_margin, right_margin As Integer
         left_margin = 50
         right_margin = 800
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, left_margin + 160, 50)
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, left_margin + 250, 80)
         End If
-        If S_FAX <> "" Then
+        If S_FAX <> String.Empty Then
             e.Graphics.DrawString("FAX: " & S_FAX, other_font, Brushes.Black, left_margin + 270, 100)
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, left_margin + 260, 120)
         End If
         Try
             e.Graphics.DrawString(ret_name(class_form).ToString.ToUpper & " " & class_stream.ToUpper & " " & exam_name.ToUpper & " EXAMINATION PERFORMANCE MARKLIST", other_font, Brushes.Black, left_margin + 200, line)
         Catch ex As Exception
-            Dim exam As String = ""
+            Dim exam As String = String.Empty
             For k As Integer = 0 To exam_names.Length - 1
                 exam += exam_names(k)
                 If k < exam_names.Length - 1 Then
@@ -426,7 +423,7 @@ Public Class frmResults
         Dim tester As Integer
         qread("SELECT admin_no, marks_attained_primary FROM students WHERE Class='" & ret_name(class_form) & "' ORDER BY marks_attained_primary DESC")
         While dbreader.Read
-            If dbreader("marks_attained_primary").ToString = Nothing Or dbreader("marks_attained_primary").ToString = "" Then
+            If dbreader("marks_attained_primary").ToString = Nothing Or dbreader("marks_attained_primary").ToString = String.Empty Then
                 tester = 0
             Else
                 tester = dbreader("marks_attained_primary")
@@ -545,7 +542,7 @@ Public Class frmResults
     End Function
 
     Private Function student_name(ByVal adm As String)
-        Dim sname As String = ""
+        Dim sname As String = String.Empty
         ' "SELECT LastName, FirstName, MiddleName FROM " & get_name(class_form) & "_classlist WHERE ADMNo='" & adm & "'"
         If qread("select student_name from students where admin_no ='" & adm & "'") Then
             dbreader.Read()
@@ -553,7 +550,7 @@ Public Class frmResults
                 ' sname = dbreader("LastName") & " " & dbreader("MiddleName") & " " & dbreader("FirstName")
                 sname = dbreader("student_name")
             Else
-                sname = ""
+                sname = String.Empty
             End If
             dbreader.Close()
         End If
@@ -608,8 +605,8 @@ Public Class frmResults
         End If
         get_streams(class_form)
         Dim c_stream As String
-        c_stream = ""
-        Dim sname As String = ""
+        c_stream = String.Empty
+        Dim sname As String = String.Empty
         Dim total(subjabb.Length - 1)
         Dim i, l, totals As Integer
         Dim j As Integer = 0
@@ -1890,8 +1887,8 @@ Public Class frmResults
         qread("SELECT marks_attained_primary FROM students WHERE admin_no='" & adm & "'")
         If dbreader.RecordsAffected > 0 Then
             dbreader.Read()
-            If Not dbreader("marks_attained_primary") = "--" And Not dbreader("marks_attained_primary") = "" Then
-                vap = fix_point(get_grade((dbreader("marks_attained_primary") / 500) * 100, False, ""))
+            If Not dbreader("marks_attained_primary") = "--" And Not dbreader("marks_attained_primary") = String.Empty Then
+                vap = fix_point(get_grade((dbreader("marks_attained_primary") / 500) * 100, False, String.Empty))
                 vap = mp - vap
             End If
         Else
@@ -1905,7 +1902,7 @@ Public Class frmResults
         qread("SELECT marks_attained_primary FROM students WHERE admin_no ='" & adm & "'")
         If dbreader.RecordsAffected > 0 Then
             dbreader.Read()
-            vapgrade = get_grade((dbreader("marks_attained_primary") / 500) * 100, False, "")
+            vapgrade = get_grade((dbreader("marks_attained_primary") / 500) * 100, False, String.Empty)
         Else
             vapgrade = "E"
         End If
@@ -2439,22 +2436,22 @@ Public Class frmResults
                     Timer1.Enabled = True
                 End If
             End Try
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_EMAIL <> "" Then
+            If S_EMAIL <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
                 e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
@@ -2752,22 +2749,22 @@ Public Class frmResults
                     Timer1.Enabled = True
                 End If
             End Try
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_EMAIL <> "" Then
+            If S_EMAIL <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
                 e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
                 line += other_font.Height + 5
@@ -3155,7 +3152,7 @@ Public Class frmResults
             dbreader.Read()
             dormitory = dbreader("dormitory")
         Catch ex As Exception
-            dormitory = ""
+            dormitory = String.Empty
         End Try
     End Function
 
@@ -3254,17 +3251,17 @@ Public Class frmResults
                 Timer1.Enabled = False
             End Try
         End If
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Avgpen, CenterPage, line)
             line += header_font.Height + 2
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Avgpen, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Avgpen, CenterPage, line)
             line += other_font.Height + 5
@@ -3311,12 +3308,12 @@ Public Class frmResults
         Try
             If tables.Length > 1 Then
                 For i = 0 To tables.Length - 1
-                    e.Graphics.DrawString(exam_names(i).ToUpper.Substring(0, 4) & "/" & total_mark(i) & "", italisized_font, Brushes.Black, left_margin + j + (exam_width / 2) - 20, line + 3)
+                    e.Graphics.DrawString(exam_names(i).ToUpper.Substring(0, 4) & "/" & total_mark(i) & String.Empty, italisized_font, Brushes.Black, left_margin + j + (exam_width / 2) - 20, line + 3)
                     j += exam_width
                 Next
             Else
                 marks = get_total_mark(exam_name, tm)
-                e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & "/" & marks & "", italisized_font, Brushes.Black, left_margin + j + (exam_width / 2) - 20, line + 3)
+                e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & "/" & marks & String.Empty, italisized_font, Brushes.Black, left_margin + j + (exam_width / 2) - 20, line + 3)
             End If
         Catch ex As Exception
             'marks = get_total_mark(exam_name, tm)
@@ -3495,7 +3492,7 @@ Public Class frmResults
                 If IsNumeric(dgvEnterMarks.Item(subjects_done_name(k), student).Value) Then
                     e.Graphics.DrawString(get_comment(get_grade(dgvEnterMarks.Item(subjects_done_name(k), student).Value, radSubject.Checked, subjects_done_abb(k)).ToString, radSubject.Checked, subjects_done_abb(k)), italisized_font, RemarksPen, left_margin + remarks, line)
                 Else
-                    e.Graphics.DrawString("", italisized_font, RemarksPen, left_margin + remarks, line)
+                    e.Graphics.DrawString(String.Empty, italisized_font, RemarksPen, left_margin + remarks, line)
                 End If
                 If grade Then
                     e.Graphics.DrawString(fix_point(dgvEnterMarks.Item(subjects_done_name(k), student).Value), other_font, PointPen, left_margin + pt + 4, line)
@@ -3899,7 +3896,7 @@ Public Class frmResults
                             e.Graphics.DrawString(subjects(k), smallfont, Brushes.Blue, left_margin + CInt(right_margin / 2) - 10, startline)
                         End If
                         e.Graphics.DrawString(subject_rank(subjects_done_name(k), dgvEnterMarks.Item(subjabb(k), student).Value, dgvEnterMarks.Item("str_class", student).Value), smallfont, Brushes.Blue, left_margin + CInt(right_margin / 2) + 165, startline)
-                        e.Graphics.DrawString(subject_rank(subjects_done_name(k), dgvEnterMarks.Item(subjabb(k), student).Value, ""), smallfont, Brushes.Blue, right_margin - 80, startline)
+                        e.Graphics.DrawString(subject_rank(subjects_done_name(k), dgvEnterMarks.Item(subjabb(k), student).Value, String.Empty), smallfont, Brushes.Blue, right_margin - 80, startline)
                     Else
                         If subjects(k).ToString.Length >= 22 Then
                             e.Graphics.DrawString(subjects(k).ToString.Substring(0, 22), smallfont, Brushes.Black, left_margin + CInt(right_margin / 2) - 10, startline)
@@ -3907,7 +3904,7 @@ Public Class frmResults
                             e.Graphics.DrawString(subjects(k), smallfont, Brushes.Black, left_margin + CInt(right_margin / 2) - 10, startline)
                         End If
                         e.Graphics.DrawString(subject_rank(subjabb(k), dgvEnterMarks.Item(subjabb(k), student).Value, dgvEnterMarks.Item("str_class", student).Value), smallfont, Brushes.Black, left_margin + CInt(right_margin / 2) + 165, startline)
-                        e.Graphics.DrawString(subject_rank(subjabb(k), dgvEnterMarks.Item(subjabb(k), student).Value, ""), smallfont, Brushes.Black, right_margin - 80, startline)
+                        e.Graphics.DrawString(subject_rank(subjabb(k), dgvEnterMarks.Item(subjabb(k), student).Value, String.Empty), smallfont, Brushes.Black, right_margin - 80, startline)
                     End If
                 Else
                     If report.color Then
@@ -4116,7 +4113,7 @@ Public Class frmResults
             dbreader.Read()
             get_class_teacher_comments = dbreader("comment")
         Else
-            Return ""
+            Return String.Empty
         End If
     End Function
     Private Function get_head_teacher_comments(ByVal performance As String)
@@ -4125,7 +4122,7 @@ Public Class frmResults
             dbreader.Read()
             get_head_teacher_comments = dbreader("comment")
         Else
-            Return ""
+            Return String.Empty
         End If
     End Function
 
@@ -4156,14 +4153,14 @@ Public Class frmResults
                     get_class_teacher = names(1).ToString.Substring(0, 1)
                 End If
             Else
-                Return ""
+                Return String.Empty
             End If
         Else
             If dbreader.RecordsAffected > 0 Then
                 dbreader.Read()
                 get_class_teacher = dbreader("Teacher")
             Else
-                Return ""
+                Return String.Empty
             End If
         End If
     End Function
@@ -4176,7 +4173,7 @@ Public Class frmResults
             Dim count As Integer = 0
             If mode Then
                 For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
-                    If stream = "" Then
+                    If stream = String.Empty Then
                         If IsNumeric(dgvEnterMarks.Item(sname, k).Value) Then
                             ReDim Preserve ranks(count)
                             ranks(count) = dgvEnterMarks.Item(sname, k).Value
@@ -4219,7 +4216,7 @@ Public Class frmResults
                     End Try
                 Next
             Else
-                If stream = "" Then
+                If stream = String.Empty Then
                     query = "SELECT `" & sname & "` FROM " & table & " WHERE Examination='" & escape_string(exam_name) & "' AND Term='" & tm & "' AND Year='" & yr & "'  AND class='" & escape_string(ret_name(class_form)) & "'  ORDER BY " & sname & " DESC"
                 Else
                     query = "SELECT `" & sname & "` FROM " & table & " WHERE Examination='" & escape_string(exam_name) & "' AND Stream='" & stream & "' AND Term='" & tm & "' AND Year='" & yr & "'  AND class='" & escape_string(ret_name(class_form)) & "'  ORDER BY " & sname & " DESC"
@@ -4264,7 +4261,7 @@ Public Class frmResults
             Dim count As Integer = 0
             If mode Then
                 For k As Integer = 0 To dgvEnterMarks.Rows.Count - 5
-                    If stream = "" Then
+                    If stream = String.Empty Then
                         If IsNumeric(dgvEnterMarks.Item(sname, k).Value) Then
                             ReDim Preserve ranks(count)
                             ranks(count) = dgvEnterMarks.Item(sname, k).Value
@@ -4307,7 +4304,7 @@ Public Class frmResults
                     End Try
                 Next
             Else
-                If stream = "" Then
+                If stream = String.Empty Then
                     query = "SELECT `" & sname & "` FROM " & table & " WHERE Examination='" & escape_string(exam_name) & "' AND Term='" & tm & "' AND class='" & escape_string(ret_name(class_form)) & "' AND Year='" & yr & "' ORDER BY " & sname & " DESC"
                 Else
                     query = "SELECT `" & sname & "` FROM " & table & " WHERE Examination='" & escape_string(exam_name) & "'  AND Term='" & tm & "' AND class='" & escape_string(ret_name(class_form)) & "'  AND Year='" & yr & "' AND Stream='" & stream & "' ORDER BY " & sname & " DESC"
@@ -4354,7 +4351,7 @@ Public Class frmResults
         Dim set_bool As Boolean
         Dim grade As String = Nothing
         If Not qread("SELECT * FROM class_performance_data WHERE ADMNo='" & escape_string(dgvEnterMarks.Item("ADMNo", student).Value) & "' AND term='" & tm & "' AND class='" & all_classes(cls) & "'") Then
-            Return ""
+            Return String.Empty
         End If
         If dbreader.RecordsAffected > 0 Then
             dbreader.Read()
@@ -4362,7 +4359,7 @@ Public Class frmResults
             set_bool = True
             grade = dbreader("GRADE")
         Else
-            get_class_performance_data = ""
+            get_class_performance_data = String.Empty
             set_bool = False
         End If
         If tm = "I" Then
@@ -4845,7 +4842,7 @@ Public Class frmResults
 
     Private Function guardian_no(ByVal adm As String)
         dbreader.Close()
-        Dim phone As String = ""
+        Dim phone As String = String.Empty
         Dim result As String = String.Empty
         qread("SELECT Phone FROM parents_guardians WHERE admin_no ='" & adm & "'")
         If dbreader.RecordsAffected > 0 Then
@@ -5029,17 +5026,17 @@ Public Class frmResults
                         End If
                     End Try
                 End If
-                If S_NAME <> "" Then
+                If S_NAME <> String.Empty Then
                     CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                     e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
                     line += header_font.Height + 2
                 End If
-                If S_ADDRESS <> "" Then
+                If S_ADDRESS <> String.Empty Then
                     CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                     e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
                     line += other_font.Height + 5
                 End If
-                If S_PHONE <> "" Then
+                If S_PHONE <> String.Empty Then
                     CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                     e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
                     line += other_font.Height + 5
@@ -5079,12 +5076,12 @@ Public Class frmResults
                 Try
                     If tables.Length > 1 Then
                         For i = 0 To tables.Length - 1
-                            e.Graphics.DrawString(exam_names(i).ToUpper & " /" & total_mark(i) & "", smallfont, Brushes.Black, left_margin + j, line)
+                            e.Graphics.DrawString(exam_names(i).ToUpper & " /" & total_mark(i) & String.Empty, smallfont, Brushes.Black, left_margin + j, line)
                             j += exam_width
                         Next
                     Else
                         marks = get_total_mark(exam_name, tm)
-                        e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & "", other_font, Brushes.Black, left_margin + j, line)
+                        e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & String.Empty, other_font, Brushes.Black, left_margin + j, line)
                     End If
                 Catch ex As Exception
                     'marks = get_total_mark(exam_name, tm)
@@ -5347,22 +5344,22 @@ Public Class frmResults
                     End If
                 End Try
             End If
-            If S_NAME <> "" Then
+            If S_NAME <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
                 e.Graphics.DrawString(S_NAME.ToUpper, header_font, Avgpen, CenterPage, line)
                 line += header_font.Height + 2
             End If
-            If S_ADDRESS <> "" Then
+            If S_ADDRESS <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
                 e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Avgpen, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_PHONE <> "" Then
+            If S_PHONE <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
                 e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Avgpen, CenterPage, line)
                 line += other_font.Height + 5
             End If
-            If S_EMAIL <> "" Then
+            If S_EMAIL <> String.Empty Then
                 CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
                 e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Avgpen, CenterPage, line)
                 line += other_font.Height + 5
@@ -5397,16 +5394,16 @@ Public Class frmResults
             Try
                 If tables.Length > 1 Then
                     For i = 0 To tables.Length - 1
-                        e.Graphics.DrawString(exam_names(i).ToUpper & " /" & total_mark(i) & "", smallfont, Brushes.Black, left_margin + j, line)
+                        e.Graphics.DrawString(exam_names(i).ToUpper & " /" & total_mark(i) & String.Empty, smallfont, Brushes.Black, left_margin + j, line)
                         j += exam_width
                     Next
                 Else
                     marks = get_total_mark(exam_name, tm)
-                    e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & "", other_font, Brushes.Black, left_margin + j, line)
+                    e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & String.Empty, other_font, Brushes.Black, left_margin + j, line)
                 End If
             Catch ex As Exception
                 marks = get_total_mark(exam_name, tm)
-                e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & "", other_font, Brushes.Black, left_margin + j, line)
+                e.Graphics.DrawString(exam_name.ToUpper.ToString.Substring(0, 4) & " /" & marks & String.Empty, other_font, Brushes.Black, left_margin + j, line)
             End Try
             e.Graphics.DrawString("AVG", other_font, Avgpen, left_margin + avg, line)
             e.Graphics.DrawString("PTS", other_font, PointPen, left_margin + pt, line)
@@ -5821,7 +5818,7 @@ Public Class frmResults
             dbreader.Read()
             exit_form = dbreader("CurrentClass")
             cur_form = dbreader("ClassAdmitted")
-            If cur_form = "" Then
+            If cur_form = String.Empty Then
                 cur_form = "Form 1"
             End If
             If dbreader("YearOut") = 0 Then
@@ -5829,7 +5826,7 @@ Public Class frmResults
             Else
                 year_out = dbreader("YearOut")
             End If
-            If dbreader("TermOut") = "" Then
+            If dbreader("TermOut") = String.Empty Then
                 get_term()
                 term_out = term
             Else

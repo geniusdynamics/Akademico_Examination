@@ -18,7 +18,7 @@
         ElseIf cboTrend.SelectedItem Is Nothing Then
             ErrorProvider1.SetError(cboTrend, "Please Select The Performance Trend")
             successful = False
-        ElseIf txtComment.Text = "" Then
+        ElseIf txtComment.Text = String.Empty Then
             ErrorProvider1.SetError(txtComment, "Please Enter The Performance Comments")
             successful = False
         Else

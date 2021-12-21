@@ -1,10 +1,8 @@
-﻿Imports System.Windows.Forms
-Imports System.Data.Odbc
+﻿Imports Microsoft.VisualBasic.CompilerServices
+Imports System.IO
 Imports System.Linq
 Imports System.Security.Cryptography
 Imports System.Text
-Imports System.IO
-Imports Microsoft.VisualBasic.CompilerServices
 
 Public Class VerifyL
 
@@ -373,7 +371,7 @@ Public Class VerifyL
     End Function
 
     Public Shared Function ToBase32(Data As Byte(), Optional IncludePadding As Boolean = True) As String
-        Dim RetVal As String = ""
+        Dim RetVal As String = String.Empty
         Dim Segments As New System.Collections.Generic.List(Of Long)()
         Dim Index As Integer = 0
         While Index < Data.Length

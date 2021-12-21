@@ -62,7 +62,7 @@
                     End If
                 Next
 
-                Dim rptTitle = ""
+                Dim rptTitle = String.Empty
                 If CboStream.SelectedItem IsNot Nothing Then
                     rptTitle = "Student List For " + cboSubject.SelectedItem.ToString() + " Class " + cboClass.SelectedItem.ToString() + " Stream " + CboStream.SelectedItem.ToString()
                 Else
@@ -71,7 +71,7 @@
 
                 addColumnNumbering(reportDT)
 
-                generateFromDataTable(rptTitle, "From DT", "", reportDT)
+                generateFromDataTable(rptTitle, "From DT", String.Empty, reportDT)
             Else
                 clearAdd()
 
@@ -91,7 +91,7 @@
                     reportDT.Rows.Add(rowData)
                 Next
 
-                Dim rptTitle = ""
+                Dim rptTitle = String.Empty
                 If CboStream.SelectedItem IsNot Nothing Then
                     rptTitle = "Student List For " + cboSubject.SelectedItem.ToString() + " Class " + cboClass.SelectedItem.ToString() + " Stream " + CboStream.SelectedItem.ToString()
                 Else
@@ -100,7 +100,7 @@
 
                 addColumnNumbering(reportDT)
 
-                generateFromDataTable(rptTitle, "From DT", "", reportDT)
+                generateFromDataTable(rptTitle, "From DT", String.Empty, reportDT)
             End If
 
         End If
@@ -116,7 +116,7 @@
     End Sub
 
     Private Function getAbbreviation(ByRef subject As String)
-        Dim abb As String = ""
+        Dim abb As String = String.Empty
         If qread("select abbreviation from subjects where subject = '" + subject + "'", 1) Then
             If dbreader1.RecordsAffected > 0 Then
                 dbreader1.Read()
@@ -133,7 +133,7 @@
     Private Function loadAdmissionNumber(ByVal type As String) As Boolean
         adminNos.Clear()
         successful = False
-        Dim q As String = ""
+        Dim q As String = String.Empty
         If type = "Class Only" Then
             q = "select admin_no, student_name from students where class = '" + cboClass.SelectedItem.ToString() + "' and isstudent = 'true';"
         Else

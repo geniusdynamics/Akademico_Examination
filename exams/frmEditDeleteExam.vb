@@ -32,7 +32,7 @@
             cboExamName.Items.Clear()
             txtTotal.Clear()
             txtName.Clear()
-            cboExamName.SelectedItem = ""
+            cboExamName.SelectedItem = String.Empty
             While dbreader.Read
                 cboExamName.Items.Add(dbreader("ExamName"))
             End While

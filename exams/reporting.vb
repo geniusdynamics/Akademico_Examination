@@ -1,8 +1,8 @@
 ﻿
-Imports DevExpress.XtraReports.UI
 Imports DevExpress.Spreadsheet
-Imports System.IO
+Imports DevExpress.XtraReports.UI
 Imports System.Data.Odbc
+Imports System.IO
 
 Module reporting
 
@@ -106,7 +106,7 @@ Module reporting
     Dim myReportTitle As String = String.Empty
     Dim rowFont As New Font(Settings.Default.userFont, Settings.Default.fontSize)
     Dim colFont As New Font(Settings.Default.userFont, Settings.Default.fontSize, FontStyle.Bold)
-    Dim textWidth As String = ""
+    Dim textWidth As String = String.Empty
 
     Private Function verifyColumns(ByRef dt As DataTable, ByRef myReport As XtraReport)
         successful = False
@@ -114,7 +114,7 @@ Module reporting
             successful = True
         End If
 
-        Dim colValue As String = ""
+        Dim colValue As String = String.Empty
         Dim dr As DataRow
 
         columnWidth.Clear()
@@ -128,7 +128,7 @@ Module reporting
         Next
 
         Dim col As DataColumn
-        Dim colHeader As String = ""
+        Dim colHeader As String = String.Empty
         For j = 0 To dt.Columns.Count - 1
             col = dt.Columns(j)
             colHeader = col.Caption
@@ -147,7 +147,7 @@ Module reporting
 
     Private Sub getWidthSize(ByVal colValue As String, ByVal colIndex As Integer, ByVal appFont As Font)
 
-        textWidth = ""
+        textWidth = String.Empty
         Dim charArray As Char()
         Dim textSize As String = TextRenderer.MeasureText(colValue, appFont).ToString()
         charArray = textSize.ToCharArray()
@@ -541,7 +541,7 @@ Module reporting
     End Function
 
     Public Sub exportToExcel(ByRef myView As DataGridView)
-        Dim filePath As String = ""
+        Dim filePath As String = String.Empty
         Dim myDialog As New SaveFileDialog()
         myDialog.Title = "Export Data"
         myDialog.FileName = "Save Where"

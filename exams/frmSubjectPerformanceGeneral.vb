@@ -179,22 +179,22 @@ Public Class frmSubjectPerformanceGeneral
         'line + 20 uncommented
         line += 20
         Dim CenterPage As Single
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
             line += header_font.Height + 2
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_EMAIL <> "" Then
+        If S_EMAIL <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
             e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
@@ -238,7 +238,7 @@ Public Class frmSubjectPerformanceGeneral
                     Next
                     e.Graphics.DrawString(g_entry, smallfont, Brushes.Black, left_margin + col, line)
                     col += 50
-                    Dim mean = mean_p("", sex(count), streams(s), words(c))
+                    Dim mean = mean_p(String.Empty, sex(count), streams(s), words(c))
                     e.Graphics.DrawString(mean, smallfont, Brushes.Black, left_margin + col, line)
                     col += 50
                     Try
@@ -300,22 +300,22 @@ Public Class frmSubjectPerformanceGeneral
         End Try
         line += 20
         Dim CenterPage As Single
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
             line += header_font.Height + 2
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_EMAIL <> "" Then
+        If S_EMAIL <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
             e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
@@ -359,7 +359,7 @@ Public Class frmSubjectPerformanceGeneral
                     Next
                     e.Graphics.DrawString(g_entry, smallfont, Brushes.Black, left_margin + col, line)
                     col += 50
-                    Dim mean = mean_p3("", category(m), streams(s), words(c))
+                    Dim mean = mean_p3(String.Empty, category(m), streams(s), words(c))
                     e.Graphics.DrawString(mean, smallfont, Brushes.Black, left_margin + col, line)
                     col += 50
                     Try
@@ -885,22 +885,22 @@ Public Class frmSubjectPerformanceGeneral
         Catch ex As Exception
         End Try
         Dim CenterPage As Single
-        If S_NAME <> "" Then
+        If S_NAME <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString(S_NAME.ToUpper, header_font).Width / 2)
             e.Graphics.DrawString(S_NAME.ToUpper, header_font, Brushes.Black, CenterPage, line)
             line += header_font.Height + 2
         End If
-        If S_ADDRESS <> "" Then
+        If S_ADDRESS <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font).Width / 2)
             e.Graphics.DrawString("P.O. BOX " & S_ADDRESS.ToUpper & ", " & S_LOCATION.ToUpper, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_PHONE <> "" Then
+        If S_PHONE <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("TELEPHONE: " & S_PHONE, other_font).Width / 2)
             e.Graphics.DrawString("TELEPHONE: " & S_PHONE, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
         End If
-        If S_EMAIL <> "" Then
+        If S_EMAIL <> String.Empty Then
             CenterPage = Convert.ToSingle(e.PageBounds.Width / 2 - e.Graphics.MeasureString("EMAIL ADDRESS: " & S_EMAIL, other_font).Width / 2)
             e.Graphics.DrawString("EMAIL ADDRESS: " & S_EMAIL, other_font, Brushes.Black, CenterPage, line)
             line += other_font.Height + 5
@@ -1251,7 +1251,7 @@ Public Class frmSubjectPerformanceGeneral
     End Function
     Dim total_percentage As Double
     Private Sub add_exam()
-        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> "" Then
+        If cboExamName.SelectedItem <> None And IsNumeric(txtContribution.Text) And txtContribution.Text <> String.Empty Then
             If Not exists(cboExamName.SelectedItem) Then
                 Dim li As New ListViewItem
                 li = lstExaminations.Items.Add(cboExamName.SelectedItem)

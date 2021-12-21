@@ -11,7 +11,7 @@ Public Class frmNationalGradesAttained
         Dim cel As DataGridViewCell = New DataGridViewTextBoxCell
         With col
             .Name = "Grade"
-            .HeaderText = ""
+            .HeaderText = String.Empty
             .CellTemplate = cel
             .ReadOnly = True
             .Width = 200

@@ -570,3 +570,4 @@ D:\DevCenter\Source\Repos\Akademico_Examination\exams\bin\Release\de\DevExpress.
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\bin\Release\es\DevExpress.Diagram.v20.2.Core.resources.dll
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\bin\Release\ja\DevExpress.Diagram.v20.2.Core.resources.dll
 D:\DevCenter\Source\Repos\Akademico_Examination\exams\bin\Release\ru\DevExpress.Diagram.v20.2.Core.resources.dll
+D:\Workspaces\akademico\Akademico_Examination\exams\obj\Release\exams.vbprojAssemblyReference.cache

@@ -8,7 +8,7 @@
         End If
     End Sub
 
-    Dim operationType As String = ""
+    Dim operationType As String = String.Empty
 
     Private Sub loadDefaults()
         qread("SELECT * FROM report_configuration")

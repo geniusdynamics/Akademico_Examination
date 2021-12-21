@@ -1,5 +1,4 @@
-﻿Imports DevExpress.Utils.Frames
-
+﻿
 
 Public Class frmLicense
     Dim DemoDatabase As String = "DemoDatabase"
