@@ -1,0 +1,831 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BB7A4421-C173-0D5E-287A-F8DDD0340943}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>exams</RootNamespace>
+    <AssemblyName>exams</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <StartupObject>exams.Program</StartupObject>
+    <FileAlignment>512</FileAlignment>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(ProjectDir)**\*.vb</DefaultItemExcludes>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningLevel>1</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <MyType>WindowsForms</MyType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>exams.My.MyApplication</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>exam.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Accessibility" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v21.2" />
+    <Reference Include="DevExpress.Charts.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.2" />
+    <Reference Include="DevExpress.DataVisualization.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.TreeMap.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeMap.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Docs.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Office.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v21.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Export" />
+    <Reference Include="DevExpress.Printing.v21.2.Core" />
+    <Reference Include="DevExpress.RichEdit.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Spreadsheet.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v21.2" />
+    <Reference Include="DevExpress.Utils.v21.2" />
+    <Reference Include="DevExpress.Utils.v21.2.UI, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v21.2" />
+    <Reference Include="DevExpress.Sparkline.v21.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v21.2.Wizard, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v21.2" />
+    <Reference Include="DevExpress.XtraGauges.v21.2.Core, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraNavBar.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.CodeParser.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v21.2.Extensions, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v21.2, Version=21.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Google.Protobuf, Version=3.19.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.19.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.15.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.1.2.15\lib\net45\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.15.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Compression.LZ4.Streams.1.2.15\lib\net45\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net45\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.3.6.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MySqlBackup.NET.2.3.6.1\lib\net452\MySqlBackup.dll</HintPath>
+    </Reference>
+    <Reference Include="MySQLConnection">
+      <HintPath>..\..\Academico_Final\lib\MySQLConnection.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\netstandard1.1\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\netstandard1.1\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.27\lib\net452\ZstdNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\MyNamespace.Dynamic.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.1.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.2.Designer.cs" />
+    <Compile Include="My Project\MyNamespace.Static.3.Designer.cs" />
+    <Compile Include="ExamFunctions.cs" />
+    <Compile Include="frmAddSplitSubject.Designer.cs">
+      <DependentUpon>frmAddSplitSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSplitSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSubject.Designer.cs">
+      <DependentUpon>frmAddSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAllStudents.Designer.cs">
+      <DependentUpon>frmAllStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAllStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAllStudentsPrompt.Designer.cs">
+      <DependentUpon>frmAllStudentsPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAllStudentsPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBestStudentSubject.Designer.cs">
+      <DependentUpon>frmBestStudentSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBestStudentSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClassBasedGrading.Designer.cs">
+      <DependentUpon>frmClassBasedGrading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClassBasedGrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClassSubjects.Designer.cs">
+      <DependentUpon>frmClassSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClassSubjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComputeResults.Designer.cs">
+      <DependentUpon>frmComputeResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComputeResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigureModem.Designer.cs">
+      <DependentUpon>frmConfigureModem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfigureModem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmContribution.Designer.cs">
+      <DependentUpon>frmContribution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmContribution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateExam.Designer.cs">
+      <DependentUpon>frmCreateExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateNationalExam.Designer.cs">
+      <DependentUpon>frmCreateNationalExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreateNationalExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDates.Designer.cs">
+      <DependentUpon>frmDates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBConnection.Designer.cs">
+      <DependentUpon>frmDBConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeleteNationalExam.Designer.cs">
+      <DependentUpon>frmDeleteNationalExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeleteNationalExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDeleteSubject.Designer.cs">
+      <DependentUpon>frmDeleteSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDeleteSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDepartmentalSubjectAnalysis.Designer.cs">
+      <DependentUpon>frmDepartmentalSubjectAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDepartmentalSubjectAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditDeleteExam.Designer.cs">
+      <DependentUpon>frmEditDeleteExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditDeleteExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditSplitSubject.Designer.cs">
+      <DependentUpon>frmEditSplitSubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEditSplitSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEnterMarks.Designer.cs">
+      <DependentUpon>frmEnterMarks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEnterMarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFilter.Designer.cs">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFilter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGradesAttained.Designer.cs">
+      <DependentUpon>frmGradesAttained.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGradesAttained.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHeadTeacherComments.Designer.cs">
+      <DependentUpon>frmHeadTeacherComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHeadTeacherComments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIndexNumbers.Designer.cs">
+      <DependentUpon>frmIndexNumbers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIndexNumbers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoading.Designer.cs">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogIn.Designer.cs">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMainForm.Designer.cs">
+      <DependentUpon>frmMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeanAnalysis.Designer.cs">
+      <DependentUpon>frmMeanAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeanAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMeanResults.Designer.cs">
+      <DependentUpon>frmMeanResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeanResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMeritListConfig.Designer.cs">
+      <DependentUpon>frmMeritListConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeritListConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModifySubject.Designer.cs">
+      <DependentUpon>frmModifySubject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModifySubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNationalExaminationsEntry.Designer.cs">
+      <DependentUpon>frmNationalExaminationsEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNationalExaminationsEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNationalExaminationsEntryPrompt.Designer.cs">
+      <DependentUpon>frmNationalExaminationsEntryPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNationalExaminationsEntryPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNationalExamPerformance.Designer.cs">
+      <DependentUpon>frmNationalExamPerformance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNationalExamPerformance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNationalGradesAttained.Designer.cs">
+      <DependentUpon>frmNationalGradesAttained.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNationalGradesAttained.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNationalMeanAnalysis.Designer.cs">
+      <DependentUpon>frmNationalMeanAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNationalMeanAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPerformanceComments.Designer.cs">
+      <DependentUpon>frmPerformanceComments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPerformanceComments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintFrom.Designer.cs">
+      <DependentUpon>frmPrintFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintFrom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrintSubjectsTaken.Designer.cs">
+      <DependentUpon>frmPrintSubjectsTaken.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrintSubjectsTaken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPriviledges.Designer.cs">
+      <DependentUpon>frmPriviledges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPriviledges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrompt.Designer.cs">
+      <DependentUpon>frmPrompt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrompt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportConfiguration.Designer.cs">
+      <DependentUpon>frmReportConfiguration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportConfiguration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultAnalysis.Designer.cs">
+      <DependentUpon>frmResultAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResultAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResultMeanAnalysis.Designer.cs">
+      <DependentUpon>frmResultMeanAnalysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResultMeanAnalysis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmResults.Designer.cs">
+      <DependentUpon>frmResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplitSubjects.Designer.cs">
+      <DependentUpon>frmSplitSubjects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSplitSubjects.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentPerformanceIndex.Designer.cs">
+      <DependentUpon>frmStudentPerformanceIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentPerformanceIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentProfile.Designer.cs">
+      <DependentUpon>frmStudentProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentSubjectRank.Designer.cs">
+      <DependentUpon>frmStudentSubjectRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentSubjectRank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectBasedGrading.Designer.cs">
+      <DependentUpon>frmSubjectBasedGrading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectBasedGrading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceGeneral.Designer.cs">
+      <DependentUpon>frmSubjectPerformanceGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceIndex.Designer.cs">
+      <DependentUpon>frmSubjectPerformanceIndex.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceIndex.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceSpecific.Designer.cs">
+      <DependentUpon>frmSubjectPerformanceSpecific.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectPerformanceSpecific.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectRank.Designer.cs">
+      <DependentUpon>frmSubjectRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectRank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectRankPrompt2.Designer.cs">
+      <DependentUpon>frmSubjectRankPrompt2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectRankPrompt2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectsDone.Designer.cs">
+      <DependentUpon>frmSubjectsDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectsDone.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSubjectsOutOf.Designer.cs">
+      <DependentUpon>frmSubjectsOutOf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSubjectsOutOf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWait.Designer.cs">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWaitSlow.Designer.cs">
+      <DependentUpon>frmWaitSlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWaitSlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\Application.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.cs" />
+    <Compile Include="MySql\Data.cs" />
+    <Compile Include="publicSubsNFunctions.cs" />
+    <Compile Include="reporting.cs" />
+    <Compile Include="Sendsms.cs" />
+    <Compile Include="sms.cs" />
+    <Compile Include="test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testRPT.Designer.cs">
+      <DependentUpon>testRPT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="testRPT.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VerifyL.cs" />
+    <Compile Include="WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="frmAddSplitSubject.resx">
+      <DependentUpon>frmAddSplitSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSubject.resx">
+      <DependentUpon>frmAddSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAllStudents.resx">
+      <DependentUpon>frmAllStudents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAllStudentsPrompt.resx">
+      <DependentUpon>frmAllStudentsPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBestStudentSubject.resx">
+      <DependentUpon>frmBestStudentSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClassBasedGrading.resx">
+      <DependentUpon>frmClassBasedGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClassSubjects.resx">
+      <DependentUpon>frmClassSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComputeResults.resx">
+      <DependentUpon>frmComputeResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConfigureModem.resx">
+      <DependentUpon>frmConfigureModem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmContribution.resx">
+      <DependentUpon>frmContribution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateExam.resx">
+      <DependentUpon>frmCreateExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateNationalExam.resx">
+      <DependentUpon>frmCreateNationalExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDates.resx">
+      <DependentUpon>frmDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBConnection.resx">
+      <DependentUpon>frmDBConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeleteNationalExam.resx">
+      <DependentUpon>frmDeleteNationalExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDeleteSubject.resx">
+      <DependentUpon>frmDeleteSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDepartmentalSubjectAnalysis.resx">
+      <DependentUpon>frmDepartmentalSubjectAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditDeleteExam.resx">
+      <DependentUpon>frmEditDeleteExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEditSplitSubject.resx">
+      <DependentUpon>frmEditSplitSubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEnterMarks.resx">
+      <DependentUpon>frmEnterMarks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFilter.resx">
+      <DependentUpon>frmFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGradesAttained.resx">
+      <DependentUpon>frmGradesAttained.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHeadTeacherComments.resx">
+      <DependentUpon>frmHeadTeacherComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIndexNumbers.resx">
+      <DependentUpon>frmIndexNumbers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoading.resx">
+      <DependentUpon>frmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogIn.resx">
+      <DependentUpon>frmLogIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMainForm.resx">
+      <DependentUpon>frmMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeanAnalysis.resx">
+      <DependentUpon>frmMeanAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeanResults.resx">
+      <DependentUpon>frmMeanResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeritListConfig.resx">
+      <DependentUpon>frmMeritListConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModifySubject.resx">
+      <DependentUpon>frmModifySubject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNationalExaminationsEntry.resx">
+      <DependentUpon>frmNationalExaminationsEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNationalExaminationsEntryPrompt.resx">
+      <DependentUpon>frmNationalExaminationsEntryPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNationalExamPerformance.resx">
+      <DependentUpon>frmNationalExamPerformance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNationalGradesAttained.resx">
+      <DependentUpon>frmNationalGradesAttained.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNationalMeanAnalysis.resx">
+      <DependentUpon>frmNationalMeanAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPerformanceComments.resx">
+      <DependentUpon>frmPerformanceComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintFrom.resx">
+      <DependentUpon>frmPrintFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrintSubjectsTaken.resx">
+      <DependentUpon>frmPrintSubjectsTaken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPriviledges.resx">
+      <DependentUpon>frmPriviledges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrompt.resx">
+      <DependentUpon>frmPrompt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportConfiguration.resx">
+      <DependentUpon>frmReportConfiguration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultAnalysis.resx">
+      <DependentUpon>frmResultAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResultMeanAnalysis.resx">
+      <DependentUpon>frmResultMeanAnalysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmResults.resx">
+      <DependentUpon>frmResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplitSubjects.resx">
+      <DependentUpon>frmSplitSubjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentPerformanceIndex.resx">
+      <DependentUpon>frmStudentPerformanceIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentProfile.resx">
+      <DependentUpon>frmStudentProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentSubjectRank.resx">
+      <DependentUpon>frmStudentSubjectRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectBasedGrading.resx">
+      <DependentUpon>frmSubjectBasedGrading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectPerformanceGeneral.resx">
+      <DependentUpon>frmSubjectPerformanceGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectPerformanceIndex.resx">
+      <DependentUpon>frmSubjectPerformanceIndex.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectPerformanceSpecific.resx">
+      <DependentUpon>frmSubjectPerformanceSpecific.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectRank.resx">
+      <DependentUpon>frmSubjectRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectRankPrompt2.resx">
+      <DependentUpon>frmSubjectRankPrompt2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectsDone.resx">
+      <DependentUpon>frmSubjectsDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSubjectsOutOf.resx">
+      <DependentUpon>frmSubjectsOutOf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWait.resx">
+      <DependentUpon>frmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWaitSlow.resx">
+      <DependentUpon>frmWaitSlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>exams.My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="test.resx">
+      <DependentUpon>test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="exam.ico" />
+    <Content Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
